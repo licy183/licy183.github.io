@@ -10,16 +10,16 @@
 <title>简单的基于Selenium的爬课表程序 - uchkks&#39;s blog</title>
 
 
-    <meta name="description" content="看到学长写的选课程序，觉得直接一改就是爬课表，然后就改了。首先是学号和密码，涉及个人隐私就不写了。 学校信息门户的网址是http:&#x2F;&#x2F;my.hfut.edu.cn&#x2F;login.portal，直接写上去完事。 验证码识别我写了两个，一个是基于Tesseract-OCR的，另一个是云打码，当然还是云打码好用。">
-<meta name="keywords" content="Python 爬虫 Selenium">
+    <meta name="description" content="看到学长写的选课程序，觉得直接一改就是爬课表，然后就改了。首先是学号和密码，涉及个人隐私就不写了。 学校信息门户的网址是http:&#x2F;&#x2F;my.hfut.edu.cn&#x2F;login.portal，直接写上去完事。 验证码识别我写了两个，一个是基于Tesseract-OCR的，另一个是云打码，当然还是云打码好用。 源码大概就这样，首先是爬课表本身的py：">
+<meta name="keywords" content="Python,爬虫,Selenium">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简单的基于Selenium的爬课表程序">
 <meta property="og:url" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;2019&#x2F;07&#x2F;20&#x2F;2019-07-20-%E7%AE%80%E5%8D%95%E7%9A%84%E5%9F%BA%E4%BA%8ESelenium%E7%9A%84%E7%88%AC%E8%AF%BE%E8%A1%A8%E7%A8%8B%E5%BA%8F&#x2F;index.html">
 <meta property="og:site_name" content="uchkks&#39;s blog">
-<meta property="og:description" content="看到学长写的选课程序，觉得直接一改就是爬课表，然后就改了。首先是学号和密码，涉及个人隐私就不写了。 学校信息门户的网址是http:&#x2F;&#x2F;my.hfut.edu.cn&#x2F;login.portal，直接写上去完事。 验证码识别我写了两个，一个是基于Tesseract-OCR的，另一个是云打码，当然还是云打码好用。">
+<meta property="og:description" content="看到学长写的选课程序，觉得直接一改就是爬课表，然后就改了。首先是学号和密码，涉及个人隐私就不写了。 学校信息门户的网址是http:&#x2F;&#x2F;my.hfut.edu.cn&#x2F;login.portal，直接写上去完事。 验证码识别我写了两个，一个是基于Tesseract-OCR的，另一个是云打码，当然还是云打码好用。 源码大概就这样，首先是爬课表本身的py：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
-<meta property="og:updated_time" content="2019-11-25T18:05:52.674Z">
+<meta property="og:updated_time" content="2019-11-25T18:14:34.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
 
@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 947 个字)
+                    6 分钟 读完 (大约 946 个字)
                 </span>
                 
                 
@@ -166,9 +166,8 @@
             <p>看到学长写的选课程序，觉得直接一改就是爬课表，然后就改了。<br>首先是学号和密码，涉及个人隐私就不写了。</p>
 <p>学校信息门户的网址是<a href="http://my.hfut.edu.cn/login.portal" target="_blank" rel="noopener">http://my.hfut.edu.cn/login.portal</a>，直接写上去完事。</p>
 <p>验证码识别我写了两个，一个是基于Tesseract-OCR的，另一个是云打码，当然还是云打码好用。</p>
-<a id="more"></a>
 <p>源码大概就这样，首先是爬课表本身的py：</p>
-<!--more-->
+<a id="more"></a>
 <figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># encoding : utf-8</span></span><br><span class="line"><span class="hljs-comment"># main.py</span></span><br><span class="line"><span class="hljs-comment"># 引用：https://github.com/wfsg00098/HFUT_Xuanke</span></span><br><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image, ImageEnhance</span><br><span class="line"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">import</span> code_pytesseract</span><br><span class="line"><span class="hljs-keyword">import</span> code_ydm</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 登录需要的变量</span></span><br><span class="line">username = <span class="hljs-string">"&lt;你的学号&gt;"</span></span><br><span class="line">password = <span class="hljs-string">"&lt;你的信息门户密码&gt;"</span> <span class="hljs-comment"># 不是本科教务密码</span></span><br><span class="line">chromedriver = <span class="hljs-string">".\\chromedriver.exe"</span> <span class="hljs-comment"># 你把这玩意放哪了就是哪</span></span><br><span class="line">driver = webdriver.Chrome(chromedriver)</span><br><span class="line">driver.implicitly_wait(<span class="hljs-number">30</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 访问信息门户</span></span><br><span class="line">url = <span class="hljs-string">"http://my.hfut.edu.cn/login.portal"</span></span><br><span class="line">driver.get(url)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 尝试登录信息门户</span></span><br><span class="line">flag = <span class="hljs-number">0</span></span><br><span class="line"><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:</span><br><span class="line">    print(<span class="hljs-string">"尝试登录"</span>)</span><br><span class="line">    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:</span><br><span class="line">        <span class="hljs-keyword">try</span>:</span><br><span class="line">            <span class="hljs-comment"># 清空输入框</span></span><br><span class="line">            driver.find_element_by_id(<span class="hljs-string">"username"</span>).clear()</span><br><span class="line">            driver.find_element_by_id(<span class="hljs-string">"password"</span>).clear()</span><br><span class="line">            driver.find_element_by_id(<span class="hljs-string">"code"</span>).clear()</span><br><span class="line">            <span class="hljs-comment"># 输入学号和信息门户密码</span></span><br><span class="line">            driver.find_element_by_id(<span class="hljs-string">"username"</span>).send_keys(username)</span><br><span class="line">            driver.find_element_by_id(<span class="hljs-string">"password"</span>).send_keys(password)</span><br><span class="line">            <span class="hljs-comment"># print("输入验证码")</span></span><br><span class="line">            <span class="hljs-comment"># code = input()</span></span><br><span class="line">            <span class="hljs-comment"># 截图或验证码图片保存地址</span></span><br><span class="line">            screenImg = <span class="hljs-string">"screenImg.png"</span></span><br><span class="line">            <span class="hljs-keyword">if</span> os.path.exists(screenImg):</span><br><span class="line">                os.remove(screenImg)</span><br><span class="line">            <span class="hljs-comment"># 浏览器页面截屏</span></span><br><span class="line">            driver.get_screenshot_as_file(screenImg)</span><br><span class="line">            <span class="hljs-comment"># 获取验证码位置</span></span><br><span class="line">            <span class="hljs-comment"># left = driver.find_element_by_id('captchaImg').location['x']</span></span><br><span class="line">            <span class="hljs-comment"># top = driver.find_element_by_id('captchaImg').location['y']</span></span><br><span class="line">            <span class="hljs-comment"># right = driver.find_element_by_id('captchaImg').location['x'] + driver.find_element_by_id('captchaImg').size['width']-100</span></span><br><span class="line">            <span class="hljs-comment"># bottom = driver.find_element_by_id('captchaImg').location['y'] + driver.find_element_by_id('captchaImg').size['height']-100</span></span><br><span class="line">            left = <span class="hljs-number">1149</span></span><br><span class="line">            top = <span class="hljs-number">359</span></span><br><span class="line">            right = <span class="hljs-number">1218</span></span><br><span class="line">            bottom = <span class="hljs-number">384</span></span><br><span class="line">            <span class="hljs-comment"># 从文件读取截图，截取验证码位置再次保存</span></span><br><span class="line">            img = Image.open(screenImg).crop((left, top, right, bottom))</span><br><span class="line">            img.save(screenImg)</span><br><span class="line">            <span class="hljs-comment"># 读取识别验证码</span></span><br><span class="line">            code = code_ydm._code_decode(screenImg)</span><br><span class="line">            <span class="hljs-comment"># 打印识别的验证码</span></span><br><span class="line">            print(code)</span><br><span class="line">            <span class="hljs-comment"># 输入验证码</span></span><br><span class="line">            driver.find_element_by_id(<span class="hljs-string">'code'</span>).send_keys(code)</span><br><span class="line">            <span class="hljs-keyword">break</span></span><br><span class="line">        <span class="hljs-keyword">except</span>:</span><br><span class="line">            print(<span class="hljs-string">"页面加载失败，刷新后重试..."</span>)</span><br><span class="line">            <span class="hljs-keyword">if</span> driver.current_url == url:</span><br><span class="line">                driver.refresh()</span><br><span class="line">            <span class="hljs-keyword">else</span>:</span><br><span class="line">                driver.get(url)</span><br><span class="line">            <span class="hljs-keyword">continue</span></span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">    <span class="hljs-keyword">try</span>:</span><br><span class="line">        <span class="hljs-comment">#点击登录按钮</span></span><br><span class="line">        driver.find_element_by_xpath(<span class="hljs-string">"//*[@id=\"loginForm\"]/table[1]/tbody/tr[3]/td/input[1]"</span>).click()</span><br><span class="line">        driver.implicitly_wait(<span class="hljs-number">100</span>)</span><br><span class="line">        <span class="hljs-keyword">if</span> driver.current_url == url:</span><br><span class="line">            <span class="hljs-keyword">raise</span> RuntimeError</span><br><span class="line">        print(<span class="hljs-string">"登陆成功！"</span>)</span><br><span class="line">        flag = <span class="hljs-number">1</span></span><br><span class="line">    <span class="hljs-keyword">except</span>:</span><br><span class="line">        print(<span class="hljs-string">"登录失败"</span>)</span><br><span class="line">    <span class="hljs-keyword">if</span> flag == <span class="hljs-number">1</span>:</span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">driver.implicitly_wait(<span class="hljs-number">120</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 登录本科教务</span></span><br><span class="line">url = <span class="hljs-string">"http://jxglstu.hfut.edu.cn/eams5-student/wiscom-sso/login"</span></span><br><span class="line">driver.get(url)</span><br><span class="line">sleep(<span class="hljs-number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 访问课表页面</span></span><br><span class="line">url = <span class="hljs-string">"http://jxglstu.hfut.edu.cn/eams5-student/for-std/course-table/"</span></span><br><span class="line">driver.get(url)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 写入源代码到文件</span></span><br><span class="line"><span class="hljs-comment"># a_file = open("tmp.temp", 'w')</span></span><br><span class="line"><span class="hljs-comment"># a_file.write(str(driver.page_source))</span></span><br><span class="line"><span class="hljs-comment"># a_file.close()</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 查找课表</span></span><br><span class="line">course_table = driver.find_element_by_id(<span class="hljs-string">"lessons"</span>)</span><br><span class="line"><span class="hljs-comment"># print(course_table.text)</span></span><br><span class="line">table_file = open(<span class="hljs-string">"table.txt"</span>, <span class="hljs-string">'w'</span>)</span><br><span class="line">table_file.write(course_table.text)</span><br><span class="line">table_file.close()</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 退出</span></span><br><span class="line">exit(<span class="hljs-number">0</span>)</span><br></pre></td></tr></table></figure>
 
 <p>pytesseract这个源码超简单，就几行：</p>
@@ -187,7 +186,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/Python-%E7%88%AC%E8%99%AB-Selenium/" rel="tag">Python 爬虫 Selenium</a>
+                    <a class="has-link-grey -link" href="/tags/Python/" rel="tag">Python</a>, <a class="has-link-grey -link" href="/tags/Selenium/" rel="tag">Selenium</a>, <a class="has-link-grey -link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a>
                 </div>
             </div>
         </div>
@@ -346,7 +345,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            12
+                            13
                         </p>
                     </a>
                 </div>
@@ -523,7 +522,7 @@
         <h3 class="menu-label">
             标签云
         </h3>
-        <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/C-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13.33px;">C++ 数据结构</a> <a href="/tags/CTF/" style="font-size: 13.33px;">CTF</a> <a href="/tags/Java-C/" style="font-size: 10px;">Java C++</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/Python-%E7%88%AC%E8%99%AB/" style="font-size: 10px;">Python 爬虫</a> <a href="/tags/Python-%E7%88%AC%E8%99%AB-Selenium/" style="font-size: 10px;">Python 爬虫 Selenium</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Ubuntu-Docker/" style="font-size: 10px;">Ubuntu Docker</a> <a href="/tags/Ubuntu-Docker-Wine/" style="font-size: 10px;">Ubuntu Docker Wine</a> <a href="/tags/Ubuntu-Node-JavaScript/" style="font-size: 10px;">Ubuntu Node JavaScript</a> <a href="/tags/Ubuntu-Wine/" style="font-size: 16.67px;">Ubuntu Wine</a>
+        <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CTF/" style="font-size: 12px;">CTF</a> <a href="/tags/Docker/" style="font-size: 12px;">Docker</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 16px;">Python</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/Ubuntu/" style="font-size: 20px;">Ubuntu</a> <a href="/tags/Wine/" style="font-size: 18px;">Wine</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 14px;">数据结构</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 12px;">爬虫</a>
     </div>
 </div>
     
@@ -745,15 +744,15 @@
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/C/">
-                        <span class="tag">C++</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag">C</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/C-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="tag">C++ 数据结构</span>
-                        <span class="tag is-grey">2</span>
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -765,8 +764,29 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Java-C/">
-                        <span class="tag">Java C++</span>
+                    <a class="tags has-addons" href="/tags/Docker/">
+                        <span class="tag">Docker</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Node/">
+                        <span class="tag">Node</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -774,20 +794,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Python/">
                         <span class="tag">Python</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Python-%E7%88%AC%E8%99%AB/">
-                        <span class="tag">Python 爬虫</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Python-%E7%88%AC%E8%99%AB-Selenium/">
-                        <span class="tag">Python 爬虫 Selenium</span>
+                    <a class="tags has-addons" href="/tags/Selenium/">
+                        <span class="tag">Selenium</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -795,35 +808,28 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Ubuntu/">
                         <span class="tag">Ubuntu</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Ubuntu-Docker/">
-                        <span class="tag">Ubuntu Docker</span>
-                        <span class="tag is-grey">1</span>
+                    <a class="tags has-addons" href="/tags/Wine/">
+                        <span class="tag">Wine</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Ubuntu-Docker-Wine/">
-                        <span class="tag">Ubuntu Docker Wine</span>
-                        <span class="tag is-grey">1</span>
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Ubuntu-Node-JavaScript/">
-                        <span class="tag">Ubuntu Node JavaScript</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Ubuntu-Wine/">
-                        <span class="tag">Ubuntu Wine</span>
-                        <span class="tag is-grey">5</span>
+                    <a class="tags has-addons" href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="tag">爬虫</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
@@ -1058,15 +1064,15 @@
                 
                 <div class="control">
                     <a class="tags has-addons" href="/tags/C/">
-                        <span class="tag">C++</span>
-                        <span class="tag is-grey">6</span>
+                        <span class="tag">C</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/C-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="tag">C++ 数据结构</span>
-                        <span class="tag is-grey">2</span>
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
@@ -1078,8 +1084,29 @@
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Java-C/">
-                        <span class="tag">Java C++</span>
+                    <a class="tags has-addons" href="/tags/Docker/">
+                        <span class="tag">Docker</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Node/">
+                        <span class="tag">Node</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1087,20 +1114,13 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Python/">
                         <span class="tag">Python</span>
-                        <span class="tag is-grey">2</span>
+                        <span class="tag is-grey">4</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Python-%E7%88%AC%E8%99%AB/">
-                        <span class="tag">Python 爬虫</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Python-%E7%88%AC%E8%99%AB-Selenium/">
-                        <span class="tag">Python 爬虫 Selenium</span>
+                    <a class="tags has-addons" href="/tags/Selenium/">
+                        <span class="tag">Selenium</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1108,35 +1128,28 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Ubuntu/">
                         <span class="tag">Ubuntu</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">9</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Ubuntu-Docker/">
-                        <span class="tag">Ubuntu Docker</span>
-                        <span class="tag is-grey">1</span>
+                    <a class="tags has-addons" href="/tags/Wine/">
+                        <span class="tag">Wine</span>
+                        <span class="tag is-grey">6</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Ubuntu-Docker-Wine/">
-                        <span class="tag">Ubuntu Docker Wine</span>
-                        <span class="tag is-grey">1</span>
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
                     </a>
                 </div>
                 
                 <div class="control">
-                    <a class="tags has-addons" href="/tags/Ubuntu-Node-JavaScript/">
-                        <span class="tag">Ubuntu Node JavaScript</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Ubuntu-Wine/">
-                        <span class="tag">Ubuntu Wine</span>
-                        <span class="tag is-grey">5</span>
+                    <a class="tags has-addons" href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="tag">爬虫</span>
+                        <span class="tag is-grey">2</span>
                     </a>
                 </div>
                 
