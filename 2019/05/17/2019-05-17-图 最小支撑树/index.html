@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.0.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>图 最小支撑树 - uchkks&#39;s blog</title>
+
+
+    <meta name="description" content="图(Graph)由顶点(Node)和边(Edge)构成，可分为有向图和无向图，带权图和无权图储存方式主要有两种，邻接矩阵或邻接链表。下面的代码是我用邻接矩阵法储存的图。">
+<meta name="keywords" content="C++ 数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图 最小支撑树">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;2019&#x2F;05&#x2F;17&#x2F;2019-05-17-%E5%9B%BE%20%E6%9C%80%E5%B0%8F%E6%94%AF%E6%92%91%E6%A0%91&#x2F;index.html">
+<meta property="og:site_name" content="uchkks&#39;s blog">
+<meta property="og:description" content="图(Graph)由顶点(Node)和边(Edge)构成，可分为有向图和无向图，带权图和无权图储存方式主要有两种，邻接矩阵或邻接链表。下面的代码是我用邻接矩阵法储存的图。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
+<meta property="og:updated_time" content="2019-11-25T17:40:19.091Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="图 最小支撑树" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+                <a class="navbar-item"
+                href="/about">关于</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="下载主题" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-05-17T10:27:30.000Z">2019-05-17</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1531 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                图 最小支撑树
+            
+        </h1>
+        <div class="content">
+            <p>图(Graph)由顶点(Node)和边(Edge)构成，可分为有向图和无向图，带权图和无权图储存方式主要有两种，邻接矩阵或邻接链表。下面的代码是我用邻接矩阵法储存的图。</p>
+<a id="more"></a>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> _GRAPH_H_</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _GRAPH_H_</span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span>;</span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>;</span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;</span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">queue</span>;</span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Graph</span> &#123;</span></span><br><span class="line"><span class="hljs-keyword">public</span>:</span><br><span class="line">	Graph();													<span class="hljs-comment">//构造函数1</span></span><br><span class="line">	Graph(<span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;, <span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; &amp;);	<span class="hljs-comment">//构造函数2，参数分别为顶点数组和邻接矩阵</span></span><br><span class="line">	Graph(<span class="hljs-keyword">const</span> Graph &amp;, <span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;);					<span class="hljs-comment">//构造函数3，根据已经存在的图的邻接矩阵，使用新的顶点数组构造图</span></span><br><span class="line">	Graph(<span class="hljs-keyword">const</span> Graph &amp;, <span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; &amp;);			<span class="hljs-comment">//构造函数4，根据已经存在的图的顶点数组，使用新的邻接矩阵构造图</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>;												<span class="hljs-comment">//初始化图</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">firstadj</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>;			<span class="hljs-comment">//求某边的第一个邻接点</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">nextadj</span><span class="hljs-params">(<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>)</span></span>;		<span class="hljs-comment">//求某边在某临界点之后的邻接点</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Traverse_DFS</span><span class="hljs-params">()</span></span>;		<span class="hljs-comment">//深度优先遍历</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Traverse_BFS</span><span class="hljs-params">()</span></span>;		<span class="hljs-comment">//广度优先遍历</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">EdgesWeight</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> <span class="hljs-keyword">const</span> </span>&#123; <span class="hljs-keyword">return</span> edges[i][j]; &#125;	<span class="hljs-comment">//返回某边的权重（带权图）</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-title">size</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span> </span>&#123; <span class="hljs-keyword">return</span> _size; &#125;						<span class="hljs-comment">//返回图的顶点数</span></span><br><span class="line"><span class="hljs-keyword">protected</span>:</span><br><span class="line">	<span class="hljs-keyword">unsigned</span> _size;					<span class="hljs-comment">//顶点数</span></span><br><span class="line">	<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; vectors;			<span class="hljs-comment">//顶点数组</span></span><br><span class="line">	<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; edges;		<span class="hljs-comment">//邻接矩阵</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt; &amp;)</span></span>;	<span class="hljs-comment">//深度优先遍历（单连通域）</span></span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt; &amp;)</span></span>;	<span class="hljs-comment">//广度优先遍历（单连通域）</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Graph::Graph() &#123;</span><br><span class="line">	init();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> Graph::init() &#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"请输入顶点的个数："</span>;</span><br><span class="line">	<span class="hljs-built_in">cin</span> &gt;&gt; _size;</span><br><span class="line">	vectors.resize(_size);</span><br><span class="line">	edges.resize(_size);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">0</span>; i &lt; _size; ++i)</span><br><span class="line">		edges[i].resize(_size);</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"请输入数据："</span>;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">0</span>; i &lt; _size; ++i)</span><br><span class="line">		<span class="hljs-built_in">cin</span> &gt;&gt; vectors[i];</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"请输入邻接矩阵："</span>;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">0</span>; i &lt; _size; ++i)</span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> j = <span class="hljs-number">0</span>; j &lt; _size; ++j)</span><br><span class="line">			<span class="hljs-built_in">cin</span> &gt;&gt; edges[i][j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Graph::Graph(<span class="hljs-keyword">const</span> Graph &amp;g, <span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;_vectors) &#123;</span><br><span class="line">	<span class="hljs-comment">// assert : g.size() == _vectors.size()</span></span><br><span class="line">	_size = _vectors.size();</span><br><span class="line">	vectors = g.vectors;</span><br><span class="line">	edges = g.edges;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Graph::Graph(<span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;_vectors, <span class="hljs-keyword">const</span> <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; &amp;_edges) &#123;</span><br><span class="line">	<span class="hljs-comment">// assert : _vectors.size() == _edges.size()</span></span><br><span class="line">	_size = _vectors.size();</span><br><span class="line">	vectors = _vectors;</span><br><span class="line">	edges = _edges;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> Graph::firstadj(<span class="hljs-keyword">int</span> v) &#123;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">0</span>; i &lt; _size; ++i)</span><br><span class="line">		<span class="hljs-keyword">if</span> (edges[v][i]) <span class="hljs-keyword">return</span> i;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">int</span> Graph::nextadj(<span class="hljs-keyword">int</span> v, <span class="hljs-keyword">int</span> w) &#123;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = w+<span class="hljs-number">1</span>; i &lt; _size; ++i)</span><br><span class="line">		<span class="hljs-keyword">if</span> (edges[v][i]) <span class="hljs-keyword">return</span> i;</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> Graph::Traverse_DFS() &#123;</span><br><span class="line">	<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt; visited(_size, <span class="hljs-literal">false</span>);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">0</span>; i &lt; _size; ++i)</span><br><span class="line">		<span class="hljs-keyword">if</span> (!visited[i])</span><br><span class="line">			dfs(i, visited);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> Graph::Traverse_BFS() &#123;</span><br><span class="line">	<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt; visited(_size, <span class="hljs-literal">false</span>);</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">0</span>; i &lt; _size; ++i)</span><br><span class="line">		<span class="hljs-keyword">if</span> (!visited[i])</span><br><span class="line">			bfs(i, visited);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> Graph::dfs(<span class="hljs-keyword">int</span> v, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt; &amp;visited) &#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; vectors[v] &lt;&lt; <span class="hljs-string">' '</span>;</span><br><span class="line">	visited[v] = <span class="hljs-literal">true</span>;</span><br><span class="line">	<span class="hljs-keyword">int</span> w = firstadj(v);</span><br><span class="line">	<span class="hljs-keyword">while</span> (w != <span class="hljs-number">-1</span>) &#123;</span><br><span class="line">		<span class="hljs-keyword">if</span> (!visited[w])</span><br><span class="line">			dfs(w, visited);</span><br><span class="line">		w = nextadj(v, w);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">void</span> Graph::bfs(<span class="hljs-keyword">int</span> v, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt; &amp;visited) &#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; vectors[v] &lt;&lt; <span class="hljs-string">' '</span>;</span><br><span class="line">	visited[v] = <span class="hljs-literal">true</span>;</span><br><span class="line">	<span class="hljs-built_in">queue</span>&lt;<span class="hljs-keyword">int</span>&gt; Q;</span><br><span class="line">	Q.push(v);</span><br><span class="line">	<span class="hljs-keyword">while</span> (!Q.empty()) &#123;</span><br><span class="line">		v = Q.front();</span><br><span class="line">		Q.pop();</span><br><span class="line">		<span class="hljs-keyword">int</span> w = firstadj(v);</span><br><span class="line">		<span class="hljs-keyword">while</span> (w != <span class="hljs-number">-1</span>) &#123;</span><br><span class="line">			<span class="hljs-keyword">if</span> (!visited[w]) &#123;</span><br><span class="line">				<span class="hljs-built_in">cout</span> &lt;&lt; vectors[w] &lt;&lt; <span class="hljs-string">' '</span>;</span><br><span class="line">				visited[w] = <span class="hljs-literal">true</span>;</span><br><span class="line">				Q.push(w);</span><br><span class="line">			&#125;</span><br><span class="line">			w = nextadj(v, w);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">// _GRAPH_H_</span></span></span><br></pre></td></tr></table></figure>
+
+<p>最小支撑树（最小生成树），是指带权图中可以覆盖图中全部顶点且各边权重和最小的无环连同子图。构造最小支撑树的算法，有Prime算法和Kruskal算法。</p>
+<p>Prime算法的核心是：<br>指定一个起点，将起点标记为已选顶点。然后反复在一段已选，一段未选的边中选择一条权重最小的边，直到所有顶点全部成为已选顶点（选择n-1条边）。<br>1）设置一个标记数组，标记是否为已选顶点。<br>2）设置一个结构体用来储存备选边（一段已选，一段未选的边）。比如，设计为</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MinEdgeType</span> &#123;</span></span><br><span class="line">	<span class="hljs-keyword">int</span> _the_seleted_node;  <span class="hljs-comment">//备选边的另一个顶点，备选边数组的下标作为另一个顶点</span></span><br><span class="line">	<span class="hljs-keyword">int</span> _weight;                    <span class="hljs-comment">//该边的权重</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-built_in">vector</span>&lt;MinEdgeType&gt; MinEdgeVecType;    <span class="hljs-comment">//备选边的顶点数组</span></span><br></pre></td></tr></table></figure>
+<p>3）因为只需要所有边中最小的边，所以不需要求出所有的边，只需要开顶点个数大小的数组就可以了。<br>4）在有了一个新增的选中顶点之后，需要更新备选边数组。</p>
+<p>Prime算法的代码（部分）如下：</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">MinEdgeType</span> &#123;</span></span><br><span class="line">		<span class="hljs-keyword">int</span> _the_seleted_node;</span><br><span class="line">		<span class="hljs-keyword">int</span> _weight;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="hljs-keyword">typedef</span> <span class="hljs-built_in">vector</span>&lt;MinEdgeType&gt; MinEdgeVecType;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Init_MinEdges</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Graph &amp;g, MinEdgeVecType &amp;MinEdges, <span class="hljs-keyword">int</span> v0)</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">0</span>; i &lt; g.size(); ++i) &#123;</span><br><span class="line">			<span class="hljs-keyword">int</span> weight = g.EdgesWeight(v0, i);</span><br><span class="line">			<span class="hljs-keyword">if</span> (weight) &#123;</span><br><span class="line">				MinEdges[i]._the_seleted_node = v0;</span><br><span class="line">				MinEdges[i]._weight = weight;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-keyword">else</span> MinEdges[i]._weight = INT_MAX;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">Get_MinEdge</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Graph &amp;g, MinEdgeVecType &amp;MinEgdes, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt; &amp;selected)</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">int</span> min = INT_MAX, ans;</span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">0</span>; i &lt; g.size(); ++i)</span><br><span class="line">			<span class="hljs-keyword">if</span> (!selected[i] &amp;&amp; MinEgdes[i]._weight &lt; min) &#123;</span><br><span class="line">				ans = i;</span><br><span class="line">				min = MinEgdes[i]._weight;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="hljs-keyword">return</span> ans;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">change_MinEdges_with</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Graph &amp;g, MinEdgeVecType &amp;MinEdges, <span class="hljs-keyword">int</span> k, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt; &amp;selected)</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">0</span>; i &lt; g.size(); ++i)</span><br><span class="line">			<span class="hljs-keyword">if</span> (!selected[i])</span><br><span class="line">				<span class="hljs-keyword">if</span> (g.EdgesWeight(k, i) &amp;&amp; g.EdgesWeight(k, i) &lt; MinEdges[i]._weight) &#123;</span><br><span class="line">					MinEdges[i]._weight = g.EdgesWeight(k, i);</span><br><span class="line">					MinEdges[i]._the_seleted_node = k;</span><br><span class="line">				&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; Prime(<span class="hljs-keyword">const</span> Graph &amp;_Origin_Graph, <span class="hljs-keyword">int</span> _Start) &#123;</span><br><span class="line">		<span class="hljs-keyword">unsigned</span> _size = _Origin_Graph.size();</span><br><span class="line">		<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">bool</span>&gt; selected(_size, <span class="hljs-literal">false</span>);</span><br><span class="line">		<span class="hljs-function">MinEdgeVecType <span class="hljs-title">MinEdges</span><span class="hljs-params">(_size)</span></span>;</span><br><span class="line">		<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; Ans_Set;</span><br><span class="line">		Ans_Set.push_back(_Start);</span><br><span class="line">		selected[_Start] = <span class="hljs-literal">true</span>;</span><br><span class="line">		Init_MinEdges(_Origin_Graph, MinEdges, _Start);</span><br><span class="line">		<span class="hljs-keyword">while</span> (--_size) &#123;</span><br><span class="line">			<span class="hljs-keyword">int</span> _selected_node = Get_MinEdge(_Origin_Graph, MinEdges, selected);</span><br><span class="line">			Ans_Set.push_back(_selected_node);</span><br><span class="line">			selected[_selected_node] = <span class="hljs-literal">true</span>;</span><br><span class="line">			change_MinEdges_with(_Origin_Graph, MinEdges, _selected_node, selected);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">return</span> Ans_Set;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>以上代码只返回了选定顶点的数组，暂未完成之后的操作…</p>
+<p>Kruskal算法的核心是：<br>在与已选的边不构成回路的边里选择出权重最小的边。<br>1）可以将图中的所有边都过一遍，把边和边的权重打包起来进行排序，这样可以避免每一次都从图中找边。<br>2）打包的方法有很多种，这里采用的<code>std::pair</code><br>3）下面为了操作方便，从Graph类中派生出一个新的类。<br>4）判断是否构成回路可采用电位法，即连通的顶点具有相同的电位值。<br>完整的Kruskal算法的代码如下：</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Kruskal_Graph</span> :</span><span class="hljs-keyword">public</span> Graph &#123;</span><br><span class="line">	<span class="hljs-keyword">public</span>:</span><br><span class="line">		Kruskal_Graph(<span class="hljs-keyword">const</span> Graph &amp;g) :Graph(g) &#123; init_keys(); &#125;</span><br><span class="line">		<span class="hljs-function"><span class="hljs-keyword">friend</span> Graph <span class="hljs-title">Kruskal</span><span class="hljs-params">(Kruskal_Graph)</span></span>;</span><br><span class="line">	<span class="hljs-keyword">protected</span>:</span><br><span class="line">		<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init_keys</span><span class="hljs-params">()</span></span>;</span><br><span class="line">		<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; keys;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="hljs-keyword">void</span> Kruskal_Graph::init_keys() &#123;</span><br><span class="line">		keys.resize(_size);</span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">0</span>; i &lt; _size; ++i)</span><br><span class="line">			keys[i] = i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">int</span> <span class="hljs-title">min</span><span class="hljs-params">(<span class="hljs-keyword">int</span> _Left, <span class="hljs-keyword">int</span> _Right)</span> </span>&#123;</span><br><span class="line">		<span class="hljs-keyword">return</span> _Left &lt; _Right ? _Left : _Right;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-function">Graph <span class="hljs-title">Kruskal</span><span class="hljs-params">(Kruskal_Graph Tmp)</span> </span>&#123;</span><br><span class="line">		<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &gt; edges(Tmp._size, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;(Tmp._size, <span class="hljs-number">0</span>));</span><br><span class="line">		<span class="hljs-built_in">vector</span>&lt;pair&lt;<span class="hljs-keyword">int</span>, pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; &gt; &gt; Weight_Set;</span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> i = <span class="hljs-number">0</span>; i &lt; Tmp._size; ++i)</span><br><span class="line">			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">unsigned</span> j = <span class="hljs-number">0</span>; j &lt;= i; ++j)</span><br><span class="line">				<span class="hljs-keyword">if</span> (Tmp.edges[j][i])</span><br><span class="line">					Weight_Set.push_back(pair&lt;<span class="hljs-keyword">int</span>, pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; &gt;(Tmp.edges[j][i], pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt;(j, i)));</span><br><span class="line">		sort(Weight_Set.begin(), Weight_Set.end(), [](<span class="hljs-keyword">const</span> pair&lt;<span class="hljs-keyword">int</span>, pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; &gt; &amp;_Left, pair&lt;<span class="hljs-keyword">int</span>, pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; &gt; &amp;_Right) &#123; <span class="hljs-keyword">return</span> _Left.first &gt; _Right.first; &#125;);</span><br><span class="line">		<span class="hljs-keyword">unsigned</span> _size = Tmp._size;</span><br><span class="line">		<span class="hljs-keyword">for</span> (; _size;) &#123;</span><br><span class="line">			pair&lt;<span class="hljs-keyword">int</span>, pair&lt;<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>&gt; &gt; _Tmp = *Weight_Set.rbegin();</span><br><span class="line">			Weight_Set.pop_back();</span><br><span class="line">			<span class="hljs-keyword">if</span> (Tmp.keys[_Tmp.second.first] != Tmp.keys[_Tmp.second.second]) &#123;</span><br><span class="line">				Tmp.keys[_Tmp.second.first] = Tmp.keys[_Tmp.second.second] = min(Tmp.keys[_Tmp.second.first], Tmp.keys[_Tmp.second.second]);</span><br><span class="line">				edges[_Tmp.second.first][_Tmp.second.second] = edges[_Tmp.second.second][_Tmp.second.first] = _Tmp.first;</span><br><span class="line">				--_size;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">return</span> Graph(Tmp.vectors, edges);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/C-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">C++ 数据结构</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay_qrcode.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat_qrcode.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/05/18/2019-05-18-%E4%BD%BF%E7%94%A8JNI%E5%9C%A8Java%E9%87%8C%E9%9D%A2%E4%BD%BF%E7%94%A8C++/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">使用JNI在Java里面使用C++</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/05/12/2019-05-12-%E5%A6%82%E4%BD%95%E7%A7%91%E5%AD%A6%E7%9A%84%E5%88%B7%E9%A2%98%EF%BC%9F/">
+                <span class="level-item">如何科学的刷题</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'lBiGLnlCCpEP05rAofjfWH0F-gzGzoHsz',
+        app_key: 'yuk3OUNG562jGkVMiKe0kJOn',
+        placeholder: '评论一下呗'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/kks.png" alt="uchkks">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        uchkks
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Student
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Hefei, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            24
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            7
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            12
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/licy183" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/licy183">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=951156675&amp;site=qq&amp;menu=yes">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Weibo" href="https://weibo.com/licy1833">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.rmb122.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Rmb122</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.rmb122.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.thinszx.xyz" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">thinszx</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.thinszx.xyz</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/CTF/">
+            <span class="level-start">
+                <span class="level-item">CTF</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Java/">
+            <span class="level-start">
+                <span class="level-item">Java</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Misc/">
+            <span class="level-start">
+                <span class="level-item">Misc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Py%E4%BA%A4%E6%98%93/">
+            <span class="level-start">
+                <span class="level-item">Py交易</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Ubuntu%E6%8A%98%E8%85%BE%E8%AE%B0/">
+            <span class="level-start">
+                <span class="level-item">Ubuntu折腾记</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/C-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13.33px;">C++ 数据结构</a> <a href="/tags/CTF/" style="font-size: 13.33px;">CTF</a> <a href="/tags/Java-C/" style="font-size: 10px;">Java C++</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/Python-%E7%88%AC%E8%99%AB/" style="font-size: 10px;">Python 爬虫</a> <a href="/tags/Python-%E7%88%AC%E8%99%AB-Selenium/" style="font-size: 10px;">Python 爬虫 Selenium</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/Ubuntu-Docker/" style="font-size: 10px;">Ubuntu Docker</a> <a href="/tags/Ubuntu-Docker-Wine/" style="font-size: 10px;">Ubuntu Docker Wine</a> <a href="/tags/Ubuntu-Node-JavaScript/" style="font-size: 10px;">Ubuntu Node JavaScript</a> <a href="/tags/Ubuntu-Wine/" style="font-size: 16.67px;">Ubuntu Wine</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/26/2019-11-26-NCTF%202019%20WriteUp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="NCTF 2019 WriteUp">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:29:28.000Z">2019-11-26</time></div>
+                    <a href="/2019/11/26/2019-11-26-NCTF%202019%20WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NCTF 2019 WriteUp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/22/2019-07-22-%E7%AE%80%E5%8D%95%E7%9A%84%E7%88%AC%E8%AF%BE%E8%A1%A8%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="简单的爬课表程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T12:39:57.000Z">2019-07-22</time></div>
+                    <a href="/2019/07/22/2019-07-22-%E7%AE%80%E5%8D%95%E7%9A%84%E7%88%AC%E8%AF%BE%E8%A1%A8%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">简单的爬课表程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Py%E4%BA%A4%E6%98%93/">Py交易</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/20/2019-07-20-%E7%AE%80%E5%8D%95%E7%9A%84%E5%9F%BA%E4%BA%8ESelenium%E7%9A%84%E7%88%AC%E8%AF%BE%E8%A1%A8%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="简单的基于Selenium的爬课表程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-20T11:50:40.000Z">2019-07-20</time></div>
+                    <a href="/2019/07/20/2019-07-20-%E7%AE%80%E5%8D%95%E7%9A%84%E5%9F%BA%E4%BA%8ESelenium%E7%9A%84%E7%88%AC%E8%AF%BE%E8%A1%A8%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">简单的基于Selenium的爬课表程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Py%E4%BA%A4%E6%98%93/">Py交易</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/25/2019-06-25-Ubuntu-18-04%E5%AE%89%E8%A3%85Virtualbox/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Ubuntu 18.04 安装VirtualBox">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-25T10:15:12.000Z">2019-06-25</time></div>
+                    <a href="/2019/06/25/2019-06-25-Ubuntu-18-04%E5%AE%89%E8%A3%85Virtualbox/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Ubuntu 18.04 安装VirtualBox</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Ubuntu%E6%8A%98%E8%85%BE%E8%AE%B0/">Ubuntu折腾记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/25/2019-06-25-%E5%88%A0%E9%99%A4wine%E5%8F%8A%E5%85%B6%E5%AE%89%E8%A3%85%E7%9A%84%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="删除wine及其安装的快捷方式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-25T09:37:43.000Z">2019-06-25</time></div>
+                    <a href="/2019/06/25/2019-06-25-%E5%88%A0%E9%99%A4wine%E5%8F%8A%E5%85%B6%E5%AE%89%E8%A3%85%E7%9A%84%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">删除wine及其安装的快捷方式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Ubuntu%E6%8A%98%E8%85%BE%E8%AE%B0/">Ubuntu折腾记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">C++ 数据结构</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CTF/">
+                        <span class="tag">CTF</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java-C/">
+                        <span class="tag">Java C++</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python-%E7%88%AC%E8%99%AB/">
+                        <span class="tag">Python 爬虫</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python-%E7%88%AC%E8%99%AB-Selenium/">
+                        <span class="tag">Python 爬虫 Selenium</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu/">
+                        <span class="tag">Ubuntu</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu-Docker/">
+                        <span class="tag">Ubuntu Docker</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu-Docker-Wine/">
+                        <span class="tag">Ubuntu Docker Wine</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu-Node-JavaScript/">
+                        <span class="tag">Ubuntu Node JavaScript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu-Wine/">
+                        <span class="tag">Ubuntu Wine</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2019/11/26/2019-11-26-NCTF%202019%20WriteUp/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="NCTF 2019 WriteUp">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T16:29:28.000Z">2019-11-26</time></div>
+                    <a href="/2019/11/26/2019-11-26-NCTF%202019%20WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">NCTF 2019 WriteUp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/22/2019-07-22-%E7%AE%80%E5%8D%95%E7%9A%84%E7%88%AC%E8%AF%BE%E8%A1%A8%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="简单的爬课表程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-22T12:39:57.000Z">2019-07-22</time></div>
+                    <a href="/2019/07/22/2019-07-22-%E7%AE%80%E5%8D%95%E7%9A%84%E7%88%AC%E8%AF%BE%E8%A1%A8%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">简单的爬课表程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Py%E4%BA%A4%E6%98%93/">Py交易</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/07/20/2019-07-20-%E7%AE%80%E5%8D%95%E7%9A%84%E5%9F%BA%E4%BA%8ESelenium%E7%9A%84%E7%88%AC%E8%AF%BE%E8%A1%A8%E7%A8%8B%E5%BA%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="简单的基于Selenium的爬课表程序">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-20T11:50:40.000Z">2019-07-20</time></div>
+                    <a href="/2019/07/20/2019-07-20-%E7%AE%80%E5%8D%95%E7%9A%84%E5%9F%BA%E4%BA%8ESelenium%E7%9A%84%E7%88%AC%E8%AF%BE%E8%A1%A8%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">简单的基于Selenium的爬课表程序</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Py%E4%BA%A4%E6%98%93/">Py交易</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/25/2019-06-25-Ubuntu-18-04%E5%AE%89%E8%A3%85Virtualbox/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Ubuntu 18.04 安装VirtualBox">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-25T10:15:12.000Z">2019-06-25</time></div>
+                    <a href="/2019/06/25/2019-06-25-Ubuntu-18-04%E5%AE%89%E8%A3%85Virtualbox/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Ubuntu 18.04 安装VirtualBox</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Ubuntu%E6%8A%98%E8%85%BE%E8%AE%B0/">Ubuntu折腾记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/06/25/2019-06-25-%E5%88%A0%E9%99%A4wine%E5%8F%8A%E5%85%B6%E5%AE%89%E8%A3%85%E7%9A%84%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="删除wine及其安装的快捷方式">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-06-25T09:37:43.000Z">2019-06-25</time></div>
+                    <a href="/2019/06/25/2019-06-25-%E5%88%A0%E9%99%A4wine%E5%8F%8A%E5%85%B6%E5%AE%89%E8%A3%85%E7%9A%84%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">删除wine及其安装的快捷方式</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Ubuntu%E6%8A%98%E8%85%BE%E8%AE%B0/">Ubuntu折腾记</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">C++ 数据结构</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CTF/">
+                        <span class="tag">CTF</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java-C/">
+                        <span class="tag">Java C++</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python-%E7%88%AC%E8%99%AB/">
+                        <span class="tag">Python 爬虫</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python-%E7%88%AC%E8%99%AB-Selenium/">
+                        <span class="tag">Python 爬虫 Selenium</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu/">
+                        <span class="tag">Ubuntu</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu-Docker/">
+                        <span class="tag">Ubuntu Docker</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu-Docker-Wine/">
+                        <span class="tag">Ubuntu Docker Wine</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu-Node-JavaScript/">
+                        <span class="tag">Ubuntu Node JavaScript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu-Wine/">
+                        <span class="tag">Ubuntu Wine</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="图 最小支撑树" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 uchkks&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;" target="_blank" rel="noopener">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
