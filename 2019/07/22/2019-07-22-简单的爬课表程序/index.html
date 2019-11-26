@@ -19,7 +19,7 @@
 <meta property="og:description" content="不用Selenium如何爬课表。 首先先看下工大的信息门户的网页，分析下：  先用py获取下网站的源码吧。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
-<meta property="og:updated_time" content="2019-11-25T18:14:54.132Z">
+<meta property="og:updated_time" content="2019-11-26T02:11:12.238Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
 
@@ -145,7 +145,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    16 分钟 读完 (大约 2401 个字)
+                    16 分钟 读完 (大约 2403 个字)
                 </span>
                 
                 
@@ -193,7 +193,7 @@
 <figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">try</span>:</span><br><span class="line">    loginres = session.post(<span class="hljs-string">"http://my.hfut.edu.cn/userPasswordValidate.portal"</span>, data = data)</span><br><span class="line">    logcont = loginres.text</span><br><span class="line">    <span class="hljs-comment"># print(logcont)</span></span><br><span class="line">    <span class="hljs-keyword">if</span> logcont.find(<span class="hljs-string">"验证码非法"</span>) != <span class="hljs-number">-1</span> :</span><br><span class="line">        print(<span class="hljs-string">"验证码非法"</span>)</span><br><span class="line">        <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"验证码非法"</span>)</span><br><span class="line">    <span class="hljs-keyword">elif</span> logcont.find(<span class="hljs-string">"用户不存在或密码错误"</span>) != <span class="hljs-number">-1</span>:</span><br><span class="line">        print(<span class="hljs-string">"用户不存在或密码错误"</span>)</span><br><span class="line">        <span class="hljs-keyword">raise</span> RuntimeError(<span class="hljs-string">"用户不存在或密码错误"</span>)</span><br><span class="line">    print(<span class="hljs-string">"登陆成功"</span>)</span><br><span class="line"><span class="hljs-keyword">except</span>:</span><br><span class="line">    print(<span class="hljs-string">"登录失败"</span>)</span><br><span class="line">    exit(<span class="hljs-number">0</span>)</span><br></pre></td></tr></table></figure>
 
 <p>接下来就可以访问本科教务的那个页面了。</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">session.get(&quot;http://jxglstu.hfut.edu.cn/eams5-student/wiscom-sso/login&quot;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">session.get(<span class="hljs-string">"http://jxglstu.hfut.edu.cn/eams5-student/wiscom-sso/login"</span>)</span><br></pre></td></tr></table></figure>
 
 <p>先看看课表页面的组成，以我的为例，<code>http://jxglstu.hfut.edu.cn/eams5-student/for-std/course-table/info/97097</code>，貌似最后一项数字有点别的含义嗷</p>
 <p>Fiddler抓包发现他是页面跳转的，从<code>http://jxglstu.hfut.edu.cn/eams5-student/for-std/course-table</code>跳转到那个页面的，所以访问肯定直接访<code>http://jxglstu.hfut.edu.cn/eams5-student/for-std/course-table</code>就行了。</p>
@@ -202,8 +202,12 @@
 
 <p>你会发现它什么都没有…估计是ajax动态生成的…不如开始Fiddler抓包</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/16957059-9cf99e14dd59ccff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
-<p>然后你就发现了这个神奇的网址</p>
-<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这个dataId很显然能拿到，就是访问那个跳转后的网址最后面的，这个semesterId和bizTypeId咋拿到呢</span><br><span class="line"></span><br><span class="line">首先吧，底下有一堆转义字符的json，让人很不爽，一开始估计这俩东西就在这里面。</span><br><span class="line"></span><br><span class="line">用py解析下这段json试试。</span><br><span class="line"></span><br><span class="line">在这里我发现了一种叫unicode-escape的特殊的decode方式，然后就解析出来了。</span><br><span class="line"></span><br><span class="line">```py</span><br><span class="line"># 查找课表</span><br><span class="line">tableres = session.get(&quot;http://jxglstu.hfut.edu.cn/eams5-student/for-std/course-table/get-data?bizTypeId=2&amp;semesterId=74&amp;dataId=97097)</span><br><span class="line">src = str(BeautifulSoup(tableres.content, &quot;lxml&quot;).select(&quot;body script&quot;)[1].string)</span><br><span class="line">src = &apos;[&apos; + re.search(&quot;(?&lt;=&apos;\[).*?(?=\]&apos;)&quot;, src).group() + &apos;]&apos;</span><br><span class="line"># src = src[src.find(&quot;&apos;[&quot;)+1:src.find(&quot;]&apos;&quot;)+1]</span><br><span class="line">src = src.encode().decode(&quot;unicode-escape&quot;)</span><br><span class="line">myjson_d = json.loads(src)</span><br></pre></td></tr></table></figure>
+<p>然后你就发现了这个神奇的网址，<code>/eams5-student/for-std/course-table/get-data?bizTypeId=2&amp;semesterId=74&amp;dataId=97097</code></p>
+<p>这个dataId很显然能拿到，就是访问那个跳转后的网址最后面的，这个semesterId和bizTypeId咋拿到呢</p>
+<p>首先吧，底下有一堆转义字符的json，让人很不爽，一开始估计这俩东西就在这里面。</p>
+<p>用py解析下这段json试试。</p>
+<p>在这里我发现了一种叫unicode-escape的特殊的decode方式，然后就解析出来了。</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># 查找课表</span></span><br><span class="line">tableres = session.get(<span class="hljs-string">"http://jxglstu.hfut.edu.cn/eams5-student/for-std/course-table/get-data?bizTypeId=2&amp;semesterId=74&amp;dataId=97097)</span></span><br><span class="line"><span class="hljs-string">src = str(BeautifulSoup(tableres.content, "</span>lxml<span class="hljs-string">").select("</span>body script<span class="hljs-string">")[1].string)</span></span><br><span class="line">src = '[' + re.search("(?&lt;='\[).*?(?=\]')", src).group() + ']'</span><br><span class="line"><span class="hljs-comment"># src = src[src.find("'[")+1:src.find("]'")+1]</span></span><br><span class="line">src = src.encode().decode(<span class="hljs-string">"unicode-escape"</span>)</span><br><span class="line">myjson_d = json.loads(src)</span><br></pre></td></tr></table></figure>
 
 <p>这个里面的确有semesterId，但是bizTypeId是什么玩意？</p>
 <p>于是我在源码中搜索，很快就找到了。</p>
