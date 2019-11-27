@@ -7,15 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>归档: 2019/5 - uchkks&#39;s blog</title>
+<title>安装WindowsTerminal并运行WSL - uchkks&#39;s blog</title>
 
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="uchkks&#39;s blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;archives&#x2F;2019&#x2F;05&#x2F;index.html">
+    <meta name="description" content="不得不说，wsl的配色很憨憨，于是我就发现了Windows Terminal这个神奇的东西。 安装方法Windows Store 搜索 Windows Terminal 下载即可。 美化教程1.加入右键菜单，并设置在此处打开参见：https:&#x2F;&#x2F;blog.csdn.net&#x2F;Jioho_chen&#x2F;article&#x2F;details&#x2F;101159291 2.设置主题首先，先在https:&#x2F;&#x2F;github.">
+<meta name="keywords" content="Terminal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安装WindowsTerminal并运行WSL">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;2019&#x2F;11&#x2F;27&#x2F;2019-11-27-%E5%AE%89%E8%A3%85WindowsTerminal%E5%B9%B6%E8%BF%90%E8%A1%8CWSL&#x2F;index.html">
 <meta property="og:site_name" content="uchkks&#39;s blog">
+<meta property="og:description" content="不得不说，wsl的配色很憨憨，于是我就发现了Windows Terminal这个神奇的东西。 安装方法Windows Store 搜索 Windows Terminal 下载即可。 美化教程1.加入右键菜单，并设置在此处打开参见：https:&#x2F;&#x2F;blog.csdn.net&#x2F;Jioho_chen&#x2F;article&#x2F;details&#x2F;101159291 2.设置主题首先，先在https:&#x2F;&#x2F;github.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
+<meta property="og:updated_time" content="2019-11-27T12:17:31.281Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
 
@@ -122,209 +126,136 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-27T11:41:47.000Z">2019-11-27</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Misc/">Misc</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    1 分钟 读完 (大约 207 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                安装WindowsTerminal并运行WSL
+            
+        </h1>
+        <div class="content">
+            <p>不得不说，wsl的配色很憨憨，于是我就发现了Windows Terminal这个神奇的东西。</p>
+<h2 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h2><p>Windows Store 搜索 Windows Terminal 下载即可。</p>
+<h2 id="美化教程"><a href="#美化教程" class="headerlink" title="美化教程"></a>美化教程</h2><h3 id="1-加入右键菜单，并设置在此处打开"><a href="#1-加入右键菜单，并设置在此处打开" class="headerlink" title="1.加入右键菜单，并设置在此处打开"></a>1.加入右键菜单，并设置在此处打开</h3><p>参见：<a href="https://blog.csdn.net/Jioho_chen/article/details/101159291" target="_blank" rel="noopener">https://blog.csdn.net/Jioho_chen/article/details/101159291</a></p>
+<h3 id="2-设置主题"><a href="#2-设置主题" class="headerlink" title="2.设置主题"></a>2.设置主题</h3><p>首先，先在<a href="https://github.com/mbadolato/iTerm2-Color-Schemes上面找一个自己看着顺眼的主题，我选了Ubuntu.json，将其的所有内容添加到&quot;schemes&quot;中。" target="_blank" rel="noopener">https://github.com/mbadolato/iTerm2-Color-Schemes上面找一个自己看着顺眼的主题，我选了Ubuntu.json，将其的所有内容添加到&quot;schemes&quot;中。</a><br>Windows Terminal，选择Settings，会打开Settings.json，切换”defaultProfile”为底下WSL的guid，并在该单元内添加一下两行json。</p>
+<figure class="highlight json hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="hljs-comment">//...</span></span><br><span class="line">    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Ubuntu"</span>,</span><br><span class="line">    <span class="hljs-comment">//...</span></span><br><span class="line">    <span class="hljs-attr">"colorScheme"</span>: <span class="hljs-string">"Ubuntu"</span>, <span class="hljs-comment">//名称是你选择的主题名称</span></span><br><span class="line">    <span class="hljs-attr">"startingDirectory"</span>: <span class="hljs-string">"./"</span> <span class="hljs-comment">//设置打开目录</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>右击打开查看一下，大概就这样<br>然后就没有然后了</p>
 
-<div class="card widget">
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/Terminal/" rel="tag">Terminal</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <h3 class="tag is-link">
-        五月 2019
-        </h3>
-        <div class="timeline">
-        
-            <article class="media">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-05-18T07:09:10.000Z">2019-05-18</time>
-                        <a href="/2019/05/18/2019-05-18-%E4%BD%BF%E7%94%A8JNI%E5%9C%A8Java%E9%87%8C%E9%9D%A2%E4%BD%BF%E7%94%A8C++/" class="title has-link-black-ter is-size-6 has-text-weight-normal">使用JNI在Java里面使用C++</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Java/">Java</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay_qrcode.jpg" alt="支付宝"></div>
+</a>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-05-17T10:27:30.000Z">2019-05-17</time>
-                        <a href="/2019/05/17/2019-05-17-%E5%9B%BE-%E6%9C%80%E5%B0%8F%E6%94%AF%E6%92%91%E6%A0%91/" class="title has-link-black-ter is-size-6 has-text-weight-normal">图 最小支撑树</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-05-12T02:45:29.000Z">2019-05-12</time>
-                        <a href="/2019/05/12/2019-05-12-%E5%A6%82%E4%BD%95%E7%A7%91%E5%AD%A6%E7%9A%84%E5%88%B7%E9%A2%98%EF%BC%9F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">如何科学的刷题</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Misc/">Misc</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat_qrcode.png" alt="微信"></div>
+</a>
+
                 
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-05-04T03:15:09.000Z">2019-05-04</time>
-                        <a href="/2019/05/04/2019-05-04-Ubuntu-18-04-%E5%AE%89%E8%A3%85-Node-js/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Ubuntu 18.04 安装docker</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Ubuntu%E6%8A%98%E8%85%BE%E8%AE%B0/">Ubuntu折腾记</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-05-04T03:02:37.000Z">2019-05-04</time>
-                        <a href="/2019/05/04/2019-05-04-Docker%E4%B8%8B%E8%A3%85Wine/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Docker下装Wine</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Ubuntu%E6%8A%98%E8%85%BE%E8%AE%B0/">Ubuntu折腾记</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-05-02T10:45:56.000Z">2019-05-02</time>
-                        <a href="/2019/05/02/2019-05-02-Ubuntu-18-04-%E5%AE%89%E8%A3%85docker/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Ubuntu 18.04 安装docker</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Ubuntu%E6%8A%98%E8%85%BE%E8%AE%B0/">Ubuntu折腾记</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-05-01T06:07:53.000Z">2019-05-01</time>
-                        <a href="/2019/05/01/2019-05-01-Wine%E6%8A%98%E8%85%BE%E8%AE%B0/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Wine折腾记</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Ubuntu%E6%8A%98%E8%85%BE%E8%AE%B0/">Ubuntu折腾记</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-05-01T05:50:27.000Z">2019-05-01</time>
-                        <a href="/2019/05/01/2019-05-01-Wine-osu!-%E4%BB%8E%E5%AE%89%E8%A3%85%E5%88%B0---/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Wine osu! 从安装到...</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Ubuntu%E6%8A%98%E8%85%BE%E8%AE%B0/">Ubuntu折腾记</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-05-01T04:14:34.000Z">2019-05-01</time>
-                        <a href="/2019/05/01/2019-05-01-Wine%E4%B8%8B%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Deepin-Wine%E7%9A%84%E4%B8%BB%E9%A2%98/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Wine下如何使用Deepin-Wine的主题</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Ubuntu%E6%8A%98%E8%85%BE%E8%AE%B0/">Ubuntu折腾记</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
-            <article class="media">
-                
-                <div class="media-content">
-                    <div class="content">
-                        <time class="has-text-grey is-size-7 is-block is-uppercase" datetime="2019-05-01T03:23:25.000Z">2019-05-01</time>
-                        <a href="/2019/05/01/2019-05-01-Wine-QQ-%E4%BB%8E%E5%AE%89%E8%A3%85%E5%88%B0%E4%BD%BF%E7%94%A8/" class="title has-link-black-ter is-size-6 has-text-weight-normal">Wine QQ 从安装到使用</a>
-                        <div class="level article-meta is-mobile">
-                            <div class="level-left">
-                                
-                                <div class="level-item is-size-7 is-uppercase">
-                                <a class="has-link-grey -link" href="/categories/Ubuntu%E6%8A%98%E8%85%BE%E8%AE%B0/">Ubuntu折腾记</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        
         </div>
     </div>
 </div>
 
 
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/11/26/2019-11-26-Syc-10-Geek-WriteUp/">
+                <span class="level-item">Syc 10 Geek WriteUp</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'lBiGLnlCCpEP05rAofjfWH0F-gzGzoHsz',
+        app_key: 'yuk3OUNG562jGkVMiKe0kJOn',
+        placeholder: '评论一下呗'
+    });
+</script>
+
+    </div>
+</div>
 </div>
                 
 
