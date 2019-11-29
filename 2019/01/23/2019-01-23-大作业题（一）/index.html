@@ -187,7 +187,7 @@
 <p>main.cpp</p>
 <figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">"Rational.h"</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>;</span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cin</span>;</span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"--------------欢迎使用第八组的有理数程序！--------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"------------------------测试开始------------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"------------第一项，测试构造、优化和输出函数------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"构造一个有理数r1，构造方式为r1(6,3)"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-function">Rational <span class="hljs-title">r1</span><span class="hljs-params">(<span class="hljs-number">6</span>,<span class="hljs-number">3</span>)</span></span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"使用Print函数输出r1，期望的结果是2/1"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	r1.Print();</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"构造一个有理数r2，构造方式为r2=7"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	Rational r2 = <span class="hljs-number">7</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"使用Print函数r2，期望的结果是7/1"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	r2.Print();</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"构造一个有理数r3，构造方式为r3"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	Rational r3;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"使用Print函数r3，期望的结果是0/1"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	r3.Print();</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"---------------------第一项测试完成---------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"-----------------第二项，测试运算符的重载---------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"构造一个有理数r4，使用插入运算符录入分子分母"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	Rational r4;</span><br><span class="line">	<span class="hljs-built_in">cin</span> &gt;&gt; r4;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"使用提取运算符输出r4的值"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; r4 &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"输出r4的实数值，若为超过六位的小数保留六位："</span> &lt;&lt; <span class="hljs-keyword">double</span>(r4) &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"使用提取运算符输出r1+r4的值"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; r1+r4 &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"使用提取运算符输出r1-r4的值"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; r1-r4 &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"给r1赋值为r4，计算r2*r1，r2/r1的值，并使用提取运算符输出"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	r1 = r4;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"r2*r1="</span> &lt;&lt; r2*r1 &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"r2/r1="</span> &lt;&lt; r2/r1 &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"判断r1和r4是否相等，若相等为1，不相等为0："</span> &lt;&lt; (r1==r4) &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"---------------------第二项测试完成---------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"---------------------第三项测试开始---------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"请输入一个有理数："</span>;</span><br><span class="line">	<span class="hljs-built_in">cin</span> &gt;&gt; r1;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"它的实数形式为(若为超过六位的小数保留六位)："</span> &lt;&lt; <span class="hljs-keyword">double</span>(r1) &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"请输入另一个有理数"</span>;</span><br><span class="line">	<span class="hljs-built_in">cin</span> &gt;&gt; r2;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"它的实数形式为(若为超过六位的小数保留六位)："</span> &lt;&lt; <span class="hljs-keyword">double</span>(r2) &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"两者相加的值为"</span> &lt;&lt; r1 + r2 &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"两者相减(前减后)的值为"</span> &lt;&lt; r1 - r2 &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"两者相乘的值为"</span> &lt;&lt; r1 * r2 &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"两者相除(前除以后)的值为"</span> &lt;&lt; r1 / r2 &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"---------------------第三项测试完成---------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"------------------------测试结束------------------------"</span> &lt;&lt; <span class="hljs-built_in">endl</span>;</span><br><span class="line">	system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/pics/2019-01-23-01.png" alt></p>
+<p><img src="/.top//2019-01-23-01.png" alt></p>
 
         </div>
         
@@ -330,7 +330,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            26
+                            27
                         </p>
                     </a>
                 </div>
@@ -548,6 +548,19 @@
             
             <div class="media-content">
                 <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T14:25:52.000Z">2019-11-29</time></div>
+                    <a href="/2019/11/29/%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85%E7%AD%94%E6%A1%88/" class="title has-link-black-ter is-size-6 has-text-weight-normal">火影忍者答案</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-27T11:41:47.000Z">2019-11-27</time></div>
                     <a href="/2019/11/27/2019-11-27-%E5%AE%89%E8%A3%85WindowsTerminal%E5%B9%B6%E8%BF%90%E8%A1%8CWSL/" class="title has-link-black-ter is-size-6 has-text-weight-normal">安装WindowsTerminal并运行WSL</a>
                     <p class="is-size-7 is-uppercase">
@@ -596,19 +609,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-20T11:50:40.000Z">2019-07-20</time></div>
-                    <a href="/2019/07/20/2019-07-20-%E7%AE%80%E5%8D%95%E7%9A%84%E5%9F%BA%E4%BA%8ESelenium%E7%9A%84%E7%88%AC%E8%AF%BE%E8%A1%A8%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">简单的基于Selenium的爬课表程序</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Py%E4%BA%A4%E6%98%93/">Py交易</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
         
@@ -626,7 +626,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -845,6 +845,19 @@
             
             <div class="media-content">
                 <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-29T14:25:52.000Z">2019-11-29</time></div>
+                    <a href="/2019/11/29/%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85%E7%AD%94%E6%A1%88/" class="title has-link-black-ter is-size-6 has-text-weight-normal">火影忍者答案</a>
+                    <p class="is-size-7 is-uppercase">
+                        
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-27T11:41:47.000Z">2019-11-27</time></div>
                     <a href="/2019/11/27/2019-11-27-%E5%AE%89%E8%A3%85WindowsTerminal%E5%B9%B6%E8%BF%90%E8%A1%8CWSL/" class="title has-link-black-ter is-size-6 has-text-weight-normal">安装WindowsTerminal并运行WSL</a>
                     <p class="is-size-7 is-uppercase">
@@ -893,19 +906,6 @@
             </div>
         </article>
         
-        <article class="media">
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-07-20T11:50:40.000Z">2019-07-20</time></div>
-                    <a href="/2019/07/20/2019-07-20-%E7%AE%80%E5%8D%95%E7%9A%84%E5%9F%BA%E4%BA%8ESelenium%E7%9A%84%E7%88%AC%E8%AF%BE%E8%A1%A8%E7%A8%8B%E5%BA%8F/" class="title has-link-black-ter is-size-6 has-text-weight-normal">简单的基于Selenium的爬课表程序</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/Py%E4%BA%A4%E6%98%93/">Py交易</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
     </div>
 </div>
     
@@ -923,7 +923,7 @@
                     <span class="level-item">十一月 2019</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
