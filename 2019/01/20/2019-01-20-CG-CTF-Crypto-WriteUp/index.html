@@ -19,7 +19,7 @@
 <meta property="og:description" content="首先，题目地址：https:&#x2F;&#x2F;cgctf.nuptsast.com&#x2F;challenges#Crypto 然后，第一次写wp，求指正… 然后，大一萌新，求关照…">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
-<meta property="og:updated_time" content="2019-11-29T14:55:47.945Z">
+<meta property="og:updated_time" content="2019-12-05T16:27:31.687Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
 
@@ -164,9 +164,9 @@
 <p>然后，第一次写wp，求指正…</p>
 <p>然后，大一萌新，求关照…</p>
 <a id="more"></a>
-<p>第一题：<br><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015614425.png" alt></p>
+<p>第一题：<br><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015614425.png" alt></p>
 <p>这个题，一看字母数字base64跑起，百度或者python一跑，出结果。</p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015614433.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015614433.png" alt></p>
 <p>Flag：nctf{this_is_base64_encode}</p>
 <p>10分到手</p>
 <p>base64，base32，base16的区别如下</p>
@@ -176,89 +176,89 @@
 <p>当ASCll用Base加密达不到所对应的位数的时候用=号补齐。</p>
 <p>所以看到字母数字都有，就确定是base编码；有小写字母，base64，有只大写字母，base32，大写字母A-F和数字，base16。</p>
 <p>嗯，记住了。</p>
-<p>第二题：<br><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/2019010101564321.png" alt></p>
+<p>第二题：<br><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/2019010101564321.png" alt></p>
 <p>这题，看键盘。</p>
 <p>脑洞很重要！！！！看手指的轨迹！！！</p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/2019010101564368.jpeg" alt></p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/2019010101564395.jpeg" alt></p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015643110.jpeg" alt></p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101095637730.png" alt></p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015643139.jpeg" alt></p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015643135.jpeg" alt></p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015643138.jpeg" alt></p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015643140.jpeg" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/2019010101564368.jpeg" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/2019010101564395.jpeg" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015643110.jpeg" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101095637730.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015643139.jpeg" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015643135.jpeg" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015643138.jpeg" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015643140.jpeg" alt></p>
 <p>Flag：nctf{areuhack}</p>
 <p>20分到手。</p>
 <p>脑洞很重要，嗯，记住了。</p>
-<p>第三题：<br><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015716850.png" alt></p>
+<p>第三题：<br><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015716850.png" alt></p>
 <p>看提示：</p>
 <p>1.xor 异或</p>
 <p>2.hex2binary 十六进制转二进制</p>
 <p>3.len(bin(miwen))==len(bin(mingwen)) 密文的二进制长度和明文的二进制长度相等</p>
 <p>第一步，异或。</p>
 <p>直接C++或者Python，我选择C++。</p>
-<p>看一下文件大小，<img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015716851.png" alt></p>
+<p>看一下文件大小，<img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015716851.png" alt></p>
 <p>32个字节，对应32个字符，char类型，嗯，应该没错。</p>
 <figure class="highlight c++ hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::ios;</span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-built_in">std</span>::ifstream;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">	ifstream fr;</span><br><span class="line">	<span class="hljs-keyword">char</span> mingwen[<span class="hljs-number">33</span>] = &#123;&#125;, miwen[<span class="hljs-number">33</span>] = &#123;&#125;;</span><br><span class="line">	fr.<span class="hljs-built_in">open</span>(<span class="hljs-string">"明文.txt"</span>, ios::binary);</span><br><span class="line">	fr.<span class="hljs-built_in">read</span>(mingwen, <span class="hljs-number">32</span>);</span><br><span class="line">	fr.<span class="hljs-built_in">close</span>(); </span><br><span class="line">	fr.<span class="hljs-built_in">open</span>(<span class="hljs-string">"密文.txt"</span>, ios::binary);</span><br><span class="line">	fr.<span class="hljs-built_in">read</span>(miwen, <span class="hljs-number">32</span>);</span><br><span class="line">	fr.<span class="hljs-built_in">close</span>();</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"明文为：%s\n"</span>, mingwen);</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"密文为：%s\n"</span>, miwen);</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"异或开始\n"</span>);</span><br><span class="line">	<span class="hljs-keyword">int</span> i;</span><br><span class="line">	<span class="hljs-keyword">char</span> cxor[<span class="hljs-number">33</span>] = &#123;&#125;;</span><br><span class="line">	<span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">32</span>; i++) </span><br><span class="line">		cxor[i] = mingwen[i] ^ miwen[i];</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"异或完成\n"</span>);</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"异或之后的结果为：%s"</span>, cxor);</span><br><span class="line">	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015757580.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015757580.png" alt></p>
 <p>Flag：nctf{xor_xor_xor_biubiubiu}</p>
 <p>30分到手，开心！</p>
-<p>后面有一个假的第四题：<br><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015757588.png" alt></p>
+<p>后面有一个假的第四题：<br><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015757588.png" alt></p>
 <p>Flag：nctf{zhaowomen}</p>
 <p>一分到手</p>
-<p>第四题：<br><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818744.png" alt></p>
+<p>第四题：<br><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818744.png" alt></p>
 <p>Wiener是啥？</p>
-<p>百度搜半天找不到有关的，那就谷歌吧。<br><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101020314708.png" alt></p>
+<p>百度搜半天找不到有关的，那就谷歌吧。<br><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101020314708.png" alt></p>
 <p>好像看到了什么不得了的东西…</p>
 <p>下载下来看看…</p>
-<p>看下Readme<br><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818746.png" alt></p>
+<p>看下Readme<br><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818746.png" alt></p>
 <p>嗯，就知道是个RSA加密，看了还是不会用…</p>
 <p>那就直接看主程序吧…</p>
-<p>（这主程序看着像python3的，不过py2也能跑出来）<br><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818753.png" alt></p>
+<p>（这主程序看着像python3的，不过py2也能跑出来）<br><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818753.png" alt></p>
 <p>看见用法了。</p>
 <p>已知e,n，出来d，大概…懂了？</p>
 <p>看一下下载下来的那个py。</p>
 <p>逆着走一遍算法，构造一个密钥，然后加密，大概就这样。</p>
-<p>RSA中，e,n组成公钥，e,d组成私钥，然后<br><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818761.png" alt></p>
+<p>RSA中，e,n组成公钥，e,d组成私钥，然后<br><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818761.png" alt></p>
 <p>这两个长整数中有一个是d，有一个是n，于是…</p>
-<p>改一下主程序的那个py<br><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818760.png" alt></p>
+<p>改一下主程序的那个py<br><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818760.png" alt></p>
 <p>试试…</p>
-<p>于是挂了…<br><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818762.png" alt></p>
+<p>于是挂了…<br><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818762.png" alt></p>
 <p>那就交换一下n,e，再来一次…</p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818772.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818772.png" alt></p>
 <p>得到d</p>
 <p>查一下RSA.construct在python中的用法</p>
 <p><a href="https://www.dlitz.net/software/pycrypto/api/2.6/" target="_blank" rel="noopener">https://www.dlitz.net/software/pycrypto/api/2.6/</a></p>
 <p>文档如上</p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818776.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015818776.png" alt></p>
 <p>挑重点！！！construct私钥要n,e,d</p>
 <p>所以，改一下CTF下载下来的那个py，那个脚本用py2写的</p>
 <figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#coding:utf-8</span></span><br><span class="line"><span class="hljs-keyword">from</span> Crypto.PublicKey <span class="hljs-keyword">import</span> RSA</span><br><span class="line"><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> PKCS1_v1_5 <span class="hljs-keyword">as</span> Cipher_pkcs1_v1_5</span><br><span class="line"><span class="hljs-keyword">import</span> base64</span><br><span class="line">cipher_text = <span class="hljs-string">'AGgt1h6dudnkeoCr7SFclkYYsYa65KZ8V29bbgbf+BDyjnyx5stCYjcyktat73aHs2EOaMgwGUwj3HwPTvT+T5LHIxM4uTnAgWOui4dnb7vF7QizN0ShY2O1h26CgLnf5I0vQWbY7WCC7kA/orNW7F5yxZiKRAawacS2M5ghP4/Q'</span></span><br><span class="line">key=RSA.construct((<span class="hljs-number">1063045321283844468344531168992778520651192162100948533991539097447031440090068191835838938460807260866872379834796862916118785271062209281267667069640000501698142693389209275376843382863579650119977059768375028586326490055087394631528241983631462471709913758728591459476799115050977493979613545056736162868049L</span>, <span class="hljs-number">837165022918376318972691589160491375229372195625940137121740685432530132860541010174727630660292946071507342455170833392895060048564125597915757582027572284342507277083636059558106672685400173531425920294781499112027917632497954958437660357575400222692979844873372105801998210845285775146263117399191185379347L</span>,<span class="hljs-number">57899763801722261062891290503559835904571946557258761154422546104824094670843L</span>))</span><br><span class="line">cipher = Cipher_pkcs1_v1_5.new(key)</span><br><span class="line">cipher_text = cipher.decrypt(base64.b64decode(cipher_text))</span><br><span class="line"><span class="hljs-keyword">print</span> cipher_text</span><br></pre></td></tr></table></figure>
 <p>改成这样大概，然后跑一下，崩了</p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015843585.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015843585.png" alt></p>
 <p>decrypt()需要3个参数只提供了两个，于是百度…</p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015843584.png" alt></p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015843593.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015843584.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015843593.png" alt></p>
 <p>来源：<a href="https://www.jb51.net/article/86022.htm" target="_blank" rel="noopener">https://www.jb51.net/article/86022.htm</a></p>
 <p>后面那个参数加上</p>
 <p>需要from Crypto import Random</p>
 <p>加上后再跑一下…</p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015843604.png" alt></p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015843606.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015843604.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015843606.png" alt></p>
 <p>Flag：flag{nell_anima_ritrovo_la_speranza_che_nel_corpo_stanco_ormai}</p>
 <p>65分到手，兴奋。</p>
 <p>第五题：</p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015907846.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015907846.png" alt></p>
 <p>给了e,n,m(明文)，求密文</p>
 <p>于是先拿上面的那个wiener跑一下，然后崩了</p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015907860.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015907860.png" alt></p>
 <p>然后开始RSA的日常，上factordb</p>
 <p><a href="http://factordb.com/" target="_blank" rel="noopener">http://factordb.com/</a></p>
 <p>这是个分解n的网站，然后就知道p,q了，然后再按照RSA的算法写个脚本跑一下，大概就这样…</p>
 <p>先跑一下n的10进制</p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015907879.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015907879.png" alt></p>
 <p>复制粘贴到factordb</p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015907862.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015907862.png" alt></p>
 <p>跑出来了</p>
 <p>按照RSA的算法，p= 1578173871764844869716052171，q= 10710927547195113973175047066215146269</p>
 <p>然后就要求d了，已知p,q,e，求d，找个现成的脚本跑一下就行，我找的这个：</p>
@@ -266,19 +266,19 @@
 <p>感谢楼上师傅提供的脚本</p>
 <p>跑一下出来d了</p>
 <p>然后再拿上面的那个脚本跑一下就出来明文了</p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015907865.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101015907865.png" alt></p>
 <figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> Crypto <span class="hljs-keyword">import</span> Random</span><br><span class="line"><span class="hljs-keyword">from</span> Crypto.PublicKey <span class="hljs-keyword">import</span> RSA</span><br><span class="line"><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> PKCS1_v1_5 <span class="hljs-keyword">as</span> Cipher_pkcs1_v1_5</span><br><span class="line">text = <span class="hljs-number">0x237200C0F72B97DB55BA37C7AACBB61A26A0CB47D294726259C4DF</span></span><br><span class="line">key = RSA.construct((<span class="hljs-number">16903705997349646195704375376941855414691523387719679999999999999L</span>, <span class="hljs-number">65537L</span>,<span class="hljs-number">71961395444719033349123712211093410967715759287662860214461993L</span>))</span><br><span class="line">cipher = Cipher_pkcs1_v1_5.new(key)</span><br><span class="line">text = cipher.encrypt(str(text))</span><br><span class="line"><span class="hljs-keyword">print</span> text</span><br></pre></td></tr></table></figure>
 
 <p>然后崩了…</p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101100450603.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101100450603.png" alt></p>
 <p>百度一下，发现了</p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101020013960.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101020013960.png" alt></p>
 <p>来自：<a href="https://blog.csdn.net/orangleliu/article/details/72964948" target="_blank" rel="noopener">https://blog.csdn.net/orangleliu/article/details/72964948</a></p>
 <p>那就分开加密，于是还是一样的崩，我也不知道为啥，也不想看库的文档了…</p>
 <p>算了不用这个加密器了…</p>
 <p>那就自力更生，丰衣足食</p>
 <p>RSA的加密的算法不难，python大数运算没有位数限制，于是搜一下python的运算符</p>
-<p><img src="images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101020013980.png" alt></p>
+<p><img src="/images/2019-01-20-CG-CTF-Crypto-WriteUp/20190101020013980.png" alt></p>
 <p>看到了重点</p>
 <p>于是写了个脚本：</p>
 <figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">N=<span class="hljs-number">16903705997349646195704375376941855414691523387719679999999999999</span></span><br><span class="line">e=<span class="hljs-number">65537</span></span><br><span class="line">d=<span class="hljs-number">71961395444719033349123712211093410967715759287662860214461993</span></span><br><span class="line">m=<span class="hljs-number">0x237200C0F72B97DB55BA37C7AACBB61A26A0CB47D294726259C4DF</span></span><br><span class="line"><span class="hljs-keyword">print</span> ((m**d)%N)</span><br></pre></td></tr></table></figure>
