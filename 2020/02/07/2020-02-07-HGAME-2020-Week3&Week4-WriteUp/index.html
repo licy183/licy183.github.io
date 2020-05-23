@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.0.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>HGAME 2020 Week3&amp;Week4 wp - uchkks&#39;s blog</title>
+
+
+    <meta name="description" content="第三周不太舒服，每天都是在床上度过的，划个水吧。第四周就写出来一个题，也放在这里。 W3 Crypto3. Exchange中间人攻击。">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HGAME 2020 Week3&amp;Week4 wp">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;2020&#x2F;02&#x2F;07&#x2F;2020-02-07-HGAME-2020-Week3&amp;Week4-WriteUp&#x2F;index.html">
+<meta property="og:site_name" content="uchkks&#39;s blog">
+<meta property="og:description" content="第三周不太舒服，每天都是在床上度过的，划个水吧。第四周就写出来一个题，也放在这里。 W3 Crypto3. Exchange中间人攻击。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
+<meta property="og:updated_time" content="2020-05-23T15:32:49.233Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                Uchiha Kakashi
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="下载主题" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-07T14:42:56.000Z">2020-02-07</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    11 分钟 读完 (大约 1645 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                HGAME 2020 Week3&amp;Week4 wp
+            
+        </h1>
+        <div class="content">
+            <p>第三周不太舒服，每天都是在床上度过的，划个水吧。<br>第四周就写出来一个题，也放在这里。</p>
+<h2 id="W3-Crypto"><a href="#W3-Crypto" class="headerlink" title="W3 Crypto"></a>W3 Crypto</h2><h3 id="3-Exchange"><a href="#3-Exchange" class="headerlink" title="3. Exchange"></a>3. Exchange</h3><p>中间人攻击。</p>
+<a id="more"></a>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> string</span><br><span class="line"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> inverse</span><br><span class="line"><span class="hljs-keyword">from</span> hashlib <span class="hljs-keyword">import</span> sha256</span><br><span class="line"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> remote</span><br><span class="line"><span class="hljs-keyword">from</span> binascii <span class="hljs-keyword">import</span> hexlify, unhexlify</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">int2hex</span><span class="hljs-params">(i)</span>:</span></span><br><span class="line">    hstr = hex(i)</span><br><span class="line">    hstr = hstr[<span class="hljs-number">2</span>:]</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">"0"</span> + hstr <span class="hljs-keyword">if</span> len(hstr) % <span class="hljs-number">2</span> == <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> hstr</span><br><span class="line"></span><br><span class="line">L = string.ascii_letters+string.digits</span><br><span class="line">sock = remote(<span class="hljs-string">"47.98.192.231"</span>, <span class="hljs-number">25258</span>)</span><br><span class="line">s = sock.recv(<span class="hljs-number">1024</span>).split(<span class="hljs-string">b"\n"</span>)[<span class="hljs-number">0</span>]</span><br><span class="line">_hexdigest = s[<span class="hljs-number">-64</span>:].decode()</span><br><span class="line">sub = s[<span class="hljs-number">12</span>:<span class="hljs-number">28</span>]</span><br><span class="line">print(sock.recv(<span class="hljs-number">1024</span>))</span><br><span class="line">Flag = <span class="hljs-literal">True</span></span><br><span class="line"><span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> L:</span><br><span class="line">    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> Flag:</span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">    <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> L:</span><br><span class="line">        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> Flag:</span><br><span class="line">            <span class="hljs-keyword">break</span></span><br><span class="line">        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> L:</span><br><span class="line">            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> Flag:</span><br><span class="line">                <span class="hljs-keyword">break</span></span><br><span class="line">            <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> L:</span><br><span class="line">                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> Flag:</span><br><span class="line">                    <span class="hljs-keyword">break</span></span><br><span class="line">                pre = (a+b+c+d).encode()</span><br><span class="line">                hexstr = sha256(pre + sub).hexdigest()</span><br><span class="line">                <span class="hljs-keyword">if</span> hexstr == _hexdigest:</span><br><span class="line">                    print(pre)</span><br><span class="line">                    sock.send(pre)</span><br><span class="line">                    Flag = <span class="hljs-literal">False</span></span><br><span class="line"></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'Bob: Hi Alice, I got the second half of the flag.\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'Alice: Really? I happen to have the first half of the flag.\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"Bob: So let's exchange flags, :-)\n"</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'Alice: Ok, \n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'Alice: Ah, wait, maybe this channel is not secure, \n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"Alice: Let's do Key Exchange first.\n"</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'\n'</span></span><br><span class="line">sock.sendline()</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[INFO] : ********** STEP.1 **********\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[INFO] : Alice and Bob publicly agree to use a modulus `p` and base `g`\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'\n'</span></span><br><span class="line">p = sock.recvline() <span class="hljs-comment"># b'Alice: p = xxx\n'</span></span><br><span class="line">p = int(p[<span class="hljs-number">11</span>:<span class="hljs-number">-1</span>])</span><br><span class="line">g = sock.recvline() <span class="hljs-comment"># b'Alice: g = xxx\n'</span></span><br><span class="line">g = int(g[<span class="hljs-number">11</span>:<span class="hljs-number">-1</span>])</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'\n'</span></span><br><span class="line">sock.sendline()</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[INFO] : ********** STEP.2 **********\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[INFO] : Alice generates her private key `a` which is a random number from the set &#123;2, 3, ... p-2&#125;.\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[INFO] : Bob does exactly the same: he compute his private key `b` which is taken randomly from the same set of integers.\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[INFO] : Now, Alice computes her public key `A` which is simply `g` raises to the `a`s power modulo `p`, a.k.a, `A = pow(g, a, p)`.\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[INFO] : Bob does the same: Bob computes the `B = pow(g, b, p)`.\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'\n'</span></span><br><span class="line">sock.sendline()</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[INFO] : ********** STEP.3 **********\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[INFO] : Alice and Bob exchange their public key.\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[WARNING] : You intercepted Alice's message, which is\n'</span></span><br><span class="line">A = sock.recvline() <span class="hljs-comment"># b'[WARNING] : A = xxx\n'</span></span><br><span class="line">A = int(A[<span class="hljs-number">16</span>:<span class="hljs-number">-1</span>])</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[WARNING] : Do you want to modify this message? (yes/no)\n'</span></span><br><span class="line">sock.send(<span class="hljs-string">"yes"</span>)</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'&gt; [WARNING] : Select a decimal number\n'</span></span><br><span class="line">t = <span class="hljs-number">2</span></span><br><span class="line">T = pow(g, t, p)</span><br><span class="line">sock.sendline(str(T))</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'&gt; \n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'Alice: A = xxx\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'\n'</span></span><br><span class="line">sock.sendline()</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"[WARNING] : Again, you intercepted Bob's message, which is\n"</span></span><br><span class="line">B = sock.recvline() <span class="hljs-comment"># b'[WARNING] : B = xxx\n'</span></span><br><span class="line">B = int(B[<span class="hljs-number">16</span>:<span class="hljs-number">-1</span>])</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[WARNING] : Do you want to modify this message? (yes/no)\n'</span></span><br><span class="line">sock.send(<span class="hljs-string">"yes"</span>)</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'&gt; [WARNING] : Select a decimal number\n'</span></span><br><span class="line">sock.sendline(str(T))</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'&gt; \n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'Bob: B = xxx\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'\n'</span></span><br><span class="line">sock.sendline()</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[INFO] : ********** STEP.4 **********\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[INFO] : Alice takes public key of Bob (`B`), raises to, again, to the `a`s power modulo `p`, the she gets the secret value `S_a = pow(B, a, p)`.\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[INFO] : Bob also gets the secret value `S_b = pow(A, b, p)`.\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[INFO] : Right now, they have done the key exchange.\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[WARNING] : hint: does Alice and Bob share the same key?\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'\n'</span></span><br><span class="line">sock.sendline()</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'Alice: Now, we have securely shared the secret value.\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"Bob: Right, let's exchange the encrypted flag!\n"</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'\n'</span></span><br><span class="line">sock.sendline()</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[INFO] : For the encryption, Alice compute `C_a = (m * S_a) % p`\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[INFO] : Bob does the same, `C_b = (m * S_b) % p`\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'\n'</span></span><br><span class="line">sock.sendline()</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[WARNING] : Bob is trying to send a message to Alice, \n'</span></span><br><span class="line">C_b = sock.recvline() <span class="hljs-comment"># b'[WARNING] : C_b = xxx\n'</span></span><br><span class="line">C_b = int(C_b[<span class="hljs-number">18</span>:<span class="hljs-number">-1</span>])</span><br><span class="line">P_b = (C_b * inverse(pow(B, t, p), p)) % p</span><br><span class="line">flag2 = unhexlify(int2hex(P_b))</span><br><span class="line">print(flag2)</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'[WARNING] : Do you want to modify this message? (yes/no)\n'</span></span><br><span class="line">sock.send(<span class="hljs-string">"yes"</span>)</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'&gt; [WARNING] : Select a decimal number\n'</span></span><br><span class="line">C_b = (P_b * pow(A, t, p)) % p</span><br><span class="line">sock.sendline(str(C_b))</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'&gt; Alice: Great, I get the flag.\n'</span></span><br><span class="line">C_a = sock.recvline() <span class="hljs-comment"># b'Alice: C_a = xxx\n'</span></span><br><span class="line">C_a = int(C_a[<span class="hljs-number">13</span>:<span class="hljs-number">-1</span>])</span><br><span class="line">P_a = (C_a * inverse(pow(A, t, p), p)) % p</span><br><span class="line">flag1 = unhexlify(int2hex(P_a))</span><br><span class="line">print(flag1)</span><br><span class="line">print(flag1 + flag2)</span><br></pre></td></tr></table></figure>
+<h3 id="4-FeedBack"><a href="#4-FeedBack" class="headerlink" title="4. FeedBack"></a>4. FeedBack</h3><p>构造攻击就好啦。</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="hljs-keyword">from</span> binascii <span class="hljs-keyword">import</span> hexlify, unhexlify</span><br><span class="line"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> remote</span><br><span class="line"></span><br><span class="line">pad_hex_0 = <span class="hljs-string">b"0"</span> * <span class="hljs-number">32</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">xor</span><span class="hljs-params">(str1, str2)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> bytes([a^b <span class="hljs-keyword">for</span> a, b <span class="hljs-keyword">in</span> zip(str1, str2)])</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 第一次，获取F1</span></span><br><span class="line">sock = remote(<span class="hljs-string">"47.98.192.231"</span>, <span class="hljs-number">25147</span>)</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"You have only 3 times to decrypt sth, then I'll give u the FLAG.\n"</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"Give me sth(hex) to decrypt\n"</span></span><br><span class="line">sock.sendline(pad_hex_0)</span><br><span class="line">E_iv = sock.recvline()[<span class="hljs-number">2</span>:<span class="hljs-number">-1</span>] <span class="hljs-comment"># b'&gt; hexstr\n'</span></span><br><span class="line">E_iv = unhexlify(E_iv)</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"Give me sth(hex) to decrypt\n"</span></span><br><span class="line">sock.sendline(pad_hex_0)</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'&gt; hexstr\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"Give me sth(hex) to decrypt\n"</span></span><br><span class="line">sock.sendline(pad_hex_0)</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'&gt; hexstr\n'</span></span><br><span class="line">f1enc = sock.recvline()[<span class="hljs-number">34</span>:<span class="hljs-number">-1</span>] <span class="hljs-comment"># b'Here is your encrypted FLAG(hex): hexflag\n'</span></span><br><span class="line">f1enc = f1enc[:<span class="hljs-number">32</span>]</span><br><span class="line">f1enc = unhexlify(f1enc)</span><br><span class="line">f1 = xor(f1enc, E_iv)</span><br><span class="line">print(f1)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 第二次，获取f2</span></span><br><span class="line">sock = remote(<span class="hljs-string">"47.98.192.231"</span>, <span class="hljs-number">25147</span>)</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"You have only 3 times to decrypt sth, then I'll give u the FLAG.\n"</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"Give me sth(hex) to decrypt\n"</span></span><br><span class="line">sock.sendline(f1.hex())</span><br><span class="line">E_f1_hex = sock.recvline()[<span class="hljs-number">2</span>:<span class="hljs-number">-1</span>] <span class="hljs-comment"># b'&gt; hexstr\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"Give me sth(hex) to decrypt\n"</span></span><br><span class="line">sock.sendline(E_f1_hex + pad_hex_0)</span><br><span class="line">E_Ef1 = sock.recvline()[<span class="hljs-number">2</span>:<span class="hljs-number">-1</span>] <span class="hljs-comment"># b'&gt; hexstr\n'</span></span><br><span class="line">E_Ef1 = unhexlify(E_Ef1)[<span class="hljs-number">16</span>:]</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"Give me sth(hex) to decrypt\n"</span></span><br><span class="line">sock.sendline(pad_hex_0)</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b'&gt; hexstr\n'</span></span><br><span class="line">f2enc = sock.recvline()[<span class="hljs-number">34</span>:<span class="hljs-number">-1</span>] <span class="hljs-comment"># b'Here is your encrypted FLAG(hex): hexflag\n'</span></span><br><span class="line">f2enc = f2enc[<span class="hljs-number">32</span>:<span class="hljs-number">64</span>]</span><br><span class="line">f2enc = unhexlify(f2enc)</span><br><span class="line">f2 = xor(f2enc, E_Ef1)</span><br><span class="line">print(f2)</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 第三次，获取f3</span></span><br><span class="line">sock = remote(<span class="hljs-string">"47.98.192.231"</span>, <span class="hljs-number">25147</span>)</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"You have only 3 times to decrypt sth, then I'll give u the FLAG.\n"</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"Give me sth(hex) to decrypt\n"</span></span><br><span class="line">sock.sendline(f1.hex())</span><br><span class="line">E_f1_hex = sock.recvline()[<span class="hljs-number">2</span>:<span class="hljs-number">-1</span>] <span class="hljs-comment"># b'&gt; hexstr\n'</span></span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"Give me sth(hex) to decrypt\n"</span></span><br><span class="line">sock.sendline(E_f1_hex + pad_hex_0)</span><br><span class="line">E_Ef1 = sock.recvline()[<span class="hljs-number">2</span>:<span class="hljs-number">-1</span>] <span class="hljs-comment"># b'&gt; hexstr\n'</span></span><br><span class="line">E_Ef1 = unhexlify(E_Ef1)[<span class="hljs-number">16</span>:]</span><br><span class="line">sock.recvline() <span class="hljs-comment"># b"Give me sth(hex) to decrypt\n"</span></span><br><span class="line">sock.sendline(pad_hex_0 + hexlify(xor(E_Ef1, f2)) + pad_hex_0)</span><br><span class="line">E_Ef2 = sock.recvline()[<span class="hljs-number">2</span>:<span class="hljs-number">-1</span>] <span class="hljs-comment"># b'&gt; hexstr\n'</span></span><br><span class="line">E_Ef2 = unhexlify(E_Ef2)[<span class="hljs-number">32</span>:]</span><br><span class="line">f3enc = sock.recvline()[<span class="hljs-number">34</span>:<span class="hljs-number">-1</span>] <span class="hljs-comment"># b'Here is your encrypted FLAG(hex): hexflag\n'</span></span><br><span class="line">f3enc = f3enc[<span class="hljs-number">64</span>:]</span><br><span class="line">f3enc = unhexlify(f3enc)</span><br><span class="line">f3 = xor(f3enc, E_Ef2)</span><br><span class="line">print(f3)</span><br><span class="line">print(f1 + f2 + f3)</span><br></pre></td></tr></table></figure>
+
+<h2 id="W4-Crypto"><a href="#W4-Crypto" class="headerlink" title="W4 Crypto"></a>W4 Crypto</h2><h3 id="2-ToyCipher"><a href="#2-ToyCipher" class="headerlink" title="2. ToyCipher"></a>2. ToyCipher</h3><p>z3就完事了。</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> z3 <span class="hljs-keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rotL</span><span class="hljs-params">(x, nbits, lbits)</span>:</span></span><br><span class="line">    mask = <span class="hljs-number">2</span>**nbits - <span class="hljs-number">1</span></span><br><span class="line">    <span class="hljs-keyword">return</span> (x &lt;&lt; lbits%nbits) &amp; mask | ( (x &amp; mask) &gt;&gt; (-lbits % nbits) )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">rotR</span><span class="hljs-params">(x, nbits, rbits)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> rotL(x, nbits, -rbits%nbits)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">keySchedule</span><span class="hljs-params">(masterkey)</span>:</span></span><br><span class="line">    roundKeys = [ ( rotR(masterkey, <span class="hljs-number">64</span>, <span class="hljs-number">16</span>*i) % <span class="hljs-number">2</span>**<span class="hljs-number">16</span> ) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">12</span>) ]</span><br><span class="line">    <span class="hljs-keyword">return</span> roundKeys</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">f</span><span class="hljs-params">(x, roundkey)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> rotL(x, <span class="hljs-number">16</span>, <span class="hljs-number">7</span>) ^ rotL(x, <span class="hljs-number">16</span>, <span class="hljs-number">2</span>) ^ roundkey</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">ToyCipher</span><span class="hljs-params">(block, mode=<span class="hljs-string">'enc'</span>)</span>:</span></span><br><span class="line">    <span class="hljs-string">'''Feistel networks'''</span></span><br><span class="line">    roundKeys_ = ROUNDKEYS</span><br><span class="line">    <span class="hljs-keyword">if</span> mode == <span class="hljs-string">'dec'</span>:</span><br><span class="line">        roundKeys_ = roundKeys_[::<span class="hljs-number">-1</span>]</span><br><span class="line"></span><br><span class="line">    L, R = (block &gt;&gt; <span class="hljs-number">16</span>), (block % <span class="hljs-number">2</span>**<span class="hljs-number">16</span>)</span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">12</span>):</span><br><span class="line">        _R = R</span><br><span class="line">        R = L ^ f( R, roundKeys_[i] )</span><br><span class="line">        L = _R</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> (R &lt;&lt; <span class="hljs-number">16</span>) | L</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pad</span><span class="hljs-params">(data, blocksize)</span>:</span></span><br><span class="line">    pad_len = blocksize - (len(data) % blocksize)</span><br><span class="line">    <span class="hljs-keyword">return</span> data + bytes( [pad_len] * pad_len )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">unpad</span><span class="hljs-params">(data, blocksize)</span>:</span></span><br><span class="line">    pad_len = data[<span class="hljs-number">-1</span>]</span><br><span class="line">    _data = data[:-pad_len]</span><br><span class="line">    <span class="hljs-keyword">assert</span> pad(_data, blocksize)==data, <span class="hljs-string">"Invalid padding."</span></span><br><span class="line">    <span class="hljs-keyword">return</span> _data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">encrypt_intvec</span><span class="hljs-params">(plaintext)</span>:</span></span><br><span class="line">    <span class="hljs-string">'''ECB mode'''</span></span><br><span class="line">    plaintext = pad(plaintext, BLOCKSIZE)</span><br><span class="line">    ciphertext = []</span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( len(plaintext) // BLOCKSIZE ):</span><br><span class="line">        block = plaintext[i*BLOCKSIZE:(i+<span class="hljs-number">1</span>)*BLOCKSIZE]</span><br><span class="line">        block = int.from_bytes(block, byteorder=<span class="hljs-string">'big'</span>)</span><br><span class="line">        E_block = ToyCipher(block)</span><br><span class="line">        ciphertext.append(E_block)</span><br><span class="line">    <span class="hljs-keyword">return</span> ciphertext</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decrypt</span><span class="hljs-params">(ciphertext)</span>:</span></span><br><span class="line">    <span class="hljs-string">'''ECB mode'''</span></span><br><span class="line">    plaintext = <span class="hljs-string">b''</span></span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( len(ciphertext) // BLOCKSIZE ):</span><br><span class="line">        block = ciphertext[i*BLOCKSIZE:(i+<span class="hljs-number">1</span>)*BLOCKSIZE]</span><br><span class="line">        block = int.from_bytes(block, byteorder=<span class="hljs-string">'big'</span>)</span><br><span class="line">        D_block = ToyCipher(block, <span class="hljs-string">'dec'</span>)</span><br><span class="line">        plaintext += D_block.to_bytes(BLOCKSIZE, byteorder=<span class="hljs-string">'big'</span>)</span><br><span class="line">    plaintext = unpad(plaintext, BLOCKSIZE)</span><br><span class="line">    <span class="hljs-keyword">return</span> plaintext</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">masterkey = BitVec(<span class="hljs-string">"masterkey"</span>, <span class="hljs-number">8</span> * <span class="hljs-number">8</span>)</span><br><span class="line">ROUNDKEYS = keySchedule(masterkey)</span><br><span class="line">BLOCKSIZE = <span class="hljs-number">4</span></span><br><span class="line">solver = Solver()</span><br><span class="line">ciphertext = <span class="hljs-string">b'\x91a\xb1o\xed_\xb2\x8c\x00\x1b\xdfp'</span></span><br><span class="line">enintvec = encrypt_intvec(<span class="hljs-string">b'just a test'</span>)</span><br><span class="line">anslist = []</span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( len(ciphertext) // BLOCKSIZE ):</span><br><span class="line">    block = ciphertext[i*BLOCKSIZE:(i+<span class="hljs-number">1</span>)*BLOCKSIZE]</span><br><span class="line">    block = int.from_bytes(block, byteorder=<span class="hljs-string">'big'</span>)</span><br><span class="line">    anslist.append(block)</span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range( len(ciphertext) // BLOCKSIZE ):</span><br><span class="line">    solver.add(anslist[i] == enintvec[i])</span><br><span class="line">print(solver.check())</span><br><span class="line">print(solver.model())</span><br><span class="line">masterkey = solver.model()[masterkey].as_long()</span><br><span class="line">ROUNDKEYS = keySchedule(masterkey)</span><br><span class="line">print(decrypt(<span class="hljs-string">b'\xe6\xf9\xda\xf0\xe18\xbc\xb4[\xfb\xbe\xd1\xfe\xa2\t\x8d\xdft:\xee\x1f\x1d\xe2q\xe5\x92/$#DL\x00\x1dD5@\x01W?!7CQ\xc16V\xb0\x14q)\xaa2'</span>))</span><br></pre></td></tr></table></figure>
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/CTF/" rel="tag">CTF</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay_qrcode.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat_qrcode.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/01/31/2020-01-31-HGAME-2020-Week2-WriteUp/">
+                <span class="level-item">HGAME 2020 Week2 wp</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'lBiGLnlCCpEP05rAofjfWH0F-gzGzoHsz',
+        app_key: 'yuk3OUNG562jGkVMiKe0kJOn',
+        placeholder: '评论一下呗'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/kks.png" alt="Uchiha Kakashi">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Uchiha Kakashi
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Student
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Hefei, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            31
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            8
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/licy183" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/licy183">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=951156675&amp;site=qq&amp;menu=yes">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Weibo" href="https://weibo.com/licy1833">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.rmb122.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Rmb122</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.rmb122.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.dzou.top" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Dzou</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.dzou.top</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.boyn.top" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Boyn</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.boyn.top</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.thinszx.xyz" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">thinszx</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.thinszx.xyz</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/CTF/">
+            <span class="level-start">
+                <span class="level-item">CTF</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Java/">
+            <span class="level-start">
+                <span class="level-item">Java</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Misc/">
+            <span class="level-start">
+                <span class="level-item">Misc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Python/">
+            <span class="level-start">
+                <span class="level-item">Python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Py%E4%BA%A4%E6%98%93/">
+            <span class="level-start">
+                <span class="level-item">Py交易</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Ubuntu%E6%8A%98%E8%85%BE%E8%AE%B0/">
+            <span class="level-start">
+                <span class="level-item">Ubuntu折腾记</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CTF/" style="font-size: 18.33px;">CTF</a> <a href="/tags/Docker/" style="font-size: 11.67px;">Docker</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/Terminal/" style="font-size: 10px;">Terminal</a> <a href="/tags/Ubuntu/" style="font-size: 20px;">Ubuntu</a> <a href="/tags/Wine/" style="font-size: 16.67px;">Wine</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13.33px;">数据结构</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 11.67px;">爬虫</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T14:42:56.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/2020-02-07-HGAME-2020-Week3&Week4-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week3&amp;Week4 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-31T13:36:42.000Z">2020-01-31</time></div>
+                    <a href="/2020/01/31/2020-01-31-HGAME-2020-Week2-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week2 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-24T16:50:20.000Z">2020-01-25</time></div>
+                    <a href="/2020/01/25/2020-01-25-HGAME-2020-Week1-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week1 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T19:42:15.000Z">2019-12-15</time></div>
+                    <a href="/2019/12/15/2019-12-15-%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85%E6%89%8B%E6%B8%B8%E5%BF%83%E8%BD%AC%E8%BA%AB%E7%BB%83%E4%B9%A0%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/" class="title has-link-black-ter is-size-6 has-text-weight-normal">火影忍者手游心转身练习自动化脚本</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T23:42:25.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/2019-12-02-C1CTF-2019-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C1CTF 2019 WriteUp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CTF/">
+                        <span class="tag">CTF</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Docker/">
+                        <span class="tag">Docker</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Node/">
+                        <span class="tag">Node</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Selenium/">
+                        <span class="tag">Selenium</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Terminal/">
+                        <span class="tag">Terminal</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu/">
+                        <span class="tag">Ubuntu</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Wine/">
+                        <span class="tag">Wine</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="tag">爬虫</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T14:42:56.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/2020-02-07-HGAME-2020-Week3&Week4-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week3&amp;Week4 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-31T13:36:42.000Z">2020-01-31</time></div>
+                    <a href="/2020/01/31/2020-01-31-HGAME-2020-Week2-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week2 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-24T16:50:20.000Z">2020-01-25</time></div>
+                    <a href="/2020/01/25/2020-01-25-HGAME-2020-Week1-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week1 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T19:42:15.000Z">2019-12-15</time></div>
+                    <a href="/2019/12/15/2019-12-15-%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85%E6%89%8B%E6%B8%B8%E5%BF%83%E8%BD%AC%E8%BA%AB%E7%BB%83%E4%B9%A0%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/" class="title has-link-black-ter is-size-6 has-text-weight-normal">火影忍者手游心转身练习自动化脚本</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T23:42:25.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/2019-12-02-C1CTF-2019-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C1CTF 2019 WriteUp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CTF/">
+                        <span class="tag">CTF</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Docker/">
+                        <span class="tag">Docker</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Node/">
+                        <span class="tag">Node</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Selenium/">
+                        <span class="tag">Selenium</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Terminal/">
+                        <span class="tag">Terminal</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu/">
+                        <span class="tag">Ubuntu</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Wine/">
+                        <span class="tag">Wine</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="tag">爬虫</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    Uchiha Kakashi
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Uchiha Kakashi&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;" target="_blank" rel="noopener">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

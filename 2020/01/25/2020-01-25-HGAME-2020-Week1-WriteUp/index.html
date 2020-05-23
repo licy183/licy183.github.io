@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.0.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>HGAME 2020 Week1 wp - uchkks&#39;s blog</title>
+
+
+    <meta name="description" content="新年快乐 还有，本人萌新，求大佬指正">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HGAME 2020 Week1 wp">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;2020&#x2F;01&#x2F;25&#x2F;2020-01-25-HGAME-2020-Week1-WriteUp&#x2F;index.html">
+<meta property="og:site_name" content="uchkks&#39;s blog">
+<meta property="og:description" content="新年快乐 还有，本人萌新，求大佬指正">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
+<meta property="og:updated_time" content="2020-05-23T15:29:53.762Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                Uchiha Kakashi
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="下载主题" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-24T16:50:20.000Z">2020-01-25</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    12 分钟 读完 (大约 1776 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                HGAME 2020 Week1 wp
+            
+        </h1>
+        <div class="content">
+            <p>新年快乐</p>
+<p>还有，本人萌新，求大佬指正</p>
+<a id="more"></a>
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="1-Cosmos-的博客"><a href="#1-Cosmos-的博客" class="headerlink" title="1. Cosmos 的博客"></a>1. Cosmos 的博客</h3><p><img src="https://upload-images.jianshu.io/upload_images/16957059-a397d9d3541ac0f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>版本管理工具，应该是git，访问./.git/config发现成功了，从里面找到了远程仓库的地址。<br><img src="https://upload-images.jianshu.io/upload_images/16957059-5ea6671ea0ed3c94.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>访问，切换版本，解base64即可得flag。<br><img src="https://upload-images.jianshu.io/upload_images/16957059-97261ef673dcf547.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="2-接-头-霸-王"><a href="#2-接-头-霸-王" class="headerlink" title="2. 接 头 霸 王"></a>2. 接 头 霸 王</h3><p>按照一步一步的提示构造头即可，请求方式为POST，最终构造的头如下<br><img src="https://upload-images.jianshu.io/upload_images/16957059-c2aec5024e42c251.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="https://upload-images.jianshu.io/upload_images/16957059-847542c6f98a1d64.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="3-Code-World"><a href="#3-Code-World" class="headerlink" title="3. Code World"></a>3. Code World</h3><p>GET请求发现302跳转，请求POST发现正常。根据提示POST的a为运算后值10，直接0+10发现错误，根据题目提示CodeWorld联想到URLEncode，POST内容改为0%2b10，提示错误，根据提示，访问./index.php?a=10%2b0，成功获取flag。<br><img src="https://upload-images.jianshu.io/upload_images/16957059-8d1cebbb9ccc4dc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="4-🐔尼泰玫"><a href="#4-🐔尼泰玫" class="headerlink" title="4. 🐔尼泰玫"></a>4. 🐔尼泰玫</h3><p>游戏很好玩。<br>F12查看源码，发现js的_main方法。<br><img src="https://upload-images.jianshu.io/upload_images/16957059-9ba7ca3a4b187958.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>通过Console获取_main对象的属性和方法，console.log(_main.start)，发现Score对象。点击开始游戏，修改_main.score对象中的值，比如修改_main.score.score = 100000000，玩游戏，得到flag。<br><img src="https://upload-images.jianshu.io/upload_images/16957059-befb75619d9acc5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h2 id="Reverse"><a href="#Reverse" class="headerlink" title="Reverse"></a>Reverse</h2><h3 id="1-maze"><a href="#1-maze" class="headerlink" title="1. maze"></a>1. maze</h3><p>查看一下文件类型<br><img src="https://upload-images.jianshu.io/upload_images/16957059-1c955c3bda570b35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>使用IDA64打开，F5<br><img src="https://upload-images.jianshu.io/upload_images/16957059-990f181e459e8c16.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>发现迷宫，写小程序跑就可以了。</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> byte;</span><br><span class="line"><span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> byte arr[] = &#123;</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>,</span><br><span class="line"><span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span> &#125;;</span><br><span class="line"><span class="hljs-keyword">const</span> byte *start = arr + <span class="hljs-number">32</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> byte *end = arr + <span class="hljs-number">1052</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> byte *ex = arr + <span class="hljs-number">988</span>;</span><br><span class="line"><span class="hljs-keyword">const</span> byte *st = arr + <span class="hljs-number">100</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">	<span class="hljs-keyword">const</span> byte *cur = start;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">16</span>; ++i) &#123;</span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">16</span>; ++j) &#123;</span><br><span class="line">			<span class="hljs-keyword">int</span> now = *(<span class="hljs-keyword">int</span>*)cur;</span><br><span class="line">			<span class="hljs-keyword">if</span> (cur == ex)</span><br><span class="line">				<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%s"</span>, <span class="hljs-string">"e"</span>);</span><br><span class="line">			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cur == st)</span><br><span class="line">				<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%s"</span>, <span class="hljs-string">"s"</span>);</span><br><span class="line">			<span class="hljs-keyword">else</span> </span><br><span class="line">				<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%s"</span>, (now &amp; <span class="hljs-number">1</span>) ? <span class="hljs-string">"n"</span> : <span class="hljs-string">"y"</span>);</span><br><span class="line">			cur += <span class="hljs-number">4</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	system(<span class="hljs-string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据路线就能得到flag。</p>
+<h3 id="2-bitwise-operation2"><a href="#2-bitwise-operation2" class="headerlink" title="2. bitwise_operation2"></a>2. bitwise_operation2</h3><p>步骤同上。</p>
+<figure class="highlight cpp hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bitset&gt;</span></span></span><br><span class="line"><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">int2hex</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *inte, <span class="hljs-keyword">char</span> *buf)</span> </span>&#123;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">8</span>; ++i) &#123;</span><br><span class="line">		<span class="hljs-built_in">sprintf</span>(&amp;buf[<span class="hljs-number">2</span>*i], <span class="hljs-string">"%02x"</span>, inte[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;</span><br><span class="line">	<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> tarr1[] = &#123; <span class="hljs-string">'e'</span>, <span class="hljs-string">'4'</span>, <span class="hljs-string">'s'</span>, <span class="hljs-string">'y'</span>, <span class="hljs-string">'_'</span>, <span class="hljs-string">'R'</span>, <span class="hljs-string">'e'</span>, <span class="hljs-string">'_'</span> &#125;;</span><br><span class="line">	<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> tarr2[] = &#123; <span class="hljs-string">'E'</span>, <span class="hljs-string">'a'</span>, <span class="hljs-string">'s'</span>, <span class="hljs-string">'y'</span>, <span class="hljs-string">'l'</span>, <span class="hljs-string">'i'</span>, <span class="hljs-string">'f'</span>, <span class="hljs-string">'3'</span> &#125;;</span><br><span class="line">	<span class="hljs-keyword">char</span> v6[] = &#123; <span class="hljs-number">76</span>, <span class="hljs-number">60</span>, <span class="hljs-number">-42</span>, <span class="hljs-number">54</span>, <span class="hljs-number">80</span>, <span class="hljs-number">-120</span>, <span class="hljs-number">32</span>, <span class="hljs-number">-52</span> &#125;;</span><br><span class="line">	<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> v7[<span class="hljs-number">8</span>] = &#123; <span class="hljs-number">0</span> &#125;;</span><br><span class="line">	<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> v9[<span class="hljs-number">8</span>] = &#123; <span class="hljs-number">0</span> &#125;;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">8</span>; ++i) &#123;</span><br><span class="line">		v7[i] = v6[i] ^ tarr1[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">8</span>; ++i) &#123;</span><br><span class="line">		v9[i] = tarr2[i] ^ v7[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-comment">/* *</span></span><br><span class="line"><span class="hljs-comment">	 * 进行了这样的运算，有两个二进制int8，分别为v7 : abcdefgh和v9 : ABCDEFGH，进行运算完成后分别为</span></span><br><span class="line"><span class="hljs-comment">	 *                                       v7 : aAcCeEgG和v9 : bBdDfFhH</span></span><br><span class="line"><span class="hljs-comment">	 *                                       在此之前，v7还把前三位放到最后，把后五位移到前面</span></span><br><span class="line"><span class="hljs-comment">	 * */</span></span><br><span class="line">	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">8</span>; ++i) &#123;</span><br><span class="line">		<span class="hljs-built_in">bitset</span>&lt;8&gt; v7t = v7[i];</span><br><span class="line">		<span class="hljs-built_in">bitset</span>&lt;8&gt; v9t = v9[<span class="hljs-number">7</span> - i];</span><br><span class="line">		<span class="hljs-built_in">bitset</span>&lt;8&gt; v7to = v7t;</span><br><span class="line">		<span class="hljs-built_in">bitset</span>&lt;8&gt; v9to = v9t;</span><br><span class="line">		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">8</span>; j += <span class="hljs-number">2</span>) &#123;</span><br><span class="line">			v9to[j + <span class="hljs-number">1</span>] = v7t[j];</span><br><span class="line">			v7to[j] = v9t[j + <span class="hljs-number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-built_in">string</span> v7str = v7to.to_string();</span><br><span class="line">		v7to = <span class="hljs-built_in">bitset</span>&lt;<span class="hljs-number">8</span>&gt;(v7str.substr(<span class="hljs-number">5</span>, <span class="hljs-number">3</span>) + v7str.substr(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>));</span><br><span class="line">		v7[i] = v7to.to_ulong();</span><br><span class="line">		v9[<span class="hljs-number">7</span> - i] = v9to.to_ulong();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">char</span> str1[<span class="hljs-number">17</span>] = &#123; <span class="hljs-number">0</span> &#125;;</span><br><span class="line">	<span class="hljs-keyword">char</span> str2[<span class="hljs-number">17</span>] = &#123; <span class="hljs-number">0</span> &#125;;</span><br><span class="line">	int2hex(v7, str1);</span><br><span class="line">	int2hex(v9, str2);</span><br><span class="line">	<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%s %s"</span>, str1, str2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-advance"><a href="#3-advance" class="headerlink" title="3. advance"></a>3. advance</h3><p>步骤同上，在Strings界面找到字符串从而确定main函数位置，发现是替换base64TABLE的加密，根据base64原理写脚本如下。</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python2</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mask</span><span class="hljs-params">(t)</span>:</span></span><br><span class="line">    b = bin(t)</span><br><span class="line">    b = b[<span class="hljs-number">2</span>:]</span><br><span class="line">    <span class="hljs-keyword">if</span> len(b) != <span class="hljs-number">6</span>:</span><br><span class="line">        l = <span class="hljs-number">6</span> - len(b)</span><br><span class="line">        <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(l):</span><br><span class="line">            b = <span class="hljs-string">"0"</span> + b</span><br><span class="line">    <span class="hljs-keyword">return</span> b</span><br><span class="line">base = <span class="hljs-string">"abcdefghijklmnopqrstuvwxyz0123456789+/ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span></span><br><span class="line">map = &#123;&#125;</span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, <span class="hljs-number">64</span>):</span><br><span class="line">    map.setdefault(base[i], i)</span><br><span class="line">map.setdefault(<span class="hljs-string">"="</span>, <span class="hljs-number">0</span>)</span><br><span class="line">s = <span class="hljs-string">"0g371wvVy9qPztz7xQ+PxNuKxQv74B/5n/zwuPfX"</span></span><br><span class="line">eqs = s.count(<span class="hljs-string">"="</span>)</span><br><span class="line">s = s[:len(s) - eqs]</span><br><span class="line">ans = <span class="hljs-string">"0b"</span></span><br><span class="line"><span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> s:</span><br><span class="line">    ans += mask(map[c])</span><br><span class="line">ans += <span class="hljs-string">"00"</span> <span class="hljs-keyword">if</span> eqs == <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-string">"0000"</span> <span class="hljs-keyword">if</span> eqs == <span class="hljs-number">2</span> <span class="hljs-keyword">else</span> <span class="hljs-string">""</span></span><br><span class="line">print(hex(eval(ans))[<span class="hljs-number">2</span>:<span class="hljs-number">-1</span>].decode(<span class="hljs-string">"hex"</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="4-cpp"><a href="#4-cpp" class="headerlink" title="4. cpp"></a>4. cpp</h3><p>程序使用了string和vector类，核心部分代码描述如下：</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">flag = input()</span><br><span class="line"><span class="hljs-keyword">assert</span> flag.startswith(<span class="hljs-string">"hgame&#123;"</span>) <span class="hljs-keyword">and</span> flag[<span class="hljs-number">61</span>] == <span class="hljs-string">"&#125;"</span></span><br><span class="line">values = [int(i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> flag[<span class="hljs-number">6</span>:<span class="hljs-number">61</span>].split(<span class="hljs-string">"_"</span>)]</span><br><span class="line">arr1 = [<span class="hljs-number">26727</span>, <span class="hljs-number">24941</span>, <span class="hljs-number">101</span>, <span class="hljs-number">29285</span>, <span class="hljs-number">26995</span>, <span class="hljs-number">29551</span>, <span class="hljs-number">29551</span>, <span class="hljs-number">25953</span>, <span class="hljs-number">29561</span>]</span><br><span class="line">arr2 = [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>]</span><br><span class="line"><span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):</span><br><span class="line">    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):</span><br><span class="line">        tmp = <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">for</span> l <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):</span><br><span class="line">            tmp += arr2[<span class="hljs-number">3</span> * l + k] * values[l + <span class="hljs-number">3</span> * j]</span><br><span class="line">        <span class="hljs-keyword">assert</span> arr1[<span class="hljs-number">3</span> * j + k] == tmp</span><br><span class="line">print(success)</span><br></pre></td></tr></table></figure>
+<p>可以发现是矩阵相乘，使用z3求解脚本如下：</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="hljs-keyword">from</span> z3 <span class="hljs-keyword">import</span> *</span><br><span class="line">v16 = [Int(<span class="hljs-string">'z%d'</span> % (i+<span class="hljs-number">1</span>)) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">9</span>)]</span><br><span class="line">v25 = [<span class="hljs-number">26727</span>, <span class="hljs-number">24941</span>, <span class="hljs-number">101</span>, <span class="hljs-number">29285</span>, <span class="hljs-number">26995</span>, <span class="hljs-number">29551</span>, <span class="hljs-number">29551</span>, <span class="hljs-number">25953</span>, <span class="hljs-number">29561</span>]</span><br><span class="line">v24 = [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>]</span><br><span class="line">solver = Solver()</span><br><span class="line"><span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):</span><br><span class="line">    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):</span><br><span class="line">        v14 = <span class="hljs-number">0</span></span><br><span class="line">        <span class="hljs-keyword">for</span> l <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):</span><br><span class="line">            v14 += v24[<span class="hljs-number">3</span> * l + k] * v16[l + <span class="hljs-number">3</span> * j]</span><br><span class="line">        solver.add(v25[<span class="hljs-number">3</span> * j + k] == v14)</span><br><span class="line">print(solver.check())</span><br><span class="line"><span class="hljs-keyword">assert</span> solver.check() == sat</span><br><span class="line">m = solver.model()</span><br><span class="line">result = [m[i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> v16]</span><br><span class="line">flag = <span class="hljs-string">"hgame&#123;"</span></span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> result:</span><br><span class="line">    flag += str(i) + <span class="hljs-string">'_'</span></span><br><span class="line">flag = flag[:<span class="hljs-number">-1</span>] + <span class="hljs-string">"&#125;"</span></span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+<h2 id="Pwn"><a href="#Pwn" class="headerlink" title="Pwn"></a>Pwn</h2><h3 id="1-Hard-AAAAA"><a href="#1-Hard-AAAAA" class="headerlink" title="1. Hard_AAAAA"></a>1. Hard_AAAAA</h3><p>查看文件信息<br><img src="https://upload-images.jianshu.io/upload_images/16957059-6209d51b7ea824fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>拖进IDA分析，前123位是”A”，后面是给定的值就可以了。<br><img src="https://upload-images.jianshu.io/upload_images/16957059-f63e1151958685c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> *</span><br><span class="line">c = remote(<span class="hljs-string">"47.103.214.163"</span>, <span class="hljs-number">20000</span>)</span><br><span class="line">s = c.readline()</span><br><span class="line">c.sendline(<span class="hljs-string">b"A"</span>*<span class="hljs-number">123</span>+<span class="hljs-string">b"0O0o\0O0"</span>)</span><br><span class="line">c.interactive()</span><br></pre></td></tr></table></figure>
+<p>之后ls,cat flag</p>
+<h3 id="3-One-Shot"><a href="#3-One-Shot" class="headerlink" title="3. One_Shot"></a>3. One_Shot</h3><p>步骤同上<br><img src="https://upload-images.jianshu.io/upload_images/16957059-02d6e133a9099fe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="https://upload-images.jianshu.io/upload_images/16957059-457e9087c6fdd748.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>覆盖掉’\0‘就好了，因此首先输入32个”A”，再输入6295776就可以了。</p>
+<h2 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h2><h3 id="1-InfantRSA"><a href="#1-InfantRSA" class="headerlink" title="1. InfantRSA"></a>1. InfantRSA</h3><p>真签到</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/env python2</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> inverse</span><br><span class="line">p = <span class="hljs-number">681782737450022065655472455411</span></span><br><span class="line">q = <span class="hljs-number">675274897132088253519831953441</span></span><br><span class="line">e = <span class="hljs-number">13</span></span><br><span class="line">c = <span class="hljs-number">275698465082361070145173688411496311542172902608559859019841</span></span><br><span class="line">d = inverse(e, (p<span class="hljs-number">-1</span>)*(q<span class="hljs-number">-1</span>))</span><br><span class="line">m = pow(c, d, p*q)</span><br><span class="line">print(hex(m)[<span class="hljs-number">2</span>:<span class="hljs-number">-1</span>].decode(<span class="hljs-string">"hex"</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="2-Affine"><a href="#2-Affine" class="headerlink" title="2. Affine"></a>2. Affine</h3><p>方程组，解一下就能出A，B</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> inverse</span><br><span class="line">TABLE = <span class="hljs-string">'zxcvbnmasdfghjklqwertyuiop1234567890QWERTYUIOPASDFGHJKLZXCVBNM'</span></span><br><span class="line">MOD = len(TABLE)</span><br><span class="line">A = <span class="hljs-number">13</span></span><br><span class="line">B = <span class="hljs-number">14</span></span><br><span class="line">cipher = <span class="hljs-string">'A8I5z&#123;xr1A_J7ha_vG_TpH410&#125;'</span></span><br><span class="line">flag = <span class="hljs-string">''</span></span><br><span class="line"><span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> cipher:</span><br><span class="line">    ii = TABLE.find(c)</span><br><span class="line">    <span class="hljs-keyword">if</span> ii == <span class="hljs-number">-1</span>:</span><br><span class="line">        flag += c</span><br><span class="line">    <span class="hljs-keyword">else</span>:</span><br><span class="line">        A_ = inverse(A, MOD)</span><br><span class="line">        i = A_ * (ii - B) % MOD</span><br><span class="line">        flag += TABLE[i]</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+<h3 id="3-not-One-time"><a href="#3-not-One-time" class="headerlink" title="3. not_One-time"></a>3. not_One-time</h3><p>只要数据足够多，我就能爆破出来。</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="hljs-keyword">import</span> string</span><br><span class="line"><span class="hljs-keyword">import</span> base64</span><br><span class="line"><span class="hljs-keyword">from</span> socket <span class="hljs-keyword">import</span> socket</span><br><span class="line">TABLE = [ ord(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> string.ascii_letters+string.digits]</span><br><span class="line">PRINTABLE = [ord(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> string.printable]</span><br><span class="line">strlist = []</span><br><span class="line"><span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> range(<span class="hljs-number">1024</span>):</span><br><span class="line">    sock = socket()</span><br><span class="line">    sock.connect((<span class="hljs-string">"47.98.192.231"</span>, <span class="hljs-number">25001</span>))</span><br><span class="line">    strlist.append(base64.b64decode(sock.recv(<span class="hljs-number">1024</span>)))</span><br><span class="line">    sock.close()</span><br><span class="line">anslist = []</span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, <span class="hljs-number">43</span>):</span><br><span class="line">    setlist = []</span><br><span class="line">    <span class="hljs-keyword">for</span> str <span class="hljs-keyword">in</span> strlist:</span><br><span class="line">        chset = set()</span><br><span class="line">        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> TABLE:</span><br><span class="line">            <span class="hljs-keyword">assert</span> c &lt; <span class="hljs-number">256</span></span><br><span class="line">            <span class="hljs-keyword">assert</span> str[i] &lt; <span class="hljs-number">256</span></span><br><span class="line">            tmp = c^str[i]</span><br><span class="line">            <span class="hljs-keyword">assert</span> tmp &lt; <span class="hljs-number">256</span></span><br><span class="line">            <span class="hljs-keyword">if</span> tmp <span class="hljs-keyword">in</span> PRINTABLE:</span><br><span class="line">                chset.add(tmp)</span><br><span class="line">        setlist.append(chset)</span><br><span class="line">    ans = setlist[<span class="hljs-number">0</span>]</span><br><span class="line">    <span class="hljs-keyword">for</span> chset <span class="hljs-keyword">in</span> setlist:</span><br><span class="line">        <span class="hljs-keyword">if</span> len(chset) != <span class="hljs-number">0</span>:</span><br><span class="line">            ans &amp;= chset</span><br><span class="line">    print(ans)</span><br><span class="line">    anslist.append(ans)</span><br><span class="line"><span class="hljs-keyword">for</span> s <span class="hljs-keyword">in</span> anslist:</span><br><span class="line">    <span class="hljs-keyword">if</span> len(s) == <span class="hljs-number">1</span>:</span><br><span class="line">        print(chr(s.pop()), end = <span class="hljs-string">""</span>)</span><br><span class="line">    <span class="hljs-keyword">elif</span> len(s) == <span class="hljs-number">0</span>:</span><br><span class="line">        print(<span class="hljs-string">"|"</span>, end = <span class="hljs-string">""</span>)</span><br><span class="line">    <span class="hljs-keyword">else</span>:</span><br><span class="line">        print(<span class="hljs-string">"*"</span>, end = <span class="hljs-string">""</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="4-Reorder"><a href="#4-Reorder" class="headerlink" title="4. Reorder"></a>4. Reorder</h3><p>置换</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="hljs-keyword">from</span> socket <span class="hljs-keyword">import</span> socket</span><br><span class="line">orderbox = []</span><br><span class="line">origin = <span class="hljs-string">"abcdefghijklmnopqrstuvwxyzABCDEF"</span>.encode()</span><br><span class="line">sock = socket()</span><br><span class="line">sock.connect((<span class="hljs-string">"47.98.192.231"</span>, <span class="hljs-number">25002</span>))</span><br><span class="line">sock.recv(<span class="hljs-number">1024</span>)</span><br><span class="line">sock.send(origin)</span><br><span class="line">cipher = sock.recv(<span class="hljs-number">1024</span>).split(<span class="hljs-string">b"\n"</span>)[<span class="hljs-number">0</span>]</span><br><span class="line"><span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> cipher:</span><br><span class="line">    orderbox.append(origin.find(c))</span><br><span class="line">sock.send(<span class="hljs-string">b"\n"</span>)</span><br><span class="line">sock.recv(<span class="hljs-number">1024</span>)</span><br><span class="line">rec = sock.recv(<span class="hljs-number">1024</span>)</span><br><span class="line">cipher = rec.split(<span class="hljs-string">b"\n"</span>)[<span class="hljs-number">1</span>]</span><br><span class="line">origin = [<span class="hljs-string">""</span>]*<span class="hljs-number">32</span></span><br><span class="line"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">32</span>):</span><br><span class="line">    origin[orderbox[i]] = chr(cipher[i])</span><br><span class="line">print(<span class="hljs-string">""</span>.join(origin))</span><br><span class="line">sock.close()</span><br></pre></td></tr></table></figure>
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="1-欢迎参加HGame！"><a href="#1-欢迎参加HGame！" class="headerlink" title="1. 欢迎参加HGame！"></a>1. 欢迎参加HGame！</h3><p>先解base64，之后摩斯电码。</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="hljs-keyword">import</span> base64</span><br><span class="line">lookup = &#123;<span class="hljs-string">'!'</span>: <span class="hljs-string">'-.-.--'</span>, <span class="hljs-string">"'"</span>: <span class="hljs-string">'.----.'</span>, <span class="hljs-string">'"'</span>: <span class="hljs-string">'.-..-.'</span>, <span class="hljs-string">'$'</span>: <span class="hljs-string">'...-..-'</span>, <span class="hljs-string">'&amp;'</span>: <span class="hljs-string">'.-...'</span>, <span class="hljs-string">'('</span>: <span class="hljs-string">'-.--.'</span>, <span class="hljs-string">')'</span>: <span class="hljs-string">'-.--.-'</span>, <span class="hljs-string">'+'</span>: <span class="hljs-string">'.-.-.'</span>, <span class="hljs-string">','</span>: <span class="hljs-string">'--..--'</span>, <span class="hljs-string">'-'</span>: <span class="hljs-string">'-....-'</span>, <span class="hljs-string">'.'</span>: <span class="hljs-string">'.-.-.-'</span>, <span class="hljs-string">'/'</span>: <span class="hljs-string">'-..-.'</span>, <span class="hljs-string">'0'</span>: <span class="hljs-string">'-----'</span>, <span class="hljs-string">'1'</span>: <span class="hljs-string">'.----'</span>, <span class="hljs-string">'2'</span>: <span class="hljs-string">'..---'</span>, <span class="hljs-string">'3'</span>: <span class="hljs-string">'...--'</span>, <span class="hljs-string">'4'</span>: <span class="hljs-string">'....-'</span>, <span class="hljs-string">'5'</span>: <span class="hljs-string">'.....'</span>, <span class="hljs-string">'6'</span>: <span class="hljs-string">'-....'</span>, <span class="hljs-string">'7'</span>: <span class="hljs-string">'--...'</span>, <span class="hljs-string">'8'</span>: <span class="hljs-string">'---..'</span>, <span class="hljs-string">'9'</span>: <span class="hljs-string">'----.'</span>, <span class="hljs-string">':'</span>: <span class="hljs-string">'---...'</span>, <span class="hljs-string">';'</span>: <span class="hljs-string">'-.-.-.'</span>, <span class="hljs-string">'='</span>: <span class="hljs-string">'-...-'</span>,</span><br><span class="line">          <span class="hljs-string">'?'</span>: <span class="hljs-string">'..--..'</span>, <span class="hljs-string">'@'</span>: <span class="hljs-string">'.--.-.'</span>, <span class="hljs-string">'A'</span>: <span class="hljs-string">'.-'</span>, <span class="hljs-string">'B'</span>: <span class="hljs-string">'-...'</span>, <span class="hljs-string">'C'</span>: <span class="hljs-string">'-.-.'</span>, <span class="hljs-string">'D'</span>: <span class="hljs-string">'-..'</span>, <span class="hljs-string">'E'</span>: <span class="hljs-string">'.'</span>, <span class="hljs-string">'F'</span>: <span class="hljs-string">'..-.'</span>, <span class="hljs-string">'G'</span>: <span class="hljs-string">'--.'</span>, <span class="hljs-string">'H'</span>: <span class="hljs-string">'....'</span>, <span class="hljs-string">'I'</span>: <span class="hljs-string">'..'</span>, <span class="hljs-string">'J'</span>: <span class="hljs-string">'.---'</span>, <span class="hljs-string">'K'</span>: <span class="hljs-string">'-.-'</span>, <span class="hljs-string">'L'</span>: <span class="hljs-string">'.-..'</span>, <span class="hljs-string">'M'</span>: <span class="hljs-string">'--'</span>, <span class="hljs-string">'N'</span>: <span class="hljs-string">'-.'</span>, <span class="hljs-string">'O'</span>: <span class="hljs-string">'---'</span>, <span class="hljs-string">'P'</span>: <span class="hljs-string">'.--.'</span>, <span class="hljs-string">'Q'</span>: <span class="hljs-string">'--.-'</span>, <span class="hljs-string">'R'</span>: <span class="hljs-string">'.-.'</span>, <span class="hljs-string">'S'</span>: <span class="hljs-string">'...'</span>, <span class="hljs-string">'T'</span>: <span class="hljs-string">'-'</span>, <span class="hljs-string">'U'</span>: <span class="hljs-string">'..-'</span>, <span class="hljs-string">'V'</span>: <span class="hljs-string">'...-'</span>, <span class="hljs-string">'W'</span>: <span class="hljs-string">'.--'</span>, <span class="hljs-string">'X'</span>: <span class="hljs-string">'-..-'</span>, <span class="hljs-string">'Y'</span>: <span class="hljs-string">'-.--'</span>, <span class="hljs-string">'Z'</span>: <span class="hljs-string">'--..'</span>, <span class="hljs-string">'_'</span>: <span class="hljs-string">'..--.-'</span>, &#125;</span><br><span class="line">lookup = dict(zip(lookup.values(), lookup.keys()))</span><br><span class="line">str = <span class="hljs-string">"Li0tIC4uLi0tIC4tLi4gLS4tLiAtLS0tLSAtLSAuIC4uLS0uLSAtIC0tLSAuLi0tLi0gLi4tLS0gLS0tLS0gLi4tLS0gLS0tLS0gLi4tLS4tIC4uLi4gLS0uIC4tIC0tIC4uLi0t"</span></span><br><span class="line">str = base64.b64decode(str.encode()).decode()</span><br><span class="line">strarr = str.split(<span class="hljs-string">" "</span>)</span><br><span class="line"><span class="hljs-keyword">for</span> str <span class="hljs-keyword">in</span> strarr:</span><br><span class="line">    print(lookup[str], end=<span class="hljs-string">""</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="2-壁纸"><a href="#2-壁纸" class="headerlink" title="2. 壁纸"></a>2. 壁纸</h3><p>binwalk分析，foremost提取，找到壁纸的pixiv作者名字，去搜索就能搜到ID，之后就是常规操作。</p>
+<h3 id="4-签到题ProPlus"><a href="#4-签到题ProPlus" class="headerlink" title="4. 签到题ProPlus"></a>4. 签到题ProPlus</h3><p>好多次栅栏和凯撒实际可以等效为一次，按照字母频率可以找到凯撒的位移数目，之后就能解出来了。</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/CTF/" rel="tag">CTF</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay_qrcode.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat_qrcode.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/01/31/2020-01-31-HGAME-2020-Week2-WriteUp/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">HGAME 2020 Week2 wp</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/12/15/2019-12-15-%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85%E6%89%8B%E6%B8%B8%E5%BF%83%E8%BD%AC%E8%BA%AB%E7%BB%83%E4%B9%A0%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/">
+                <span class="level-item">火影忍者手游心转身练习自动化脚本</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'lBiGLnlCCpEP05rAofjfWH0F-gzGzoHsz',
+        app_key: 'yuk3OUNG562jGkVMiKe0kJOn',
+        placeholder: '评论一下呗'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/kks.png" alt="Uchiha Kakashi">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Uchiha Kakashi
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Student
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Hefei, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            31
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            8
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/licy183" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/licy183">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=951156675&amp;site=qq&amp;menu=yes">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Weibo" href="https://weibo.com/licy1833">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.rmb122.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Rmb122</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.rmb122.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.dzou.top" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Dzou</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.dzou.top</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.boyn.top" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Boyn</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.boyn.top</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.thinszx.xyz" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">thinszx</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.thinszx.xyz</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/CTF/">
+            <span class="level-start">
+                <span class="level-item">CTF</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Java/">
+            <span class="level-start">
+                <span class="level-item">Java</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Misc/">
+            <span class="level-start">
+                <span class="level-item">Misc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Python/">
+            <span class="level-start">
+                <span class="level-item">Python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Py%E4%BA%A4%E6%98%93/">
+            <span class="level-start">
+                <span class="level-item">Py交易</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Ubuntu%E6%8A%98%E8%85%BE%E8%AE%B0/">
+            <span class="level-start">
+                <span class="level-item">Ubuntu折腾记</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CTF/" style="font-size: 18.33px;">CTF</a> <a href="/tags/Docker/" style="font-size: 11.67px;">Docker</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/Terminal/" style="font-size: 10px;">Terminal</a> <a href="/tags/Ubuntu/" style="font-size: 20px;">Ubuntu</a> <a href="/tags/Wine/" style="font-size: 16.67px;">Wine</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13.33px;">数据结构</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 11.67px;">爬虫</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T14:42:56.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/2020-02-07-HGAME-2020-Week3&Week4-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week3&amp;Week4 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-31T13:36:42.000Z">2020-01-31</time></div>
+                    <a href="/2020/01/31/2020-01-31-HGAME-2020-Week2-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week2 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-24T16:50:20.000Z">2020-01-25</time></div>
+                    <a href="/2020/01/25/2020-01-25-HGAME-2020-Week1-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week1 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T19:42:15.000Z">2019-12-15</time></div>
+                    <a href="/2019/12/15/2019-12-15-%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85%E6%89%8B%E6%B8%B8%E5%BF%83%E8%BD%AC%E8%BA%AB%E7%BB%83%E4%B9%A0%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/" class="title has-link-black-ter is-size-6 has-text-weight-normal">火影忍者手游心转身练习自动化脚本</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T23:42:25.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/2019-12-02-C1CTF-2019-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C1CTF 2019 WriteUp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CTF/">
+                        <span class="tag">CTF</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Docker/">
+                        <span class="tag">Docker</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Node/">
+                        <span class="tag">Node</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Selenium/">
+                        <span class="tag">Selenium</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Terminal/">
+                        <span class="tag">Terminal</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu/">
+                        <span class="tag">Ubuntu</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Wine/">
+                        <span class="tag">Wine</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="tag">爬虫</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T14:42:56.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/2020-02-07-HGAME-2020-Week3&Week4-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week3&amp;Week4 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-31T13:36:42.000Z">2020-01-31</time></div>
+                    <a href="/2020/01/31/2020-01-31-HGAME-2020-Week2-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week2 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-24T16:50:20.000Z">2020-01-25</time></div>
+                    <a href="/2020/01/25/2020-01-25-HGAME-2020-Week1-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week1 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T19:42:15.000Z">2019-12-15</time></div>
+                    <a href="/2019/12/15/2019-12-15-%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85%E6%89%8B%E6%B8%B8%E5%BF%83%E8%BD%AC%E8%BA%AB%E7%BB%83%E4%B9%A0%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/" class="title has-link-black-ter is-size-6 has-text-weight-normal">火影忍者手游心转身练习自动化脚本</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T23:42:25.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/2019-12-02-C1CTF-2019-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C1CTF 2019 WriteUp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CTF/">
+                        <span class="tag">CTF</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Docker/">
+                        <span class="tag">Docker</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Node/">
+                        <span class="tag">Node</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Selenium/">
+                        <span class="tag">Selenium</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Terminal/">
+                        <span class="tag">Terminal</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu/">
+                        <span class="tag">Ubuntu</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Wine/">
+                        <span class="tag">Wine</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="tag">爬虫</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    Uchiha Kakashi
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Uchiha Kakashi&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;" target="_blank" rel="noopener">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

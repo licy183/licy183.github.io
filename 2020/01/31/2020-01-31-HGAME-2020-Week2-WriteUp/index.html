@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.0.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>HGAME 2020 Week2 wp - uchkks&#39;s blog</title>
+
+
+    <meta name="description" content="武汉加油！ Reverse1. Classic_CrackMefile查看文件类型">
+<meta name="keywords" content="CTF">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HGAME 2020 Week2 wp">
+<meta property="og:url" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;2020&#x2F;01&#x2F;31&#x2F;2020-01-31-HGAME-2020-Week2-WriteUp&#x2F;index.html">
+<meta property="og:site_name" content="uchkks&#39;s blog">
+<meta property="og:description" content="武汉加油！ Reverse1. Classic_CrackMefile查看文件类型">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
+<meta property="og:updated_time" content="2020-05-23T15:33:05.212Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;www.uchihakakashi.top&#x2F;images&#x2F;og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    <script async="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                Uchiha Kakashi
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">首页</a>
+                
+                <a class="navbar-item"
+                href="/archives">归档</a>
+                
+                <a class="navbar-item"
+                href="/categories">分类</a>
+                
+                <a class="navbar-item"
+                href="/tags">标签</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="下载主题" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-01-31T13:36:42.000Z">2020-01-31</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    24 分钟 读完 (大约 3534 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                HGAME 2020 Week2 wp
+            
+        </h1>
+        <div class="content">
+            <p>武汉加油！</p>
+<h2 id="Reverse"><a href="#Reverse" class="headerlink" title="Reverse"></a>Reverse</h2><h3 id="1-Classic-CrackMe"><a href="#1-Classic-CrackMe" class="headerlink" title="1. Classic_CrackMe"></a>1. Classic_CrackMe</h3><p>file查看文件类型</p>
+<a id="more"></a>
+<p><img src="https://upload-images.jianshu.io/upload_images/16957059-52811655ded1af3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>.net的逆向可以用dnSpy<br>核心代码为</p>
+<figure class="highlight cs hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">button1_Click</span>(<span class="hljs-params"><span class="hljs-keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="hljs-function"></span>&#123;</span><br><span class="line">	<span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.status == <span class="hljs-number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		MessageBox.Show(<span class="hljs-string">"你已经激活成功啦，快去提交flag吧~~~"</span>);</span><br><span class="line">		<span class="hljs-keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">string</span> text = <span class="hljs-keyword">this</span>.textBox1.Text;</span><br><span class="line">	<span class="hljs-keyword">if</span> (text.Length != <span class="hljs-number">46</span> || text.IndexOf(<span class="hljs-string">"hgame&#123;"</span>) != <span class="hljs-number">0</span> || text.IndexOf(<span class="hljs-string">"&#125;"</span>) != <span class="hljs-number">45</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		MessageBox.Show(<span class="hljs-string">"Illegal format"</span>);</span><br><span class="line">		<span class="hljs-keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">string</span> base64iv = text.Substring(<span class="hljs-number">6</span>, <span class="hljs-number">24</span>);</span><br><span class="line">	<span class="hljs-keyword">string</span> str = text.Substring(<span class="hljs-number">30</span>, <span class="hljs-number">15</span>);</span><br><span class="line">	<span class="hljs-keyword">try</span></span><br><span class="line">	&#123;</span><br><span class="line">		Aes aes = <span class="hljs-keyword">new</span> Aes(<span class="hljs-string">"SGc0bTNfMm8yMF9XZWVLMg=="</span>, base64iv);</span><br><span class="line">		Aes aes2 = <span class="hljs-keyword">new</span> Aes(<span class="hljs-string">"SGc0bTNfMm8yMF9XZWVLMg=="</span>, <span class="hljs-string">"MFB1T2g5SWxYMDU0SWN0cw=="</span>);</span><br><span class="line">		<span class="hljs-keyword">string</span> text2 = aes.DecryptFromBase64String(<span class="hljs-string">"mjdRqH4d1O8nbUYJk+wVu3AeE7ZtE9rtT/8BA8J897I="</span>);</span><br><span class="line">		<span class="hljs-keyword">if</span> (text2.Equals(<span class="hljs-string">"Same_ciphertext_"</span>))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="hljs-keyword">byte</span>[] array = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">16</span>];</span><br><span class="line">			Array.Copy(aes2.EncryptToByte(text2 + str), <span class="hljs-number">16</span>, array, <span class="hljs-number">0</span>, <span class="hljs-number">16</span>);</span><br><span class="line">			<span class="hljs-keyword">if</span> (Convert.ToBase64String(array).Equals(<span class="hljs-string">"dJntSWSPWbWocAq4yjBP5Q=="</span>))</span><br><span class="line">			&#123;</span><br><span class="line">				MessageBox.Show(<span class="hljs-string">"注册成功！"</span>);</span><br><span class="line">				<span class="hljs-keyword">this</span>.Text = <span class="hljs-string">"已激活，欢迎使用！"</span>;</span><br><span class="line">				<span class="hljs-keyword">this</span>.status = <span class="hljs-number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="hljs-keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				MessageBox.Show(<span class="hljs-string">"注册失败！\nhint: "</span> + aes2.DecryptFromBase64String(<span class="hljs-string">"mjdRqH4d1O8nbUYJk+wVu3AeE7ZtE9rtT/8BA8J897I="</span>));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="hljs-keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			MessageBox.Show(<span class="hljs-string">"注册失败！\nhint: "</span> + aes2.DecryptFromBase64String(<span class="hljs-string">"mjdRqH4d1O8nbUYJk+wVu3AeE7ZtE9rtT/8BA8J897I="</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="hljs-keyword">catch</span></span><br><span class="line">	&#123;</span><br><span class="line">		MessageBox.Show(<span class="hljs-string">"注册失败！"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flag由字符串base64iv和str拼接而成。<br>AES加密类型可看出为CBC加密，填补方式为PKCS7.<br><img src="https://upload-images.jianshu.io/upload_images/16957059-b3ab1f2fa0ceec07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>例子中的第一次AES加密明文长度为块大小，填充一个与块大小相同，内容为块大小的数据，因而第二次加密数据的明文和密文均不需要进行分析。根据AES-CBC加密的流程，先将明文P与初始化向量IV进行异或，再进行AES加密置换，解密流程为先将密文C进行AES解密置换，再与初始化向量IV进行异或。密文已知，只取前16字节（块大小）。</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> Crypto.Cipher <span class="hljs-keyword">import</span> AES</span><br><span class="line"><span class="hljs-keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">xor</span><span class="hljs-params">(s1, s2)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> bytes(map( (<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">0</span>]^x[<span class="hljs-number">1</span>]), zip(s1, s2) ))</span><br><span class="line"></span><br><span class="line">key = base64.b64decode(<span class="hljs-string">b"SGc0bTNfMm8yMF9XZWVLMg=="</span>)</span><br><span class="line">cipher = base64.b64decode(<span class="hljs-string">b"mjdRqH4d1O8nbUYJk+wVu3AeE7ZtE9rtT/8BA8J897I="</span>)</span><br><span class="line">aes = AES.new(key, AES.MODE_ECB)</span><br><span class="line">msg = aes.decrypt(cipher)[:<span class="hljs-number">16</span>]</span><br><span class="line">target = <span class="hljs-string">b"Same_ciphertext_"</span></span><br><span class="line">iv = xor(msg, target)</span><br></pre></td></tr></table></figure>
+<p>即可获得IV。<br>第二次加密总共两块，已知第二块的密文，第一块的明文，求第二块的明文。要注意解密后的为填补后的(15填补为16)，应去除最后一字节。</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">aes2 = AES.new(key, AES.MODE_CBC, base64.b64decode(<span class="hljs-string">b"MFB1T2g5SWxYMDU0SWN0cw=="</span>))</span><br><span class="line">cipher1 = aes2.encrypt(target)</span><br><span class="line">msg = aes.decrypt(base64.b64decode(<span class="hljs-string">b"dJntSWSPWbWocAq4yjBP5Q=="</span>))</span><br></pre></td></tr></table></figure>
+<p>综合一下，即可得到对应的flag</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="hljs-string">b"hgame&#123;"</span> + base64.b64encode(iv) + xor(msg, cipher1)[:<span class="hljs-number">-1</span>] + <span class="hljs-string">b"&#125;"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="2-babyPy"><a href="#2-babyPy" class="headerlink" title="2. babyPy"></a>2. babyPy</h3><p><a href="https://docs.python.org/zh-cn/3/library/dis.html" target="_blank" rel="noopener">https://docs.python.org/zh-cn/3/library/dis.html</a><br>根据官方文档，可还原Python字节码。</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">encrypt</span><span class="hljs-params">(OOo)</span>:</span></span><br><span class="line">    O0O = OOo[::<span class="hljs-number">-1</span>]</span><br><span class="line">    O0o = list(O0O)</span><br><span class="line">    <span class="hljs-keyword">for</span> O0 <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, len(O0o)):</span><br><span class="line">        Oo = O0o[O0 - <span class="hljs-number">1</span>] ^ O0o[O0]</span><br><span class="line">        O0o[O0] = Oo</span><br><span class="line">    O = bytes(O0o)</span><br><span class="line">    <span class="hljs-keyword">return</span> O.hex()</span><br></pre></td></tr></table></figure>
+<p>因此，脚本如下</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> binascii <span class="hljs-keyword">import</span> unhexlify</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">encrypt</span><span class="hljs-params">(OOo)</span>:</span></span><br><span class="line">    O0O = OOo[::<span class="hljs-number">-1</span>]</span><br><span class="line">    O0o = list(O0O)</span><br><span class="line">    <span class="hljs-keyword">for</span> O0 <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, len(O0o)):</span><br><span class="line">        Oo = O0o[O0 - <span class="hljs-number">1</span>] ^ O0o[O0]</span><br><span class="line">        O0o[O0] = Oo</span><br><span class="line">    O = bytes(O0o)</span><br><span class="line">    <span class="hljs-keyword">return</span> O.hex()</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">decrypt</span><span class="hljs-params">(bhstr)</span>:</span></span><br><span class="line">    bhstr = unhexlify(bhstr)</span><br><span class="line">    bhstr = list(bhstr)</span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(len(bhstr)<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>):</span><br><span class="line">        bhstr[i] = bhstr[i<span class="hljs-number">-1</span>] ^ bhstr[i]</span><br><span class="line">    <span class="hljs-keyword">return</span> bytes(bhstr[::<span class="hljs-number">-1</span>])</span><br><span class="line">print(decrypt(<span class="hljs-string">'7d037d045717722d62114e6a5b044f2c184c3f44214c2d4a22'</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="3-babyPyc"><a href="#3-babyPyc" class="headerlink" title="3. babyPyc"></a>3. babyPyc</h3><p>使用uncompyle6反编译代码失败。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br></pre></td><td class="code"><pre><span class="line"># uncompyle6 version 3.6.2</span><br><span class="line"># Python bytecode 3.7 (3394)</span><br><span class="line"># Decompiled from: Python 3.7.2 (tags/v3.7.2:9a3ffc0492, Dec 23 2018, 23:09:28) [MSC v.1916 64 bit (AMD64)]</span><br><span class="line"># Embedded file name: task.py</span><br><span class="line"># Size of source mod 2**32: 1056 bytes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># file babyPyc_task_a1f4a8cf21.cpython-37.pyc</span><br><span class="line"># --- This code section failed: ---</span><br><span class="line"></span><br><span class="line">   3       0  JUMP_ABSOLUTE         2  &apos;to 2&apos;</span><br><span class="line">           2  LOAD_CONST               0</span><br><span class="line">           4  LOAD_CONST               None</span><br><span class="line">           6  IMPORT_NAME              os</span><br><span class="line">           8  STORE_NAME               os</span><br><span class="line">          10  LOAD_CONST               0</span><br><span class="line">          12  LOAD_CONST               None</span><br><span class="line">          14  IMPORT_NAME              sys</span><br><span class="line"></span><br><span class="line">   4      16  STORE_NAME               sys</span><br><span class="line">          18  LOAD_CONST               0</span><br><span class="line">          20  LOAD_CONST               (&apos;b64encode&apos;,)</span><br><span class="line">          22  IMPORT_NAME              base64</span><br><span class="line">          24  IMPORT_FROM              b64encode</span><br><span class="line">          26  STORE_NAME               b64encode</span><br><span class="line"></span><br><span class="line">   6      28  POP_TOP</span><br><span class="line">          30  LOAD_CONST               b&apos;/KDq6pvN/LLq6tzM/KXq59Oh/MTqxtOTxdrqs8OoR3V1X09J&apos;</span><br><span class="line"></span><br><span class="line">   8      32  STORE_GLOBAL             O0o</span><br><span class="line">          34  LOAD_CODE                &lt;code_object getFlag&gt;</span><br><span class="line">          36  LOAD_STR                 &apos;getFlag&apos;</span><br><span class="line">          38  MAKE_FUNCTION_0          &apos;&apos;</span><br><span class="line"></span><br><span class="line">  16      40  STORE_NAME               getFlag</span><br><span class="line">          42  LOAD_NAME                getFlag</span><br><span class="line">          44  CALL_FUNCTION_0       0  &apos;&apos;</span><br><span class="line"></span><br><span class="line">  18      46  STORE_NAME               flag</span><br><span class="line">          48  LOAD_NAME                flag</span><br><span class="line">          50  LOAD_CONST               None</span><br><span class="line">          52  LOAD_CONST               6</span><br><span class="line">          54  BUILD_SLICE_2         2</span><br><span class="line">          56  BINARY_SUBSCR</span><br><span class="line">          58  LOAD_CONST               b&apos;hgame&#123;&apos;</span><br><span class="line">          60  COMPARE_OP               !=</span><br><span class="line">          62  POP_JUMP_IF_TRUE     76  &apos;to 76&apos;</span><br><span class="line">          64  LOAD_NAME                flag</span><br><span class="line">          66  LOAD_CONST               -1</span><br><span class="line">          68  BINARY_SUBSCR</span><br><span class="line">          70  LOAD_CONST               125</span><br><span class="line">          72  COMPARE_OP               !=</span><br><span class="line"></span><br><span class="line">  19      74  POP_JUMP_IF_FALSE    94  &apos;to 94&apos;</span><br><span class="line">        76_0  COME_FROM            62  &apos;62&apos;</span><br><span class="line">          76  LOAD_NAME                print</span><br><span class="line">          78  LOAD_STR                 &apos;Incorrect format!&apos;</span><br><span class="line">          80  CALL_FUNCTION_1       1  &apos;&apos;</span><br><span class="line"></span><br><span class="line">  20      82  POP_TOP</span><br><span class="line">          84  LOAD_NAME                sys</span><br><span class="line">          86  LOAD_METHOD              exit</span><br><span class="line">          88  LOAD_CONST               1</span><br><span class="line">          90  CALL_METHOD_1         1  &apos;&apos;</span><br><span class="line"></span><br><span class="line">  22      92  POP_TOP</span><br><span class="line">        94_0  COME_FROM            74  &apos;74&apos;</span><br><span class="line">          94  LOAD_NAME                flag</span><br><span class="line">          96  LOAD_CONST               6</span><br><span class="line">          98  LOAD_CONST               -1</span><br><span class="line">         100  BUILD_SLICE_2         2</span><br><span class="line">         102  BINARY_SUBSCR</span><br><span class="line"></span><br><span class="line">  23     104  STORE_NAME               raw_flag</span><br><span class="line">         106  LOAD_NAME                len</span><br><span class="line">         108  LOAD_NAME                flag</span><br><span class="line">         110  CALL_FUNCTION_1       1  &apos;&apos;</span><br><span class="line">         112  LOAD_CONST               7</span><br><span class="line">         114  BINARY_SUBTRACT</span><br><span class="line">         116  LOAD_CONST               36</span><br><span class="line">         118  COMPARE_OP               !=</span><br><span class="line"></span><br><span class="line">  24     120  POP_JUMP_IF_FALSE   140  &apos;to 140&apos;</span><br><span class="line">         122  LOAD_NAME                print</span><br><span class="line">         124  LOAD_STR                 &apos;Wrong length!&apos;</span><br><span class="line">         126  CALL_FUNCTION_1       1  &apos;&apos;</span><br><span class="line"></span><br><span class="line">  25     128  POP_TOP</span><br><span class="line">         130  LOAD_NAME                sys</span><br><span class="line">         132  LOAD_METHOD              exit</span><br><span class="line">         134  LOAD_CONST               2</span><br><span class="line">         136  CALL_METHOD_1         1  &apos;&apos;</span><br><span class="line"></span><br><span class="line">  27     138  POP_TOP</span><br><span class="line">       140_0  COME_FROM           120  &apos;120&apos;</span><br><span class="line">         140  LOAD_NAME                raw_flag</span><br><span class="line">         142  LOAD_CONST               None</span><br><span class="line">         144  LOAD_CONST               None</span><br><span class="line">         146  LOAD_CONST               -1</span><br><span class="line">         148  BUILD_SLICE_3         3</span><br><span class="line">         150  BINARY_SUBSCR</span><br><span class="line"></span><br><span class="line">  28     152  STORE_NAME               raw_flag</span><br><span class="line">         154  LOAD_LISTCOMP            &apos;&lt;code_object &lt;listcomp&gt;&gt;&apos;</span><br><span class="line">         156  LOAD_STR                 &apos;&lt;listcomp&gt;&apos;</span><br><span class="line">         158  MAKE_FUNCTION_0          &apos;&apos;</span><br><span class="line">         160  LOAD_NAME                range</span><br><span class="line">         162  LOAD_CONST               6</span><br><span class="line">         164  CALL_FUNCTION_1       1  &apos;&apos;</span><br><span class="line">         166  GET_ITER</span><br><span class="line">         168  CALL_FUNCTION_1       1  &apos;&apos;</span><br><span class="line"></span><br><span class="line">  30     170  STORE_NAME               ciphers</span><br><span class="line">         172  SETUP_LOOP          260  &apos;to 260&apos;</span><br><span class="line">         174  LOAD_NAME                range</span><br><span class="line">         176  LOAD_CONST               5</span><br><span class="line">         178  CALL_FUNCTION_1       1  &apos;&apos;</span><br><span class="line">         180  GET_ITER</span><br><span class="line">         182  FOR_ITER            258  &apos;to 258&apos;</span><br><span class="line"></span><br><span class="line">  31     184  STORE_NAME               row</span><br><span class="line">         186  SETUP_LOOP          256  &apos;to 256&apos;</span><br><span class="line">         188  LOAD_NAME                range</span><br><span class="line">         190  LOAD_CONST               6</span><br><span class="line">         192  CALL_FUNCTION_1       1  &apos;&apos;</span><br><span class="line">         194  GET_ITER</span><br><span class="line">         196  FOR_ITER            254  &apos;to 254&apos;</span><br><span class="line"></span><br><span class="line">  32     198  STORE_NAME               col</span><br><span class="line">         200  LOAD_NAME                ciphers</span><br><span class="line">         202  LOAD_NAME                row</span><br><span class="line">         204  BINARY_SUBSCR</span><br><span class="line">         206  LOAD_NAME                col</span><br><span class="line">         208  DUP_TOP_TWO</span><br><span class="line">         210  BINARY_SUBSCR</span><br><span class="line">         212  LOAD_NAME                ciphers</span><br><span class="line">         214  LOAD_NAME                row</span><br><span class="line">         216  LOAD_CONST               1</span><br><span class="line">         218  BINARY_ADD</span><br><span class="line">         220  BINARY_SUBSCR</span><br><span class="line">         222  LOAD_NAME                col</span><br><span class="line">         224  BINARY_SUBSCR</span><br><span class="line">         226  INPLACE_ADD</span><br><span class="line">         228  ROT_THREE</span><br><span class="line"></span><br><span class="line">  33     230  STORE_SUBSCR</span><br><span class="line">         232  LOAD_NAME                ciphers</span><br><span class="line">         234  LOAD_NAME                row</span><br><span class="line">         236  BINARY_SUBSCR</span><br><span class="line">         238  LOAD_NAME                col</span><br><span class="line">         240  DUP_TOP_TWO</span><br><span class="line">         242  BINARY_SUBSCR</span><br><span class="line">         244  LOAD_CONST               256</span><br><span class="line">         246  INPLACE_MODULO</span><br><span class="line">         248  ROT_THREE</span><br><span class="line">         250  STORE_SUBSCR</span><br><span class="line">         252  JUMP_BACK           196  &apos;to 196&apos;</span><br><span class="line">         254  POP_BLOCK</span><br><span class="line">       256_0  COME_FROM_LOOP      186  &apos;186&apos;</span><br><span class="line">         256  JUMP_BACK           182  &apos;to 182&apos;</span><br><span class="line"></span><br><span class="line">  35     258  POP_BLOCK</span><br><span class="line">       260_0  COME_FROM_LOOP      172  &apos;172&apos;</span><br><span class="line">         260  LOAD_CONST               b&apos;&apos;</span><br><span class="line"></span><br><span class="line">  36     262  STORE_NAME               cipher</span><br><span class="line">         264  SETUP_LOOP          336  &apos;to 336&apos;</span><br><span class="line">         266  LOAD_NAME                range</span><br><span class="line">         268  LOAD_CONST               6</span><br><span class="line">         270  CALL_FUNCTION_1       1  &apos;&apos;</span><br><span class="line">         272  GET_ITER</span><br><span class="line">         274  FOR_ITER            334  &apos;to 334&apos;</span><br><span class="line"></span><br><span class="line">  37     276  STORE_NAME               row</span><br><span class="line">         278  LOAD_CONST               0</span><br><span class="line"></span><br><span class="line">  38     280  STORE_NAME               col</span><br><span class="line">         282  SETUP_LOOP          330  &apos;to 330&apos;</span><br><span class="line">         284  LOAD_NAME                col</span><br><span class="line">         286  LOAD_CONST               6</span><br><span class="line">         288  COMPARE_OP               &lt;</span><br><span class="line">         290  POP_JUMP_IF_FALSE   328  &apos;to 328&apos;</span><br><span class="line">         294  LOAD_NAME                cipher</span><br><span class="line">         296  LOAD_NAME                bytes</span><br><span class="line">         298  LOAD_NAME                ciphers</span><br><span class="line">         300  LOAD_NAME                row</span><br><span class="line">         302  BINARY_SUBSCR</span><br><span class="line">         304  LOAD_NAME                col</span><br><span class="line">         306  BINARY_SUBSCR</span><br><span class="line">         308  BUILD_LIST_1          1</span><br><span class="line">         310  CALL_FUNCTION_1       1  &apos;&apos;</span><br><span class="line">         312  INPLACE_ADD</span><br><span class="line"></span><br><span class="line">  40     314  STORE_NAME               cipher</span><br><span class="line">         316  LOAD_NAME                col</span><br><span class="line">         318  LOAD_CONST               1</span><br><span class="line">         320  INPLACE_ADD</span><br><span class="line">         322  STORE_NAME               col</span><br><span class="line">         324  JUMP_BACK           284  &apos;to 284&apos;</span><br><span class="line">       328_0  COME_FROM           290  &apos;290&apos;</span><br><span class="line">         328  POP_BLOCK</span><br><span class="line">       330_0  COME_FROM_LOOP      282  &apos;282&apos;</span><br><span class="line">         330  JUMP_BACK           274  &apos;to 274&apos;</span><br><span class="line"></span><br><span class="line">  42     334  POP_BLOCK</span><br><span class="line">       336_0  COME_FROM_LOOP      264  &apos;264&apos;</span><br><span class="line">         336  LOAD_NAME                b64encode</span><br><span class="line">         338  LOAD_NAME                cipher</span><br><span class="line">         340  CALL_FUNCTION_1       1  &apos;&apos;</span><br><span class="line"></span><br><span class="line">  44     342  STORE_NAME               cipher</span><br><span class="line">         344  LOAD_NAME                cipher</span><br><span class="line">         346  LOAD_GLOBAL              O0o</span><br><span class="line">         348  COMPARE_OP               ==</span><br><span class="line">         350  POP_JUMP_IF_FALSE   364  &apos;to 364&apos;</span><br><span class="line">         354  LOAD_NAME                print</span><br><span class="line">         356  LOAD_STR                 &apos;Great, this is my flag.&apos;</span><br><span class="line">         358  CALL_FUNCTION_1       1  &apos;&apos;</span><br><span class="line">         360  POP_TOP</span><br><span class="line"></span><br><span class="line">  47     362  JUMP_FORWARD        372  &apos;to 372&apos;</span><br><span class="line">       364_0  COME_FROM           350  &apos;350&apos;</span><br><span class="line">         364  LOAD_NAME                print</span><br><span class="line">         366  LOAD_STR                 &apos;Wrong flag.&apos;</span><br><span class="line">         368  CALL_FUNCTION_1       1  &apos;&apos;</span><br><span class="line">         370  POP_TOP</span><br><span class="line">       372_0  COME_FROM           362  &apos;362&apos;</span><br><span class="line"></span><br><span class="line">Parse error at or near `None&apos; instruction at offset -1</span><br></pre></td></tr></table></figure>
+<p>根据以上，可还原出部分代码。</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"><span class="hljs-keyword">import</span> sys</span><br><span class="line"><span class="hljs-keyword">from</span> base64 <span class="hljs-keyword">import</span> b64encode</span><br><span class="line">O0o = <span class="hljs-string">b'/KDq6pvN/LLq6tzM/KXq59Oh/MTqxtOTxdrqs8OoR3V1X09J'</span></span><br><span class="line">flag = getFlag()</span><br><span class="line"><span class="hljs-keyword">if</span> <span class="hljs-string">b'hgame&#123;'</span> != flag[:<span class="hljs-number">6</span>] <span class="hljs-keyword">or</span> flag[<span class="hljs-number">-1</span>] != <span class="hljs-string">b'&#125;'</span>:</span><br><span class="line">    print(<span class="hljs-string">'Incorrect format!'</span>)</span><br><span class="line">    sys.exit(<span class="hljs-number">1</span>)</span><br><span class="line">raw_flag = flag[<span class="hljs-number">6</span>:<span class="hljs-number">-1</span>]</span><br><span class="line"><span class="hljs-keyword">if</span> len(flag) - <span class="hljs-number">7</span> != <span class="hljs-number">36</span>:</span><br><span class="line">    print(<span class="hljs-string">'Wrong length!'</span>)</span><br><span class="line">    sys.exit(<span class="hljs-number">2</span>)</span><br><span class="line">raw_flag = raw_flag[::<span class="hljs-number">-1</span>]</span><br><span class="line"><span class="hljs-comment"># ciphers = 一个列表推导式</span></span><br><span class="line"><span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):</span><br><span class="line">    <span class="hljs-keyword">for</span> col <span class="hljs-keyword">in</span> range(<span class="hljs-number">6</span>):</span><br><span class="line">        ciphers[row][col] += ciphers[row + <span class="hljs-number">1</span>][col]</span><br><span class="line">        ciphers[row][col] %= <span class="hljs-number">256</span></span><br><span class="line">cipher = <span class="hljs-string">b''</span></span><br><span class="line"><span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> range(<span class="hljs-number">6</span>):</span><br><span class="line">    col = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">while</span> col &lt; <span class="hljs-number">6</span>:</span><br><span class="line">        cipher += bytes([ciphers[row][col]])</span><br><span class="line">        col += <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-comment"># assert O0o == b64encode(cipher)</span></span><br></pre></td></tr></table></figure>
+<p>中间的列表推导式部分无法使用uncompyle6查看，但可使用dis和marshal来反编译代码。<br>结合资料可知，3.7的pyc文件，头部大小为16字节，因此略过16字节，获得的字节码对象如下。</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> dis, marshal</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>f = open(<span class="hljs-string">"babyPyc_task_a1f4a8cf21.cpython-37.pyc"</span>, <span class="hljs-string">"rb"</span>)</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>f.read(<span class="hljs-number">16</span>)</span><br><span class="line"><span class="hljs-string">b'B\r\r\n\x00\x00\x00\x00\xdaR%^ \x04\x00\x00'</span></span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>code = marshal.load(f)</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>code</span><br><span class="line">&lt;code object &lt;module&gt; at <span class="hljs-number">0x000001E7C7F45C90</span>, file <span class="hljs-string">"task.py"</span>, line <span class="hljs-number">3</span>&gt;</span><br><span class="line"><span class="hljs-meta">&gt;&gt;&gt; </span>dis.dis(code)</span><br><span class="line">  <span class="hljs-number">3</span>           <span class="hljs-number">0</span> JUMP_ABSOLUTE            <span class="hljs-number">2</span></span><br><span class="line">        &gt;&gt;    <span class="hljs-number">2</span> LOAD_CONST               <span class="hljs-number">0</span> (<span class="hljs-number">0</span>)</span><br><span class="line">              <span class="hljs-number">4</span> LOAD_CONST               <span class="hljs-number">1</span> (<span class="hljs-literal">None</span>)</span><br><span class="line">              <span class="hljs-number">6</span> IMPORT_NAME              <span class="hljs-number">0</span> (os)</span><br><span class="line">              <span class="hljs-number">8</span> STORE_NAME               <span class="hljs-number">0</span> (os)</span><br><span class="line">             <span class="hljs-number">10</span> LOAD_CONST               <span class="hljs-number">0</span> (<span class="hljs-number">0</span>)</span><br><span class="line">             <span class="hljs-number">12</span> LOAD_CONST               <span class="hljs-number">1</span> (<span class="hljs-literal">None</span>)</span><br><span class="line">             <span class="hljs-number">14</span> IMPORT_NAME              <span class="hljs-number">1</span> (sys)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-number">4</span>          <span class="hljs-number">16</span> STORE_NAME               <span class="hljs-number">1</span> (sys)</span><br><span class="line">             <span class="hljs-number">18</span> LOAD_CONST               <span class="hljs-number">0</span> (<span class="hljs-number">0</span>)</span><br><span class="line">             <span class="hljs-number">20</span> LOAD_CONST               <span class="hljs-number">2</span> ((<span class="hljs-string">'b64encode'</span>,))</span><br><span class="line">             <span class="hljs-number">22</span> IMPORT_NAME              <span class="hljs-number">2</span> (base64)</span><br><span class="line">             <span class="hljs-number">24</span> IMPORT_FROM              <span class="hljs-number">3</span> (b64encode)</span><br><span class="line">             <span class="hljs-number">26</span> STORE_NAME               <span class="hljs-number">3</span> (b64encode)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-number">6</span>          <span class="hljs-number">28</span> POP_TOP</span><br><span class="line">             <span class="hljs-number">30</span> LOAD_CONST               <span class="hljs-number">3</span> (<span class="hljs-string">b'/KDq6pvN/LLq6tzM/KXq59Oh/MTqxtOTxdrqs8OoR3V1X09J'</span>)</span><br><span class="line"></span><br><span class="line">  <span class="hljs-number">8</span>          <span class="hljs-number">32</span> STORE_GLOBAL             <span class="hljs-number">4</span> (O0o)</span><br><span class="line">             <span class="hljs-number">34</span> LOAD_CONST               <span class="hljs-number">4</span> (&lt;code object getFlag at <span class="hljs-number">0x000001E7C7F23030</span>, file <span class="hljs-string">"task.py"</span>, line <span class="hljs-number">8</span>&gt;)</span><br><span class="line">             <span class="hljs-number">36</span> LOAD_CONST               <span class="hljs-number">5</span> (<span class="hljs-string">'getFlag'</span>)</span><br><span class="line">             <span class="hljs-number">38</span> MAKE_FUNCTION            <span class="hljs-number">0</span></span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">16</span>          <span class="hljs-number">40</span> STORE_NAME               <span class="hljs-number">5</span> (getFlag)</span><br><span class="line">             <span class="hljs-number">42</span> LOAD_NAME                <span class="hljs-number">5</span> (getFlag)</span><br><span class="line">             <span class="hljs-number">44</span> CALL_FUNCTION            <span class="hljs-number">0</span></span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">18</span>          <span class="hljs-number">46</span> STORE_NAME               <span class="hljs-number">6</span> (flag)</span><br><span class="line">             <span class="hljs-number">48</span> LOAD_NAME                <span class="hljs-number">6</span> (flag)</span><br><span class="line">             <span class="hljs-number">50</span> LOAD_CONST               <span class="hljs-number">1</span> (<span class="hljs-literal">None</span>)</span><br><span class="line">             <span class="hljs-number">52</span> LOAD_CONST               <span class="hljs-number">6</span> (<span class="hljs-number">6</span>)</span><br><span class="line">             <span class="hljs-number">54</span> BUILD_SLICE              <span class="hljs-number">2</span></span><br><span class="line">             <span class="hljs-number">56</span> BINARY_SUBSCR</span><br><span class="line">             <span class="hljs-number">58</span> LOAD_CONST               <span class="hljs-number">7</span> (<span class="hljs-string">b'hgame&#123;'</span>)</span><br><span class="line">             <span class="hljs-number">60</span> COMPARE_OP               <span class="hljs-number">3</span> (!=)</span><br><span class="line">             <span class="hljs-number">62</span> POP_JUMP_IF_TRUE        <span class="hljs-number">76</span></span><br><span class="line">             <span class="hljs-number">64</span> LOAD_NAME                <span class="hljs-number">6</span> (flag)</span><br><span class="line">             <span class="hljs-number">66</span> LOAD_CONST               <span class="hljs-number">8</span> (<span class="hljs-number">-1</span>)</span><br><span class="line">             <span class="hljs-number">68</span> BINARY_SUBSCR</span><br><span class="line">             <span class="hljs-number">70</span> LOAD_CONST               <span class="hljs-number">9</span> (<span class="hljs-number">125</span>)</span><br><span class="line">             <span class="hljs-number">72</span> COMPARE_OP               <span class="hljs-number">3</span> (!=)</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">19</span>          <span class="hljs-number">74</span> POP_JUMP_IF_FALSE       <span class="hljs-number">94</span></span><br><span class="line">        &gt;&gt;   <span class="hljs-number">76</span> LOAD_NAME                <span class="hljs-number">7</span> (<span class="hljs-keyword">print</span>)</span><br><span class="line">             <span class="hljs-number">78</span> LOAD_CONST              <span class="hljs-number">10</span> (<span class="hljs-string">'Incorrect format!'</span>)</span><br><span class="line">             <span class="hljs-number">80</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">20</span>          <span class="hljs-number">82</span> POP_TOP</span><br><span class="line">             <span class="hljs-number">84</span> LOAD_NAME                <span class="hljs-number">1</span> (sys)</span><br><span class="line">             <span class="hljs-number">86</span> LOAD_METHOD              <span class="hljs-number">8</span> (exit)</span><br><span class="line">             <span class="hljs-number">88</span> LOAD_CONST              <span class="hljs-number">11</span> (<span class="hljs-number">1</span>)</span><br><span class="line">             <span class="hljs-number">90</span> CALL_METHOD              <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">22</span>          <span class="hljs-number">92</span> POP_TOP</span><br><span class="line">        &gt;&gt;   <span class="hljs-number">94</span> LOAD_NAME                <span class="hljs-number">6</span> (flag)</span><br><span class="line">             <span class="hljs-number">96</span> LOAD_CONST               <span class="hljs-number">6</span> (<span class="hljs-number">6</span>)</span><br><span class="line">             <span class="hljs-number">98</span> LOAD_CONST               <span class="hljs-number">8</span> (<span class="hljs-number">-1</span>)</span><br><span class="line">            <span class="hljs-number">100</span> BUILD_SLICE              <span class="hljs-number">2</span></span><br><span class="line">            <span class="hljs-number">102</span> BINARY_SUBSCR</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">23</span>         <span class="hljs-number">104</span> STORE_NAME               <span class="hljs-number">9</span> (raw_flag)</span><br><span class="line">            <span class="hljs-number">106</span> LOAD_NAME               <span class="hljs-number">10</span> (len)</span><br><span class="line">            <span class="hljs-number">108</span> LOAD_NAME                <span class="hljs-number">6</span> (flag)</span><br><span class="line">            <span class="hljs-number">110</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-number">112</span> LOAD_CONST              <span class="hljs-number">12</span> (<span class="hljs-number">7</span>)</span><br><span class="line">            <span class="hljs-number">114</span> BINARY_SUBTRACT</span><br><span class="line">            <span class="hljs-number">116</span> LOAD_CONST              <span class="hljs-number">13</span> (<span class="hljs-number">36</span>)</span><br><span class="line">            <span class="hljs-number">118</span> COMPARE_OP               <span class="hljs-number">3</span> (!=)</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">24</span>         <span class="hljs-number">120</span> POP_JUMP_IF_FALSE      <span class="hljs-number">140</span></span><br><span class="line">            <span class="hljs-number">122</span> LOAD_NAME                <span class="hljs-number">7</span> (<span class="hljs-keyword">print</span>)</span><br><span class="line">            <span class="hljs-number">124</span> LOAD_CONST              <span class="hljs-number">14</span> (<span class="hljs-string">'Wrong length!'</span>)</span><br><span class="line">            <span class="hljs-number">126</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">25</span>         <span class="hljs-number">128</span> POP_TOP</span><br><span class="line">            <span class="hljs-number">130</span> LOAD_NAME                <span class="hljs-number">1</span> (sys)</span><br><span class="line">            <span class="hljs-number">132</span> LOAD_METHOD              <span class="hljs-number">8</span> (exit)</span><br><span class="line">            <span class="hljs-number">134</span> LOAD_CONST              <span class="hljs-number">15</span> (<span class="hljs-number">2</span>)</span><br><span class="line">            <span class="hljs-number">136</span> CALL_METHOD              <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">27</span>         <span class="hljs-number">138</span> POP_TOP</span><br><span class="line">        &gt;&gt;  <span class="hljs-number">140</span> LOAD_NAME                <span class="hljs-number">9</span> (raw_flag)</span><br><span class="line">            <span class="hljs-number">142</span> LOAD_CONST               <span class="hljs-number">1</span> (<span class="hljs-literal">None</span>)</span><br><span class="line">            <span class="hljs-number">144</span> LOAD_CONST               <span class="hljs-number">1</span> (<span class="hljs-literal">None</span>)</span><br><span class="line">            <span class="hljs-number">146</span> LOAD_CONST               <span class="hljs-number">8</span> (<span class="hljs-number">-1</span>)</span><br><span class="line">            <span class="hljs-number">148</span> BUILD_SLICE              <span class="hljs-number">3</span></span><br><span class="line">            <span class="hljs-number">150</span> BINARY_SUBSCR</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">28</span>         <span class="hljs-number">152</span> STORE_NAME               <span class="hljs-number">9</span> (raw_flag)</span><br><span class="line">            <span class="hljs-number">154</span> LOAD_CONST              <span class="hljs-number">16</span> (&lt;code object &lt;listcomp&gt; at <span class="hljs-number">0x000001E7C7F280C0</span>, file <span class="hljs-string">"task.py"</span>, line <span class="hljs-number">28</span>&gt;)</span><br><span class="line">            <span class="hljs-number">156</span> LOAD_CONST              <span class="hljs-number">17</span> (<span class="hljs-string">'&lt;listcomp&gt;'</span>)</span><br><span class="line">            <span class="hljs-number">158</span> MAKE_FUNCTION            <span class="hljs-number">0</span></span><br><span class="line">            <span class="hljs-number">160</span> LOAD_NAME               <span class="hljs-number">11</span> (range)</span><br><span class="line">            <span class="hljs-number">162</span> LOAD_CONST               <span class="hljs-number">6</span> (<span class="hljs-number">6</span>)</span><br><span class="line">            <span class="hljs-number">164</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-number">166</span> GET_ITER</span><br><span class="line">            <span class="hljs-number">168</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">30</span>         <span class="hljs-number">170</span> STORE_NAME              <span class="hljs-number">12</span> (ciphers)</span><br><span class="line">            <span class="hljs-number">172</span> SETUP_LOOP              <span class="hljs-number">86</span> (to <span class="hljs-number">260</span>)</span><br><span class="line">            <span class="hljs-number">174</span> LOAD_NAME               <span class="hljs-number">11</span> (range)</span><br><span class="line">            <span class="hljs-number">176</span> LOAD_CONST              <span class="hljs-number">18</span> (<span class="hljs-number">5</span>)</span><br><span class="line">            <span class="hljs-number">178</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-number">180</span> GET_ITER</span><br><span class="line">        &gt;&gt;  <span class="hljs-number">182</span> FOR_ITER                <span class="hljs-number">74</span> (to <span class="hljs-number">258</span>)</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">31</span>         <span class="hljs-number">184</span> STORE_NAME              <span class="hljs-number">13</span> (row)</span><br><span class="line">            <span class="hljs-number">186</span> SETUP_LOOP              <span class="hljs-number">68</span> (to <span class="hljs-number">256</span>)</span><br><span class="line">            <span class="hljs-number">188</span> LOAD_NAME               <span class="hljs-number">11</span> (range)</span><br><span class="line">            <span class="hljs-number">190</span> LOAD_CONST               <span class="hljs-number">6</span> (<span class="hljs-number">6</span>)</span><br><span class="line">            <span class="hljs-number">192</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-number">194</span> GET_ITER</span><br><span class="line">        &gt;&gt;  <span class="hljs-number">196</span> FOR_ITER                <span class="hljs-number">56</span> (to <span class="hljs-number">254</span>)</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">32</span>         <span class="hljs-number">198</span> STORE_NAME              <span class="hljs-number">14</span> (col)</span><br><span class="line">            <span class="hljs-number">200</span> LOAD_NAME               <span class="hljs-number">12</span> (ciphers)</span><br><span class="line">            <span class="hljs-number">202</span> LOAD_NAME               <span class="hljs-number">13</span> (row)</span><br><span class="line">            <span class="hljs-number">204</span> BINARY_SUBSCR</span><br><span class="line">            <span class="hljs-number">206</span> LOAD_NAME               <span class="hljs-number">14</span> (col)</span><br><span class="line">            <span class="hljs-number">208</span> DUP_TOP_TWO</span><br><span class="line">            <span class="hljs-number">210</span> BINARY_SUBSCR</span><br><span class="line">            <span class="hljs-number">212</span> LOAD_NAME               <span class="hljs-number">12</span> (ciphers)</span><br><span class="line">            <span class="hljs-number">214</span> LOAD_NAME               <span class="hljs-number">13</span> (row)</span><br><span class="line">            <span class="hljs-number">216</span> LOAD_CONST              <span class="hljs-number">11</span> (<span class="hljs-number">1</span>)</span><br><span class="line">            <span class="hljs-number">218</span> BINARY_ADD</span><br><span class="line">            <span class="hljs-number">220</span> BINARY_SUBSCR</span><br><span class="line">            <span class="hljs-number">222</span> LOAD_NAME               <span class="hljs-number">14</span> (col)</span><br><span class="line">            <span class="hljs-number">224</span> BINARY_SUBSCR</span><br><span class="line">            <span class="hljs-number">226</span> INPLACE_ADD</span><br><span class="line">            <span class="hljs-number">228</span> ROT_THREE</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">33</span>         <span class="hljs-number">230</span> STORE_SUBSCR</span><br><span class="line">            <span class="hljs-number">232</span> LOAD_NAME               <span class="hljs-number">12</span> (ciphers)</span><br><span class="line">            <span class="hljs-number">234</span> LOAD_NAME               <span class="hljs-number">13</span> (row)</span><br><span class="line">            <span class="hljs-number">236</span> BINARY_SUBSCR</span><br><span class="line">            <span class="hljs-number">238</span> LOAD_NAME               <span class="hljs-number">14</span> (col)</span><br><span class="line">            <span class="hljs-number">240</span> DUP_TOP_TWO</span><br><span class="line">            <span class="hljs-number">242</span> BINARY_SUBSCR</span><br><span class="line">            <span class="hljs-number">244</span> LOAD_CONST              <span class="hljs-number">19</span> (<span class="hljs-number">256</span>)</span><br><span class="line">            <span class="hljs-number">246</span> INPLACE_MODULO</span><br><span class="line">            <span class="hljs-number">248</span> ROT_THREE</span><br><span class="line">            <span class="hljs-number">250</span> STORE_SUBSCR</span><br><span class="line">            <span class="hljs-number">252</span> JUMP_ABSOLUTE          <span class="hljs-number">196</span></span><br><span class="line">        &gt;&gt;  <span class="hljs-number">254</span> POP_BLOCK</span><br><span class="line">        &gt;&gt;  <span class="hljs-number">256</span> JUMP_ABSOLUTE          <span class="hljs-number">182</span></span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">35</span>     &gt;&gt;  <span class="hljs-number">258</span> POP_BLOCK</span><br><span class="line">        &gt;&gt;  <span class="hljs-number">260</span> LOAD_CONST              <span class="hljs-number">20</span> (<span class="hljs-string">b''</span>)</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">36</span>         <span class="hljs-number">262</span> STORE_NAME              <span class="hljs-number">15</span> (cipher)</span><br><span class="line">            <span class="hljs-number">264</span> SETUP_LOOP              <span class="hljs-number">70</span> (to <span class="hljs-number">336</span>)</span><br><span class="line">            <span class="hljs-number">266</span> LOAD_NAME               <span class="hljs-number">11</span> (range)</span><br><span class="line">            <span class="hljs-number">268</span> LOAD_CONST               <span class="hljs-number">6</span> (<span class="hljs-number">6</span>)</span><br><span class="line">            <span class="hljs-number">270</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-number">272</span> GET_ITER</span><br><span class="line">        &gt;&gt;  <span class="hljs-number">274</span> FOR_ITER                <span class="hljs-number">58</span> (to <span class="hljs-number">334</span>)</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">37</span>         <span class="hljs-number">276</span> STORE_NAME              <span class="hljs-number">13</span> (row)</span><br><span class="line">            <span class="hljs-number">278</span> LOAD_CONST               <span class="hljs-number">0</span> (<span class="hljs-number">0</span>)</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">38</span>         <span class="hljs-number">280</span> STORE_NAME              <span class="hljs-number">14</span> (col)</span><br><span class="line">            <span class="hljs-number">282</span> SETUP_LOOP              <span class="hljs-number">46</span> (to <span class="hljs-number">330</span>)</span><br><span class="line">        &gt;&gt;  <span class="hljs-number">284</span> LOAD_NAME               <span class="hljs-number">14</span> (col)</span><br><span class="line">            <span class="hljs-number">286</span> LOAD_CONST               <span class="hljs-number">6</span> (<span class="hljs-number">6</span>)</span><br><span class="line">            <span class="hljs-number">288</span> COMPARE_OP               <span class="hljs-number">0</span> (&lt;)</span><br><span class="line">            <span class="hljs-number">290</span> EXTENDED_ARG             <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">39</span>         <span class="hljs-number">292</span> POP_JUMP_IF_FALSE      <span class="hljs-number">328</span></span><br><span class="line">            <span class="hljs-number">294</span> LOAD_NAME               <span class="hljs-number">15</span> (cipher)</span><br><span class="line">            <span class="hljs-number">296</span> LOAD_NAME               <span class="hljs-number">16</span> (bytes)</span><br><span class="line">            <span class="hljs-number">298</span> LOAD_NAME               <span class="hljs-number">12</span> (ciphers)</span><br><span class="line">            <span class="hljs-number">300</span> LOAD_NAME               <span class="hljs-number">13</span> (row)</span><br><span class="line">            <span class="hljs-number">302</span> BINARY_SUBSCR</span><br><span class="line">            <span class="hljs-number">304</span> LOAD_NAME               <span class="hljs-number">14</span> (col)</span><br><span class="line">            <span class="hljs-number">306</span> BINARY_SUBSCR</span><br><span class="line">            <span class="hljs-number">308</span> BUILD_LIST               <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-number">310</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-number">312</span> INPLACE_ADD</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">40</span>         <span class="hljs-number">314</span> STORE_NAME              <span class="hljs-number">15</span> (cipher)</span><br><span class="line">            <span class="hljs-number">316</span> LOAD_NAME               <span class="hljs-number">14</span> (col)</span><br><span class="line">            <span class="hljs-number">318</span> LOAD_CONST              <span class="hljs-number">11</span> (<span class="hljs-number">1</span>)</span><br><span class="line">            <span class="hljs-number">320</span> INPLACE_ADD</span><br><span class="line">            <span class="hljs-number">322</span> STORE_NAME              <span class="hljs-number">14</span> (col)</span><br><span class="line">            <span class="hljs-number">324</span> EXTENDED_ARG             <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-number">326</span> JUMP_ABSOLUTE          <span class="hljs-number">284</span></span><br><span class="line">        &gt;&gt;  <span class="hljs-number">328</span> POP_BLOCK</span><br><span class="line">        &gt;&gt;  <span class="hljs-number">330</span> EXTENDED_ARG             <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-number">332</span> JUMP_ABSOLUTE          <span class="hljs-number">274</span></span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">42</span>     &gt;&gt;  <span class="hljs-number">334</span> POP_BLOCK</span><br><span class="line">        &gt;&gt;  <span class="hljs-number">336</span> LOAD_NAME                <span class="hljs-number">3</span> (b64encode)</span><br><span class="line">            <span class="hljs-number">338</span> LOAD_NAME               <span class="hljs-number">15</span> (cipher)</span><br><span class="line">            <span class="hljs-number">340</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">44</span>         <span class="hljs-number">342</span> STORE_NAME              <span class="hljs-number">15</span> (cipher)</span><br><span class="line">            <span class="hljs-number">344</span> LOAD_NAME               <span class="hljs-number">15</span> (cipher)</span><br><span class="line">            <span class="hljs-number">346</span> LOAD_GLOBAL              <span class="hljs-number">4</span> (O0o)</span><br><span class="line">            <span class="hljs-number">348</span> COMPARE_OP               <span class="hljs-number">2</span> (==)</span><br><span class="line">            <span class="hljs-number">350</span> EXTENDED_ARG             <span class="hljs-number">1</span></span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">45</span>         <span class="hljs-number">352</span> POP_JUMP_IF_FALSE      <span class="hljs-number">364</span></span><br><span class="line">            <span class="hljs-number">354</span> LOAD_NAME                <span class="hljs-number">7</span> (<span class="hljs-keyword">print</span>)</span><br><span class="line">            <span class="hljs-number">356</span> LOAD_CONST              <span class="hljs-number">21</span> (<span class="hljs-string">'Great, this is my flag.'</span>)</span><br><span class="line">            <span class="hljs-number">358</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-number">360</span> POP_TOP</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">47</span>         <span class="hljs-number">362</span> JUMP_FORWARD             <span class="hljs-number">8</span> (to <span class="hljs-number">372</span>)</span><br><span class="line">        &gt;&gt;  <span class="hljs-number">364</span> LOAD_NAME                <span class="hljs-number">7</span> (<span class="hljs-keyword">print</span>)</span><br><span class="line">            <span class="hljs-number">366</span> LOAD_CONST              <span class="hljs-number">22</span> (<span class="hljs-string">'Wrong flag.'</span>)</span><br><span class="line">            <span class="hljs-number">368</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line">            <span class="hljs-number">370</span> POP_TOP</span><br><span class="line">        &gt;&gt;  <span class="hljs-number">372</span> LOAD_CONST               <span class="hljs-number">1</span> (<span class="hljs-literal">None</span>)</span><br><span class="line">            <span class="hljs-number">374</span> RETURN_VALUE</span><br><span class="line"></span><br><span class="line">Disassembly of &lt;code object getFlag at <span class="hljs-number">0x000001E7C7F23030</span>, file <span class="hljs-string">"task.py"</span>, line <span class="hljs-number">8</span>&gt;:</span><br><span class="line"> <span class="hljs-number">10</span>           <span class="hljs-number">0</span> LOAD_GLOBAL              <span class="hljs-number">0</span> (<span class="hljs-keyword">print</span>)</span><br><span class="line">              <span class="hljs-number">2</span> LOAD_CONST               <span class="hljs-number">1</span> (<span class="hljs-string">'Give me the flag'</span>)</span><br><span class="line">              <span class="hljs-number">4</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line">              <span class="hljs-number">6</span> POP_TOP</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">11</span>           <span class="hljs-number">8</span> LOAD_GLOBAL              <span class="hljs-number">1</span> (input)</span><br><span class="line">             <span class="hljs-number">10</span> LOAD_CONST               <span class="hljs-number">2</span> (<span class="hljs-string">'&gt; '</span>)</span><br><span class="line">             <span class="hljs-number">12</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line">             <span class="hljs-number">14</span> STORE_FAST               <span class="hljs-number">0</span> (flag)</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">12</span>          <span class="hljs-number">16</span> LOAD_FAST                <span class="hljs-number">0</span> (flag)</span><br><span class="line">             <span class="hljs-number">18</span> LOAD_METHOD              <span class="hljs-number">2</span> (encode)</span><br><span class="line">             <span class="hljs-number">20</span> CALL_METHOD              <span class="hljs-number">0</span></span><br><span class="line">             <span class="hljs-number">22</span> STORE_FAST               <span class="hljs-number">0</span> (flag)</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">13</span>          <span class="hljs-number">24</span> LOAD_CONST               <span class="hljs-number">3</span> (<span class="hljs-string">b'Qn/ZgNOeWqXCoNKYceeX3NO8n7h0lL+tzrdbkM2pZ3IwZX5Q'</span>)</span><br><span class="line">             <span class="hljs-number">26</span> STORE_GLOBAL             <span class="hljs-number">3</span> (O0o)</span><br><span class="line"></span><br><span class="line"> <span class="hljs-number">14</span>          <span class="hljs-number">28</span> LOAD_FAST                <span class="hljs-number">0</span> (flag)</span><br><span class="line">             <span class="hljs-number">30</span> RETURN_VALUE</span><br><span class="line"></span><br><span class="line">Disassembly of &lt;code object &lt;listcomp&gt; at <span class="hljs-number">0x000001E7C7F280C0</span>, file <span class="hljs-string">"task.py"</span>, line <span class="hljs-number">28</span>&gt;:</span><br><span class="line"> <span class="hljs-number">28</span>           <span class="hljs-number">0</span> BUILD_LIST               <span class="hljs-number">0</span></span><br><span class="line">              <span class="hljs-number">2</span> LOAD_FAST                <span class="hljs-number">0</span> (<span class="hljs-number">.0</span>)</span><br><span class="line">        &gt;&gt;    <span class="hljs-number">4</span> FOR_ITER                <span class="hljs-number">26</span> (to <span class="hljs-number">32</span>)</span><br><span class="line">              <span class="hljs-number">6</span> STORE_DEREF              <span class="hljs-number">0</span> (col)</span><br><span class="line">              <span class="hljs-number">8</span> LOAD_CLOSURE             <span class="hljs-number">0</span> (col)</span><br><span class="line">             <span class="hljs-number">10</span> BUILD_TUPLE              <span class="hljs-number">1</span></span><br><span class="line">             <span class="hljs-number">12</span> LOAD_CONST               <span class="hljs-number">0</span> (&lt;code object &lt;listcomp&gt; at <span class="hljs-number">0x000001E7C7F28B70</span>, file <span class="hljs-string">"task.py"</span>, line <span class="hljs-number">28</span>&gt;)</span><br><span class="line">             <span class="hljs-number">14</span> LOAD_CONST               <span class="hljs-number">1</span> (<span class="hljs-string">'&lt;listcomp&gt;.&lt;listcomp&gt;'</span>)</span><br><span class="line">             <span class="hljs-number">16</span> MAKE_FUNCTION            <span class="hljs-number">8</span></span><br><span class="line">             <span class="hljs-number">18</span> LOAD_GLOBAL              <span class="hljs-number">0</span> (range)</span><br><span class="line">             <span class="hljs-number">20</span> LOAD_CONST               <span class="hljs-number">2</span> (<span class="hljs-number">6</span>)</span><br><span class="line">             <span class="hljs-number">22</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line">             <span class="hljs-number">24</span> GET_ITER</span><br><span class="line">             <span class="hljs-number">26</span> CALL_FUNCTION            <span class="hljs-number">1</span></span><br><span class="line">             <span class="hljs-number">28</span> LIST_APPEND              <span class="hljs-number">2</span></span><br><span class="line">             <span class="hljs-number">30</span> JUMP_ABSOLUTE            <span class="hljs-number">4</span></span><br><span class="line">        &gt;&gt;   <span class="hljs-number">32</span> RETURN_VALUE</span><br><span class="line"></span><br><span class="line">Disassembly of &lt;code object &lt;listcomp&gt; at <span class="hljs-number">0x000001E7C7F28B70</span>, file <span class="hljs-string">"task.py"</span>, line <span class="hljs-number">28</span>&gt;:</span><br><span class="line"> <span class="hljs-number">28</span>           <span class="hljs-number">0</span> BUILD_LIST               <span class="hljs-number">0</span></span><br><span class="line">              <span class="hljs-number">2</span> LOAD_FAST                <span class="hljs-number">0</span> (<span class="hljs-number">.0</span>)</span><br><span class="line">        &gt;&gt;    <span class="hljs-number">4</span> FOR_ITER                <span class="hljs-number">20</span> (to <span class="hljs-number">26</span>)</span><br><span class="line">              <span class="hljs-number">6</span> STORE_FAST               <span class="hljs-number">1</span> (row)</span><br><span class="line">              <span class="hljs-number">8</span> LOAD_GLOBAL              <span class="hljs-number">0</span> (raw_flag)</span><br><span class="line">             <span class="hljs-number">10</span> LOAD_CONST               <span class="hljs-number">0</span> (<span class="hljs-number">6</span>)</span><br><span class="line">             <span class="hljs-number">12</span> LOAD_FAST                <span class="hljs-number">1</span> (row)</span><br><span class="line">             <span class="hljs-number">14</span> BINARY_MULTIPLY</span><br><span class="line">             <span class="hljs-number">16</span> LOAD_DEREF               <span class="hljs-number">0</span> (col)</span><br><span class="line">             <span class="hljs-number">18</span> BINARY_ADD</span><br><span class="line">             <span class="hljs-number">20</span> BINARY_SUBSCR</span><br><span class="line">             <span class="hljs-number">22</span> LIST_APPEND              <span class="hljs-number">2</span></span><br><span class="line">             <span class="hljs-number">24</span> JUMP_ABSOLUTE            <span class="hljs-number">4</span></span><br><span class="line">        &gt;&gt;   <span class="hljs-number">26</span> RETURN_VALUE</span><br></pre></td></tr></table></figure>
+<p>根据以上字节码，可还原源码为</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> os</span><br><span class="line"><span class="hljs-keyword">import</span> sys</span><br><span class="line"><span class="hljs-keyword">from</span> base64 <span class="hljs-keyword">import</span> b64encode</span><br><span class="line">O0o = <span class="hljs-string">b'/KDq6pvN/LLq6tzM/KXq59Oh/MTqxtOTxdrqs8OoR3V1X09J'</span></span><br><span class="line">flag = input()</span><br><span class="line">O0o = <span class="hljs-string">b'Qn/ZgNOeWqXCoNKYceeX3NO8n7h0lL+tzrdbkM2pZ3IwZX5Q'</span></span><br><span class="line"><span class="hljs-keyword">if</span> <span class="hljs-string">b'hgame&#123;'</span> != flag[:<span class="hljs-number">6</span>] <span class="hljs-keyword">or</span> flag[<span class="hljs-number">-1</span>] != <span class="hljs-string">b'&#125;'</span>:</span><br><span class="line">    print(<span class="hljs-string">'Incorrect format!'</span>)</span><br><span class="line">    sys.exit(<span class="hljs-number">1</span>)</span><br><span class="line">raw_flag = flag[<span class="hljs-number">6</span>:<span class="hljs-number">-1</span>]</span><br><span class="line"><span class="hljs-keyword">if</span> len(flag) - <span class="hljs-number">7</span> != <span class="hljs-number">36</span>:</span><br><span class="line">    print(<span class="hljs-string">'Wrong length!'</span>)</span><br><span class="line">    sys.exit(<span class="hljs-number">2</span>)</span><br><span class="line">raw_flag = raw_flag[::<span class="hljs-number">-1</span>]</span><br><span class="line">ciphers = [ [ raw_flag[<span class="hljs-number">6</span>*j+i] <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">6</span>) ] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">6</span>) ]</span><br><span class="line"><span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):</span><br><span class="line">    <span class="hljs-keyword">for</span> col <span class="hljs-keyword">in</span> range(<span class="hljs-number">6</span>):</span><br><span class="line">        ciphers[row][col] += ciphers[row + <span class="hljs-number">1</span>][col]</span><br><span class="line">        ciphers[row][col] %= <span class="hljs-number">256</span></span><br><span class="line">cipher = <span class="hljs-string">b''</span></span><br><span class="line"><span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> range(<span class="hljs-number">6</span>):</span><br><span class="line">    col = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">while</span> col &lt; <span class="hljs-number">6</span>:</span><br><span class="line">        cipher += bytes([ciphers[row][col]])</span><br><span class="line">        col += <span class="hljs-number">1</span></span><br><span class="line"><span class="hljs-keyword">assert</span> O0o == b64encode(cipher)</span><br></pre></td></tr></table></figure>
+<p>因此，脚本如下：</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">from</span> base64 <span class="hljs-keyword">import</span> b64decode</span><br><span class="line">cipher = <span class="hljs-string">b'Qn/ZgNOeWqXCoNKYceeX3NO8n7h0lL+tzrdbkM2pZ3IwZX5Q'</span></span><br><span class="line">cipher = b64decode(cipher)</span><br><span class="line">ciphers = [ [ cipher[j + <span class="hljs-number">6</span>*i] <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(<span class="hljs-number">6</span>)] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">6</span>) ]</span><br><span class="line"><span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):</span><br><span class="line">    <span class="hljs-keyword">for</span> col <span class="hljs-keyword">in</span> range(<span class="hljs-number">6</span>):</span><br><span class="line">        ciphers[<span class="hljs-number">4</span> - row][col] -= ciphers[<span class="hljs-number">5</span> - row][col]</span><br><span class="line">        ciphers[<span class="hljs-number">4</span> - row][col] %= <span class="hljs-number">256</span></span><br><span class="line">cipher = <span class="hljs-string">b""</span></span><br><span class="line"><span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> range(<span class="hljs-number">6</span>):</span><br><span class="line">    col = <span class="hljs-number">0</span></span><br><span class="line">    <span class="hljs-keyword">while</span> col &lt; <span class="hljs-number">6</span>:</span><br><span class="line">        cipher += bytes([ciphers[col][row]])</span><br><span class="line">        col += <span class="hljs-number">1</span></span><br><span class="line">cipher = cipher[::<span class="hljs-number">-1</span>]</span><br><span class="line">print(<span class="hljs-string">b"hgame&#123;"</span> + cipher + <span class="hljs-string">b"&#125;"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h2><h3 id="1-Verification-code"><a href="#1-Verification-code" class="headerlink" title="1. Verification_code"></a>1. Verification_code</h3><p>爆破就好啦</p>
+<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="hljs-keyword">import</span> string</span><br><span class="line"><span class="hljs-keyword">import</span> time</span><br><span class="line"><span class="hljs-keyword">from</span> hashlib <span class="hljs-keyword">import</span> sha256</span><br><span class="line"><span class="hljs-keyword">from</span> socket <span class="hljs-keyword">import</span> socket</span><br><span class="line"></span><br><span class="line">L = string.ascii_letters+string.digits</span><br><span class="line">sock = socket()</span><br><span class="line">sock.connect((<span class="hljs-string">"47.98.192.231"</span>, <span class="hljs-number">25678</span>))</span><br><span class="line">s = sock.recv(<span class="hljs-number">1024</span>).split(<span class="hljs-string">b"\n"</span>)[<span class="hljs-number">0</span>]</span><br><span class="line">_hexdigest = s[<span class="hljs-number">-64</span>:].decode()</span><br><span class="line">sub = s[<span class="hljs-number">12</span>:<span class="hljs-number">28</span>]</span><br><span class="line">print(sock.recv(<span class="hljs-number">1024</span>))</span><br><span class="line"><span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> L:</span><br><span class="line">    <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> L:</span><br><span class="line">        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> L:</span><br><span class="line">            <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> L:</span><br><span class="line">                pre = (a+b+c+d).encode()</span><br><span class="line">                hexstr = sha256(pre + sub).hexdigest()</span><br><span class="line">                <span class="hljs-keyword">if</span> hexstr == _hexdigest:</span><br><span class="line">                    print(pre)</span><br><span class="line">                    sock.send(pre)</span><br><span class="line">                    print(sock.recv(<span class="hljs-number">1024</span>))</span><br><span class="line">                    sock.recv(<span class="hljs-number">1024</span>)</span><br><span class="line">                    sock.send(<span class="hljs-string">b"I like playing Hgame"</span>)</span><br><span class="line">                    print(sock.recv(<span class="hljs-number">1024</span>))</span><br><span class="line">                    print(sock.recv(<span class="hljs-number">1024</span>))</span><br><span class="line">                    exit()</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Remainder<br>中国剩余定理就Vans啦<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/env python2</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> inverse</span><br><span class="line"></span><br><span class="line">p = <span class="hljs-number">94598296305713376652540411631949434301396235111673372738276754654188267010805522542068004453137678598891335408170277601381944584279339362056579262308427544671688614923839794522671378559276784734758727213070403838632286280473450086762286706863922968723202830398266220533885129175502142533600559292388005914561</span></span><br><span class="line">q = <span class="hljs-number">150088216417404963893679242888992998793257903343994792697939121738029477790454833496600101388493792476973514786401036309378542808470513073408894727406158296404360452232777491992630316999043165374635001806841520490997788796152678742544032835808854339130676283497122770901196468323977265095016407164510827505883</span></span><br><span class="line">r = <span class="hljs-number">145897736096689096151704740327665176308625097484116713780050311198775607465862066406830851710261868913835866335107146242979359964945125214420821146670919741118254402096944139483988745450480989706524191669371208210272907563936516990473246615375022630708213486725809819360033470468293100926616729742277729705727</span></span><br><span class="line">e = <span class="hljs-number">65537</span></span><br><span class="line"></span><br><span class="line">cp = <span class="hljs-number">78430786011650521224561924814843614294806974988599591058915520397518526296422791089692107488534157589856611229978068659970976374971658909987299759719533519358232180721480719635602515525942678988896727128884803638257227848176298172896155463813264206982505797613067215182849559356336015634543181806296355552543</span> </span><br><span class="line">cq = <span class="hljs-number">49576356423474222188205187306884167620746479677590121213791093908977295803476203510001060180959190917276817541142411523867555147201992480220531431019627681572335103200586388519695931348304970651875582413052411224818844160945410884130575771617919149619341762325633301313732947264125576866033934018462843559419</span> </span><br><span class="line">cr = <span class="hljs-number">48131077962649497833189292637861442767562147447040134411078884485513840553188185954383330236190253388937785530658279768620213062244053151614962893628946343595642513870766877810534480536737200302699539396810545420021054225204683428522820350356470883574463849146422150244304147618195613796399010492125383322922</span></span><br><span class="line">m = p*q*r</span><br><span class="line">Mp = q*r</span><br><span class="line">Mq = p*r</span><br><span class="line">Mr = p*q</span><br><span class="line">dp = inverse(Mp, p)</span><br><span class="line">dq = inverse(Mq, q)</span><br><span class="line">dr = inverse(Mr, r)</span><br><span class="line">msg = (dp*Mp*cp+dq*Mq*cq+dr*Mr*cr) % m</span><br><span class="line">phim = (p<span class="hljs-number">-1</span>)*(q<span class="hljs-number">-1</span>)*(r<span class="hljs-number">-1</span>)</span><br><span class="line">de = inverse(e, phim)</span><br><span class="line">msg = pow(msg, de, m)</span><br><span class="line">msg = hex(msg)[<span class="hljs-number">2</span>:<span class="hljs-number">-1</span>]</span><br><span class="line"><span class="hljs-keyword">if</span> len(msg) % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>:</span><br><span class="line">    msg = <span class="hljs-string">"0"</span> + msg</span><br><span class="line">msg = msg.decode(<span class="hljs-string">"hex"</span>)</span><br><span class="line">print(msg)</span><br><span class="line">s = <span class="hljs-string">""</span></span><br><span class="line"><span class="hljs-keyword">for</span> st <span class="hljs-keyword">in</span> msg.split(<span class="hljs-string">"\n"</span>)[<span class="hljs-number">3</span>:<span class="hljs-number">-3</span>]:</span><br><span class="line">    s += st[:<span class="hljs-number">2</span>]</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure>
+<h3 id="3-Inv"><a href="#3-Inv" class="headerlink" title="3. Inv"></a>3. Inv</h3>求置换群的逆元，之后仿照欧几里得除法。<figure class="highlight py hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="hljs-comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">Subs</span><span class="hljs-params">(S, X)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">return</span> bytes([ S[x] <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> X ])</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">Mul</span><span class="hljs-params">(A, B)</span>:</span></span><br><span class="line">    <span class="hljs-keyword">assert</span> len(A)==len(B)</span><br><span class="line">    <span class="hljs-keyword">return</span> Subs(A, B)</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">Pow</span><span class="hljs-params">(X, E)</span>:</span></span><br><span class="line">    Y = X</span><br><span class="line">    E = bin(E)[<span class="hljs-number">3</span>:]</span><br><span class="line">    <span class="hljs-keyword">for</span> e <span class="hljs-keyword">in</span> E:</span><br><span class="line">        Y = Mul(Y, Y)</span><br><span class="line">        <span class="hljs-keyword">if</span> e==<span class="hljs-string">'1'</span>:</span><br><span class="line">            Y = Mul(X, Y)</span><br><span class="line">    <span class="hljs-keyword">return</span> Y</span><br><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">Inv</span><span class="hljs-params">(G : bytes)</span>:</span></span><br><span class="line">    ans = [<span class="hljs-number">0</span>] * <span class="hljs-number">256</span></span><br><span class="line">    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">256</span>):</span><br><span class="line">        ans[G[i]] = i.to_bytes(<span class="hljs-number">1</span>, <span class="hljs-string">"little"</span>)</span><br><span class="line">    <span class="hljs-keyword">return</span> <span class="hljs-string">b""</span>.join(ans)</span><br><span class="line"></span><br><span class="line">A = <span class="hljs-string">b'\xc8&amp;\xc1E\xbe*\xc5\x84\xdb1\x05\x9b\xc0\xf2\xac/\x0b0\x8d\'\xc2b\x89\x93\xa6\xcd\xe1\x1b\xf4H\xffa\x90A\xf7,(\xea?\xa8\xa0\x8b\xf1\xf9"X\n\x86fj\x074\x7fBO\xd4F\xbd\xe6\xd9\xa7\xaf\x8a\x8c\xde\xab;!PT\x15)+w\xbc\x00&gt;\xc6g\xc3\x85=9K\xb6&lt;\xb7x\xaeUG\x83vk\xa9\xf6&#123;\x03Y\x87\x14e\xfd\xed@i\xcc.\xd1\xebo\x106\xe2\xe7\xd7\xeeu\x9e\xfe\x95^R\xfb8\x04\xb4S\x16\xe0\xad\xd8\x98n\xca\xe4\xdd\xd2\xc7\x99l\xb3\\2L\xa3\x1d:_\x12\xb87\x17\x01\xb1#~q\x1c\t\xe8\xdar\xef\xcb\x0c\xe5\x80\xdf\xc9y\x0e`\xe9\x94\xd0\xcfW\x1f5\xf5h\xbf\xba\x91\xb9d\xfcM\x81\xec\x88\xb2c\x9f\xa4J|\xd3m\xd6s\xd5\x92\x9d\x9a3\xa2\xb5\xfa\x19N\xa1\x82][\xf8\x06\x13\xdcC\x1e\x1a\xaa\xc4tz\x08\x8f%$D\xbb\x97 \xce\x96V\xe3\x02I\x18\x11\x0f\r\xf3p\x8e\xa5Z-\xf0&#125;\xb0Q\x9c'</span></span><br><span class="line">B = <span class="hljs-string">b'U\x17\x8aE\xa6\x19\xab\x7fd0\xd2)\xc0\xae\xcc/G_\xe3\'\r\xfb\xaf\x00\xb1hgi-\xc1\xffa\x8d\t&amp;\x99k\x95\x93\xa8.\x07\xcd\x87\x01\xe8\x89\x86\xf6f48F\xdc\x96\xd4`P\xd6!\xfe\xc4B:\xd31C\x9f\x1dT&#123;2c9\x0bY5#\xf7\xb8H\xe0Db\xb6wv\xe1\xbbI\x8f\x83l\x80\xa9\x04q\x03\xf0m\xf4\x1bp\x8e\xc6u\xfd\x16$\x06\xf9Z\xec\xa2\xcb\xd7V\xb9\xd1\xbdt^\xe7\xe2\xac\x18\xb4\x15=n\xad\xd8S+\xca\xeb\xdd\xd0;\x84\xe6\x08\x8c3\xb3\x90\x02\xc8&#125;\xee\xea7K\x98\xde\x8b~\xcf\xfa\x11\n\xda\xa4L\xa3\x0cWQ\xdf\xc9yj\x9d\xe9\xfcJO\x1a\x1f\xdb\xf5M\xbf\x9e e\x1c*\x9b\x85\xe5\x88\xb2\xc7\xf2\x91\x10\x0e,\xd9&lt;s\xd5\xef\xb0@|\xc3\xbc(\xb5"\xa1\x82\xa7[\xf8A\x13\x14\xc2\x1eN\xaao\xedr\xba\xcex]\x92\x05\x97\x12\xc5%\\\xb7&gt;R\x9a\x94\x0fX\xf3\xbe?\xa5\xe4\xa0z\xf16\x81\x9c'</span></span><br><span class="line">E = <span class="hljs-string">b'\x00\x01\x02\x03\x04\x05\x06\x07\x08\t\n\x0b\x0c\r\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f !"#$%&amp;\'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz&#123;|&#125;~\x7f\x80\x81\x82\x83\x84\x85\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0\xa1\xa2\xa3\xa4\xa5\xa6\xa7\xa8\xa9\xaa\xab\xac\xad\xae\xaf\xb0\xb1\xb2\xb3\xb4\xb5\xb6\xb7\xb8\xb9\xba\xbb\xbc\xbd\xbe\xbf\xc0\xc1\xc2\xc3\xc4\xc5\xc6\xc7\xc8\xc9\xca\xcb\xcc\xcd\xce\xcf\xd0\xd1\xd2\xd3\xd4\xd5\xd6\xd7\xd8\xd9\xda\xdb\xdc\xdd\xde\xdf\xe0\xe1\xe2\xe3\xe4\xe5\xe6\xe7\xe8\xe9\xea\xeb\xec\xed\xee\xef\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff'</span></span><br><span class="line">a = <span class="hljs-number">595</span></span><br><span class="line">b = <span class="hljs-number">739</span></span><br><span class="line">enc = <span class="hljs-string">b"\\-\xa5&#123;\xb9\x85J @\xfa\x91\x0b\x88\r4I\x7f\xb9\xe5\r\xc0\x84\x8f\xa6\xc0i\xb0\xa4\x1b\x8fIw\x84'\xa2\xa4\x00\x91\x87\x10\r\\\x8c\x12"</span></span><br><span class="line">a, b = b, a</span><br><span class="line">A, B = B, A</span><br><span class="line">q = a // b</span><br><span class="line">r = a - b*q</span><br><span class="line">R = B</span><br><span class="line"><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:</span><br><span class="line">    B_ = Inv(B)</span><br><span class="line">    R = Mul(A, Pow(B_, q))</span><br><span class="line">    a, b = b, r</span><br><span class="line">    A, B = B, R</span><br><span class="line">    <span class="hljs-keyword">if</span> b &lt;= <span class="hljs-number">1</span>:</span><br><span class="line">        <span class="hljs-keyword">break</span></span><br><span class="line">    q = a // b</span><br><span class="line">    r = a - b*q</span><br><span class="line">S = B</span><br><span class="line">print(S)</span><br><span class="line">flag = <span class="hljs-string">b""</span></span><br><span class="line"><span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> enc:</span><br><span class="line">    index = S.find(c)</span><br><span class="line">    flag += index.to_bytes(<span class="hljs-number">1</span>, <span class="hljs-string">"little"</span>)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="2-所见即为假"><a href="#2-所见即为假" class="headerlink" title="2.所见即为假"></a>2.所见即为假</h3>ZIP伪加密，之后F5-JPG隐写，最后出来base16，之后RAR，之后出FLAG。</li>
+</ol>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/CTF/" rel="tag">CTF</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="social-share"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay_qrcode.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wechat_qrcode.png" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/07/2020-02-07-HGAME-2020-Week3&Week4-WriteUp/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">HGAME 2020 Week3&amp;Week4 wp</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/01/25/2020-01-25-HGAME-2020-Week1-WriteUp/">
+                <span class="level-item">HGAME 2020 Week1 wp</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: false,
+        verify: false,
+        app_id: 'lBiGLnlCCpEP05rAofjfWH0F-gzGzoHsz',
+        app_key: 'yuk3OUNG562jGkVMiKe0kJOn',
+        placeholder: '评论一下呗'
+    });
+</script>
+
+    </div>
+</div>
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered" style="flex-shrink: 1">
+                <div>
+                    
+                    <figure class="image is-128x128 has-mb-6">
+                        <img class="" src="/images/kks.png" alt="Uchiha Kakashi">
+                    </figure>
+                    
+                    <p class="is-size-4 is-block">
+                        Uchiha Kakashi
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Student
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Hefei, China</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <a href="/archives">
+                        <p class="title has-text-weight-normal">
+                            31
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <a href="/categories">
+                        <p class="title has-text-weight-normal">
+                            8
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <a href="/tags">
+                        <p class="title has-text-weight-normal">
+                            14
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://github.com/licy183" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="https://github.com/licy183">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="QQ" href="http://wpa.qq.com/msgrd?v=3&amp;uin=951156675&amp;site=qq&amp;menu=yes">
+                
+                <i class="fab fa-qq"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Weibo" href="https://weibo.com/licy1833">
+                
+                <i class="fab fa-weibo"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.rmb122.com" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Rmb122</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.rmb122.com</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.dzou.top" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Dzou</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.dzou.top</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.boyn.top" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Boyn</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.boyn.top</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://www.thinszx.xyz" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">thinszx</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">www.thinszx.xyz</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/C/">
+            <span class="level-start">
+                <span class="level-item">C++</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">6</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/CTF/">
+            <span class="level-start">
+                <span class="level-item">CTF</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">7</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Java/">
+            <span class="level-start">
+                <span class="level-item">Java</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Misc/">
+            <span class="level-start">
+                <span class="level-item">Misc</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Python/">
+            <span class="level-start">
+                <span class="level-item">Python</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Py%E4%BA%A4%E6%98%93/">
+            <span class="level-start">
+                <span class="level-item">Py交易</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">3</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Ubuntu%E6%8A%98%E8%85%BE%E8%AE%B0/">
+            <span class="level-start">
+                <span class="level-item">Ubuntu折腾记</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">9</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+            <span class="level-start">
+                <span class="level-item">数据结构</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">2</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/C/" style="font-size: 20px;">C++</a> <a href="/tags/CTF/" style="font-size: 18.33px;">CTF</a> <a href="/tags/Docker/" style="font-size: 11.67px;">Docker</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a> <a href="/tags/Terminal/" style="font-size: 10px;">Terminal</a> <a href="/tags/Ubuntu/" style="font-size: 20px;">Ubuntu</a> <a href="/tags/Wine/" style="font-size: 16.67px;">Wine</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 13.33px;">数据结构</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 11.67px;">爬虫</a>
+    </div>
+</div>
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T14:42:56.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/2020-02-07-HGAME-2020-Week3&Week4-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week3&amp;Week4 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-31T13:36:42.000Z">2020-01-31</time></div>
+                    <a href="/2020/01/31/2020-01-31-HGAME-2020-Week2-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week2 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-24T16:50:20.000Z">2020-01-25</time></div>
+                    <a href="/2020/01/25/2020-01-25-HGAME-2020-Week1-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week1 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T19:42:15.000Z">2019-12-15</time></div>
+                    <a href="/2019/12/15/2019-12-15-%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85%E6%89%8B%E6%B8%B8%E5%BF%83%E8%BD%AC%E8%BA%AB%E7%BB%83%E4%B9%A0%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/" class="title has-link-black-ter is-size-6 has-text-weight-normal">火影忍者手游心转身练习自动化脚本</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T23:42:25.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/2019-12-02-C1CTF-2019-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C1CTF 2019 WriteUp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CTF/">
+                        <span class="tag">CTF</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Docker/">
+                        <span class="tag">Docker</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Node/">
+                        <span class="tag">Node</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Selenium/">
+                        <span class="tag">Selenium</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Terminal/">
+                        <span class="tag">Terminal</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu/">
+                        <span class="tag">Ubuntu</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Wine/">
+                        <span class="tag">Wine</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="tag">爬虫</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        <div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-02-07T14:42:56.000Z">2020-02-07</time></div>
+                    <a href="/2020/02/07/2020-02-07-HGAME-2020-Week3&Week4-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week3&amp;Week4 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-31T13:36:42.000Z">2020-01-31</time></div>
+                    <a href="/2020/01/31/2020-01-31-HGAME-2020-Week2-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week2 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-01-24T16:50:20.000Z">2020-01-25</time></div>
+                    <a href="/2020/01/25/2020-01-25-HGAME-2020-Week1-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HGAME 2020 Week1 wp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-14T19:42:15.000Z">2019-12-15</time></div>
+                    <a href="/2019/12/15/2019-12-15-%E7%81%AB%E5%BD%B1%E5%BF%8D%E8%80%85%E6%89%8B%E6%B8%B8%E5%BF%83%E8%BD%AC%E8%BA%AB%E7%BB%83%E4%B9%A0%E8%87%AA%E5%8A%A8%E5%8C%96%E8%84%9A%E6%9C%AC/" class="title has-link-black-ter is-size-6 has-text-weight-normal">火影忍者手游心转身练习自动化脚本</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Python/">Python</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-12-01T23:42:25.000Z">2019-12-02</time></div>
+                    <a href="/2019/12/02/2019-12-02-C1CTF-2019-WriteUp/" class="title has-link-black-ter is-size-6 has-text-weight-normal">C1CTF 2019 WriteUp</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/CTF/">CTF</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2020/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2020</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/07/">
+                <span class="level-start">
+                    <span class="level-item">七月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/06/">
+                <span class="level-start">
+                    <span class="level-item">六月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/05/">
+                <span class="level-start">
+                    <span class="level-item">五月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">10</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/03/">
+                <span class="level-start">
+                    <span class="level-item">三月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">3</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/02/">
+                <span class="level-start">
+                    <span class="level-item">二月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/01/">
+                <span class="level-start">
+                    <span class="level-item">一月 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/C/">
+                        <span class="tag">C++</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/CTF/">
+                        <span class="tag">CTF</span>
+                        <span class="tag is-grey">7</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Docker/">
+                        <span class="tag">Docker</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Java/">
+                        <span class="tag">Java</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/JavaScript/">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Node/">
+                        <span class="tag">Node</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Python/">
+                        <span class="tag">Python</span>
+                        <span class="tag is-grey">5</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Selenium/">
+                        <span class="tag">Selenium</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Terminal/">
+                        <span class="tag">Terminal</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Ubuntu/">
+                        <span class="tag">Ubuntu</span>
+                        <span class="tag is-grey">9</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Wine/">
+                        <span class="tag">Wine</span>
+                        <span class="tag is-grey">6</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="tag">数据结构</span>
+                        <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E7%88%AC%E8%99%AB/">
+                        <span class="tag">爬虫</span>
+                        <span class="tag is-grey">2</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    Uchiha Kakashi
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 Uchiha Kakashi&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <span id="busuanzi_container_site_uv">
+                共<span id="busuanzi_value_site_uv">0</span>个访客
+                </span>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端" href="javascript:;" target="_blank" rel="noopener">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
